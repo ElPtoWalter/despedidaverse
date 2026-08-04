@@ -1,5 +1,5 @@
 (() => {
-  const CONTACT_EMAIL = 'eduardo.efernandez.rodriguez@gmail.com';
+  const CONTACT_EMAIL = 'fdez.edu00@gmail.com';
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
   const toast = $('#toast');

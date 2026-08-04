@@ -18,10 +18,10 @@ Web comercial estática y profesional para ofrecer experiencias digitales person
 - optimización responsive.
 
 ## Contacto
-El correo actual es provisional:
-`eduardo.efernandez.rodriguez@gmail.com`
+Correo configurado actualmente:
+`fdez.edu00@gmail.com`
 
-Cuando exista el correo comercial, hay que sustituirlo en:
+Cuando exista un correo comercial con dominio propio, habrá que sustituirlo en:
 - `index.html`
 - `script.js`
 - `privacidad.html`
