@@ -2,305 +2,446 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Webs personalizadas para despedidas: retos, ruleta, tokens, nombres secretos, música, galería, QR y sorpresa final.">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="description" content="Experiencias web personalizadas para despedidas: retos, tokens, ruleta, nombres secretos, música, galería, QR y una sorpresa final.">
   <meta name="theme-color" content="#10091f">
-  <meta property="og:title" content="DespedidaVerse Studio — Webs personalizadas para despedidas">
-  <meta property="og:description" content="Convertimos vuestra despedida en una experiencia web hecha a medida.">
+  <meta name="color-scheme" content="dark">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:title" content="DespedidaVerse Studio — El juego digital de vuestra despedida">
+  <meta property="og:description" content="Convertimos vuestra despedida en una experiencia web personalizada, jugable y accesible por QR.">
   <meta property="og:image" content="assets/social-preview.jpg">
-  <title>DespedidaVerse Studio · Webs para despedidas</title>
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://elptowalter.github.io/despedidaverse-studio/">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preload" href="assets/antonverse-dashboard.webp" as="image" type="image/webp">
   <link rel="stylesheet" href="styles.css">
   <script defer src="script.js"></script>
+  <title>DespedidaVerse Studio · Experiencias web para despedidas</title>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"ProfessionalService",
+    "name":"DespedidaVerse Studio",
+    "description":"Diseño de experiencias web personalizadas para despedidas.",
+    "areaServed":"España",
+    "email":"eduardo.efernandez.rodriguez@gmail.com",
+    "priceRange":"€€",
+    "url":"https://elptowalter.github.io/despedidaverse-studio/"
+  }
+  </script>
 </head>
 <body>
-  <div class="noise" aria-hidden="true"></div>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <div class="ambient ambient-a" aria-hidden="true"></div>
+  <div class="ambient ambient-b" aria-hidden="true"></div>
+
+  <div class="topbar">
+    <span>Proyecto probado en una despedida real</span>
+    <a href="#caso">Ver Antonverse <b>↗</b></a>
+  </div>
 
   <header class="site-header" id="top">
-    <a class="brand" href="#top" aria-label="DespedidaVerse, inicio">
-      <span class="brand-mark">DV</span>
-      <span class="brand-copy"><strong>DespedidaVerse</strong><small>STUDIO</small></span>
+    <a class="brand" href="#top" aria-label="DespedidaVerse Studio, inicio">
+      <img src="assets/logo.svg" alt="" width="260" height="75">
     </a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
-      <span></span><span></span><span></span><span class="sr-only">Abrir menú</span>
+      <span></span><span></span><span></span><i class="sr-only">Abrir menú</i>
     </button>
-    <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
-      <a href="#servicios">Qué hacemos</a>
-      <a href="#caso">Proyecto real</a>
+    <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
+      <a href="#demo">Probar demo</a>
+      <a href="#incluye">Qué incluye</a>
+      <a href="#estilos">Estilos</a>
+      <a href="#caso">Caso real</a>
       <a href="#precios">Precios</a>
-      <a href="#proceso">Proceso</a>
-      <a href="#contacto" class="nav-cta">Pedir presupuesto</a>
+      <a href="#contacto" class="nav-cta">Pedir propuesta</a>
     </nav>
   </header>
 
   <main id="contenido">
-    <section class="hero section-shell">
+    <section class="hero shell">
       <div class="hero-copy reveal">
-        <p class="eyebrow"><span></span> Webs para despedidas hechas a medida</p>
-        <h1>La despedida deja de ser un plan.<br><em>Se convierte en un universo.</em></h1>
-        <p class="hero-lead">Diseñamos una web exclusiva para vuestro grupo: retos, monedas, nombres secretos, ruleta, música, fotos, juegos y una sorpresa final que se desbloquea durante el evento.</p>
+        <p class="eyebrow"><span></span> Experiencias digitales para despedidas</p>
+        <h1>No montamos una página.<br><em>Montamos el juego de vuestra despedida.</em></h1>
+        <p class="hero-lead">Retos, monedas, nombres secretos, ruleta, música, fotos, minijuegos y una putada final. Todo hecho alrededor de vuestro grupo y listo para abrir desde un QR.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#contacto">Cuéntame vuestra idea <span>→</span></a>
-          <a class="button button-secondary" href="#caso">Ver un proyecto real</a>
+          <a class="button button-primary" href="#demo">Probar la experiencia <span>↓</span></a>
+          <a class="button button-secondary" href="#calculadora">Calcular presupuesto</a>
         </div>
-        <ul class="trust-row" aria-label="Ventajas principales">
-          <li><strong>100 %</strong><span>personalizada</span></li>
-          <li><strong>QR</strong><span>listo para compartir</span></li>
-          <li><strong>Móvil</strong><span>como prioridad</span></li>
-        </ul>
+        <div class="trust-pills" aria-label="Ventajas">
+          <span><b>✓</b> Sin instalar apps</span>
+          <span><b>✓</b> Diseñada para móvil</span>
+          <span><b>✓</b> Contenido privado</span>
+        </div>
       </div>
 
-      <div class="hero-visual reveal" aria-label="Ejemplo de una web de despedida">
-        <div class="browser-card">
-          <div class="browser-bar"><i></i><i></i><i></i><span>despedidaverse.com/anton</span></div>
-          <img src="assets/antonverse-dashboard.webp" alt="Panel de la web Antonverse con tokens, música y minijuegos">
+      <div class="hero-product reveal" aria-label="Muestra de una experiencia DespedidaVerse">
+        <div class="device-shell">
+          <div class="device-top"><i></i><span>antonverse · evento activo</span><b>●</b></div>
+          <img src="assets/antonverse-dashboard.webp" alt="Panel principal de Antonverse" width="760" height="900">
         </div>
-        <div class="float-card float-one"><span>🎯</span><strong>Retos personalizados</strong><small>para vuestro grupo</small></div>
-        <div class="float-card float-two"><span>🔐</span><strong>Sorpresa final</strong><small>solo al completar la misión</small></div>
-        <div class="orbit orbit-one"></div>
-        <div class="orbit orbit-two"></div>
+        <article class="hero-float float-left">
+          <span>🪙</span><div><small>SALDO DEL GRUPO</small><strong>15 tokens</strong></div>
+        </article>
+        <article class="hero-float float-right">
+          <span>🔐</span><div><small>PROGRESO</small><strong>57 / 62 secretos</strong></div>
+        </article>
+        <div class="hero-ring ring-one"></div><div class="hero-ring ring-two"></div>
       </div>
     </section>
 
-    <section class="ticker" aria-label="Funciones disponibles">
-      <div class="ticker-track">
-        <span>RETOS</span><i>✦</i><span>RULETA</span><i>✦</i><span>TOKENS</span><i>✦</i><span>NOMBRES SECRETOS</span><i>✦</i><span>GALERÍA</span><i>✦</i><span>MÚSICA</span><i>✦</i><span>JUEGOS</span><i>✦</i><span>QR</span><i>✦</i>
-        <span>RETOS</span><i>✦</i><span>RULETA</span><i>✦</i><span>TOKENS</span><i>✦</i><span>NOMBRES SECRETOS</span><i>✦</i><span>GALERÍA</span><i>✦</i><span>MÚSICA</span><i>✦</i><span>JUEGOS</span><i>✦</i><span>QR</span><i>✦</i>
-      </div>
+    <section class="proof-strip">
+      <div><strong>100 %</strong><span>personalizada</span></div>
+      <div><strong>1 QR</strong><span>para todo el grupo</span></div>
+      <div><strong>0 apps</strong><span>solo navegador</span></div>
+      <div><strong>2–3 sem.</strong><span>plazo recomendado</span></div>
     </section>
 
-    <section class="services section-shell" id="servicios">
+    <section class="demo-section shell" id="demo">
       <div class="section-heading reveal">
-        <p class="eyebrow"><span></span> Todo gira alrededor del protagonista</p>
-        <h2>No es una plantilla con cuatro fotos.<br><em>Es una experiencia diseñada para vosotros.</em></h2>
-        <p>Partimos de vuestras bromas, personajes, canciones y pruebas para construir una web que solo podría pertenecer a vuestro grupo.</p>
+        <p class="eyebrow"><span></span> No te lo explicamos: pruébalo</p>
+        <h2>Una demo jugable dentro de nuestra propia web</h2>
+        <p>Haz girar la ruleta, compra un reto y descubre nombres secretos. Tu proyecto tendrá otro diseño, otras bromas y otras reglas.</p>
       </div>
 
-      <div class="service-grid">
-        <article class="service-card featured reveal">
-          <div class="service-icon">01</div>
-          <p class="card-kicker">NÚCLEO DE LA EXPERIENCIA</p>
-          <h3>Retos, tokens y tienda</h3>
-          <p>Los participantes reciben monedas virtuales y compran pruebas, castigos o privilegios preparados para la despedida.</p>
-          <ul><li>Precios y niveles personalizados</li><li>Historial de compras</li><li>Modo amigo y modo comité</li></ul>
-          <div class="mini-ui">
-            <span>Tokens disponibles</span><strong>15 <small>/15</small></strong><div><i style="width:82%"></i></div>
-          </div>
-        </article>
-
-        <article class="service-card reveal">
-          <div class="service-icon">02</div>
-          <p class="card-kicker">JUEGO SOCIAL</p>
-          <h3>Nombres en clave</h3>
-          <p>Una lista secreta basada en frases internas, motes y recuerdos. Cada acierto acerca al grupo al desenlace.</p>
-          <div class="tag-cloud"><span>El gran figure</span><span>Peseta</span><span>Il consigliere</span><span>???</span></div>
-        </article>
-
-        <article class="service-card reveal">
-          <div class="service-icon">03</div>
-          <p class="card-kicker">CONTENIDO MULTIMEDIA</p>
-          <h3>Galería, música y vídeos</h3>
-          <p>Fotos ocultas, canciones propias, clips de TikTok y contenido que se va revelando durante el fin de semana.</p>
-          <div class="photo-stack"><img src="assets/gallery-pechotes.webp" alt="Ejemplo de imagen personalizada para una despedida"><img src="assets/gallery-parlita.webp" alt="Segundo ejemplo de imagen personalizada"></div>
-        </article>
-
-        <article class="service-card reveal">
-          <div class="service-icon">04</div>
-          <p class="card-kicker">DESENLACE</p>
-          <h3>Putada final desbloqueable</h3>
-          <p>Una animación cinematográfica revela la última prueba cuando el grupo completa los objetivos definidos.</p>
-          <div class="final-thumb"><img src="assets/putada-final-tatuaje.webp" alt="Ejemplo de putada final: hacerse un tatuaje"><span>PUTADA FINAL</span></div>
-        </article>
-
-        <article class="service-card reveal">
-          <div class="service-icon">05</div>
-          <p class="card-kicker">JUEGOS Y ENLACES</p>
-          <h3>Ruleta y minijuegos</h3>
-          <p>Podemos integrar ruletas, cartas, juegos propios, redes sociales o cualquier web externa sin romper la experiencia.</p>
-          <a class="text-link" href="#caso">Ver integración real <span>↗</span></a>
-        </article>
-
-        <article class="service-card reveal">
-          <div class="service-icon">06</div>
-          <p class="card-kicker">ACCESO SIN COMPLICACIONES</p>
-          <h3>Publicación y QR</h3>
-          <p>La entregamos lista para abrir desde cualquier móvil. El mismo QR puede mostrar cuenta atrás, evento activo y cierre final.</p>
-          <div class="qr-mock"><span></span><strong>Escanear y entrar</strong></div>
-        </article>
-      </div>
-    </section>
-
-    <section class="case-study" id="caso">
-      <div class="section-shell case-wrap">
-        <div class="case-copy reveal">
-          <p class="eyebrow"><span></span> Proyecto real</p>
-          <h2>Antonverse</h2>
-          <p class="case-lead">Una despedida convertida en plataforma interactiva: identidad propia, economía interna, radio, galería, nombres secretos, minijuegos y una prueba final.</p>
-          <dl class="case-stats">
-            <div><dt>+60</dt><dd>nombres en clave</dd></div>
-            <div><dt>+20</dt><dd>versiones musicales</dd></div>
-            <div><dt>1</dt><dd>QR para toda la experiencia</dd></div>
-          </dl>
-          <div class="case-actions">
-            <a class="button button-primary" href="https://elptowalter.github.io/antonverse/" target="_blank" rel="noopener">Abrir demo real <span>↗</span></a>
-            <button class="button button-secondary" type="button" data-open-video>Ver teaser</button>
-          </div>
-        </div>
-
-        <div class="case-gallery reveal">
-          <button class="shot shot-main" type="button" data-lightbox="assets/antonverse-dashboard.webp" aria-label="Ampliar panel principal"><img src="assets/antonverse-dashboard.webp" alt="Panel principal de Antonverse"></button>
-          <button class="shot" type="button" data-lightbox="assets/antonverse-tute.webp" aria-label="Ampliar sección Tute IA"><img src="assets/antonverse-tute.webp" alt="Integración del minijuego Tute IA"></button>
-          <button class="shot" type="button" data-lightbox="assets/antonverse-tiktok.webp" aria-label="Ampliar sección de TikTok"><img src="assets/antonverse-tiktok.webp" alt="Sección de TikTok dentro de Antonverse"></button>
-        </div>
-      </div>
-    </section>
-
-    <section class="plans section-shell" id="precios">
-      <div class="section-heading reveal">
-        <p class="eyebrow"><span></span> Una opción para cada nivel de locura</p>
-        <h2>Precios claros.<br><em>La personalización decide el alcance.</em></h2>
-        <p>Los importes son orientativos. Después de conocer la idea, recibiréis un presupuesto cerrado y sin sorpresas.</p>
-      </div>
-
-      <div class="plans-grid">
-        <article class="plan-card reveal">
-          <p class="plan-label">ESENCIAL</p>
-          <h3>La presentación</h3>
-          <p class="price"><small>desde</small> 450 €</p>
-          <p>Una web visual para centralizar la despedida y sorprender desde el primer escaneo.</p>
-          <ul><li>Diseño personalizado</li><li>Cuenta atrás y programa</li><li>Galería y enlaces</li><li>QR y publicación</li><li>Una ronda de cambios</li></ul>
-          <a href="#contacto" class="button button-secondary plan-button" data-package="Esencial">Consultar</a>
-        </article>
-
-        <article class="plan-card recommended reveal">
-          <div class="recommended-badge">MÁS ELEGIDO</div>
-          <p class="plan-label">EXPERIENCIA</p>
-          <h3>El universo completo</h3>
-          <p class="price"><small>desde</small> 850 €</p>
-          <p>La versión tipo Antonverse: jugable, interactiva y pensada para acompañar todo el evento.</p>
-          <ul><li>Todo lo incluido en Esencial</li><li>Tokens, tienda y retos</li><li>Nombres secretos y ruleta</li><li>Música, vídeos y galería</li><li>Sorpresa final animada</li><li>Dos rondas de cambios</li></ul>
-          <a href="#contacto" class="button button-primary plan-button" data-package="Experiencia">Quiero esta</a>
-        </article>
-
-        <article class="plan-card reveal">
-          <p class="plan-label">A MEDIDA</p>
-          <h3>Sin límites razonables</h3>
-          <p class="price"><small>desde</small> 1.300 €</p>
-          <p>Para ideas especiales, mecánicas nuevas, producción audiovisual o una experiencia totalmente inédita.</p>
-          <ul><li>Diseño desde cero</li><li>Mecánicas exclusivas</li><li>Vídeo o imágenes avanzadas</li><li>Integraciones especiales</li><li>Más revisiones y soporte</li></ul>
-          <a href="#contacto" class="button button-secondary plan-button" data-package="A medida">Cuéntame la locura</a>
-        </article>
-      </div>
-      <p class="price-note reveal">Dominio propio, entrega urgente y producción intensiva de imágenes o vídeo se presupuestan aparte.</p>
-    </section>
-
-    <section class="estimator section-shell" aria-labelledby="estimator-title">
-      <div class="estimator-intro reveal">
-        <p class="eyebrow"><span></span> Configurador orientativo</p>
-        <h2 id="estimator-title">Monta vuestra idea en 30 segundos</h2>
-        <p>Selecciona las funciones que os interesan. El resultado sirve para empezar la conversación, no sustituye al presupuesto final.</p>
-      </div>
-      <div class="estimator-box reveal">
-        <div class="feature-options" id="feature-options">
-          <label><input type="checkbox" value="120" data-name="Tokens y tienda"><span><b>🪙</b><strong>Tokens y tienda</strong><small>Retos comprables y saldo</small></span></label>
-          <label><input type="checkbox" value="90" data-name="Nombres secretos"><span><b>🔐</b><strong>Nombres secretos</strong><small>Lista y desbloqueos</small></span></label>
-          <label><input type="checkbox" value="80" data-name="Ruleta personalizada"><span><b>🎡</b><strong>Ruleta</strong><small>Pruebas y resultados</small></span></label>
-          <label><input type="checkbox" value="90" data-name="Radio y música"><span><b>🎵</b><strong>Radio y música</strong><small>Selección del grupo</small></span></label>
-          <label><input type="checkbox" value="120" data-name="Galería secreta"><span><b>📸</b><strong>Galería secreta</strong><small>Fotos por revelar</small></span></label>
-          <label><input type="checkbox" value="160" data-name="Sorpresa final animada"><span><b>💥</b><strong>Sorpresa final</strong><small>Revelación cinematográfica</small></span></label>
-          <label><input type="checkbox" value="120" data-name="Minijuego o integración"><span><b>🎮</b><strong>Minijuego</strong><small>Juego o web externa</small></span></label>
-          <label><input type="checkbox" value="190" data-name="Producción visual avanzada"><span><b>🎬</b><strong>Producción visual</strong><small>Imágenes o vídeo especial</small></span></label>
-        </div>
-        <aside class="estimate-result">
-          <p>Estimación inicial</p>
-          <strong id="estimate-price">450 €</strong>
-          <span id="estimate-level">Paquete esencial</span>
-          <ul id="estimate-list"><li>Diseño, QR, publicación y soporte básico</li></ul>
-          <a href="#contacto" class="button button-primary" id="estimate-cta">Solicitar propuesta <span>→</span></a>
+      <div class="demo-console reveal" id="demo-console">
+        <aside class="demo-sidebar">
+          <div class="demo-logo"><span>DV</span><strong>DEMOVERSE</strong></div>
+          <div class="demo-stat"><small>TOKENS</small><strong id="demo-tokens">5</strong></div>
+          <div class="demo-stat"><small>SECRETOS</small><strong><span id="demo-found">0</span>/3</strong></div>
+          <button class="demo-reset" id="demo-reset" type="button">↻ Reiniciar demo</button>
         </aside>
-      </div>
-    </section>
 
-    <section class="process" id="proceso">
-      <div class="section-shell">
-        <div class="section-heading reveal">
-          <p class="eyebrow"><span></span> De la primera broma al QR</p>
-          <h2>Un proceso sencillo para vosotros.<br><em>Todo el trabajo serio ocurre detrás.</em></h2>
+        <div class="demo-main">
+          <div class="demo-tabs" role="tablist" aria-label="Funciones de la demo">
+            <button class="active" type="button" role="tab" aria-selected="true" data-demo-tab="roulette">Ruleta</button>
+            <button type="button" role="tab" aria-selected="false" data-demo-tab="shop">Tienda</button>
+            <button type="button" role="tab" aria-selected="false" data-demo-tab="names">Nombres</button>
+            <button type="button" role="tab" aria-selected="false" data-demo-tab="final">Final</button>
+          </div>
+
+          <section class="demo-panel active" data-demo-panel="roulette">
+            <div class="demo-panel-copy">
+              <p class="panel-kicker">MISIÓN ALEATORIA</p>
+              <h3>La ruleta decide quién pierde la dignidad</h3>
+              <p id="wheel-result">Pulsa para lanzar una prueba.</p>
+              <button class="button button-primary" id="spin-wheel" type="button">Girar ruleta</button>
+            </div>
+            <div class="wheel-wrap"><div class="wheel-pointer"></div><div class="demo-wheel" id="demo-wheel"><span>RETOS</span></div></div>
+          </section>
+
+          <section class="demo-panel" data-demo-panel="shop">
+            <div class="demo-panel-copy">
+              <p class="panel-kicker">TIENDA DE PUTADAS</p>
+              <h3>Gasta tokens en retos preparados para el protagonista</h3>
+              <p id="shop-status">Tienes 5 tokens disponibles.</p>
+            </div>
+            <div class="demo-shop">
+              <article><span>🎤</span><div><small>2 TOKENS</small><strong>Cantar el himno del grupo</strong></div><button type="button" data-buy-cost="2">Comprar</button></article>
+              <article><span>🕺</span><div><small>3 TOKENS</small><strong>Recrear un trend de TikTok</strong></div><button type="button" data-buy-cost="3">Comprar</button></article>
+              <article><span>📸</span><div><small>4 TOKENS</small><strong>Foto con un desconocido</strong></div><button type="button" data-buy-cost="4">Comprar</button></article>
+            </div>
+          </section>
+
+          <section class="demo-panel" data-demo-panel="names">
+            <div class="demo-panel-copy">
+              <p class="panel-kicker">NOMBRES EN CLAVE</p>
+              <h3>Las bromas internas se convierten en llaves</h3>
+              <p>Prueba con <b>peseta</b>, <b>parlita</b> o <b>consigliere</b>.</p>
+              <form class="secret-form" id="secret-form">
+                <label class="sr-only" for="secret-input">Nombre secreto</label>
+                <input id="secret-input" autocomplete="off" placeholder="Escribe un nombre en clave">
+                <button type="submit">Comprobar</button>
+              </form>
+              <p class="secret-feedback" id="secret-feedback" aria-live="polite"></p>
+            </div>
+            <div class="secret-list" id="secret-list">
+              <span>???</span><span>???</span><span>???</span>
+            </div>
+          </section>
+
+          <section class="demo-panel demo-final-panel" data-demo-panel="final">
+            <div class="demo-panel-copy">
+              <p class="panel-kicker">DESENLACE</p>
+              <h3>La prueba final aparece cuando se cumple la misión</h3>
+              <p id="final-progress">Completa dos acciones de la demo para desbloquearla.</p>
+              <button class="button button-primary" id="open-final" type="button" disabled>Desbloquear final</button>
+            </div>
+            <div class="final-lock" id="final-lock"><span>🔒</span><strong>PUTADA FINAL</strong><small>BLOQUEADA</small></div>
+          </section>
         </div>
-        <ol class="process-list">
-          <li class="reveal"><span>01</span><div><h3>Nos contáis la historia</h3><p>Fecha, protagonista, bromas internas, participantes, fotos, canciones y el nivel de barbaridad permitido.</p></div></li>
-          <li class="reveal"><span>02</span><div><h3>Definimos la experiencia</h3><p>Os proponemos estructura, funciones, estética, calendario y un presupuesto cerrado.</p></div></li>
-          <li class="reveal"><span>03</span><div><h3>Diseñamos y construimos</h3><p>Preparamos la web, optimizamos móvil y os enviamos una versión privada para revisar.</p></div></li>
-          <li class="reveal"><span>04</span><div><h3>Publicamos y acompañamos</h3><p>Entregamos enlace y QR, corregimos incidencias y damos soporte hasta el día acordado.</p></div></li>
-        </ol>
       </div>
+      <p class="demo-note reveal"><b>Esto es solo una muestra.</b> Cada despedida recibe sus propios nombres, mecánicas, diseño, precios, canciones y desenlace.</p>
     </section>
 
-    <section class="faq section-shell" id="faq">
+    <section class="features shell" id="incluye">
       <div class="section-heading reveal">
-        <p class="eyebrow"><span></span> Preguntas habituales</p>
-        <h2>Antes de montar el lío</h2>
+        <p class="eyebrow"><span></span> Un sistema completo, no una landing</p>
+        <h2>Todo lo que puede convertir el fin de semana en una historia</h2>
       </div>
-      <div class="faq-list">
-        <details class="reveal"><summary>¿Cuánto tiempo hace falta?</summary><p>Lo recomendable son dos o tres semanas. Los proyectos sencillos pueden salir antes; las experiencias complejas necesitan más margen para contenido, revisiones y pruebas.</p></details>
-        <details class="reveal"><summary>¿Funciona en cualquier móvil?</summary><p>La web se diseña con prioridad móvil y se comprueba en diferentes tamaños de pantalla. Solo necesita navegador y conexión a internet.</p></details>
-        <details class="reveal"><summary>¿Tenemos que preparar todo el contenido?</summary><p>Necesitaremos fotos, nombres, bromas y canciones del grupo. También podemos ayudar a ordenar las ideas, redactar textos y producir recursos visuales adicionales.</p></details>
-        <details class="reveal"><summary>¿Se puede cerrar después de la despedida?</summary><p>Sí. Puede mostrar una pantalla de cierre en una fecha programada o despublicarse por completo cuando termine el evento.</p></details>
-        <details class="reveal"><summary>¿El QR cambia cuando se actualiza la web?</summary><p>No, siempre que mantengamos la misma dirección. Podemos seguir mejorando el contenido sin volver a imprimir el QR.</p></details>
-        <details class="reveal"><summary>¿Cómo se paga?</summary><p>Habitualmente se reserva el proyecto con el 50 % y se abona el resto antes de la publicación definitiva.</p></details>
+      <div class="feature-grid">
+        <article class="feature-card feature-large reveal">
+          <span class="feature-number">01</span><div class="feature-icon">🎯</div>
+          <p class="feature-kicker">GAMIFICACIÓN</p><h3>Retos, tokens y tienda</h3>
+          <p>Diseñamos una economía interna: el grupo gana, pierde y gasta monedas en pruebas, castigos o privilegios.</p>
+          <ul><li>Retos por niveles</li><li>Precios personalizados</li><li>Historial de compras</li><li>Reglas del comité</li></ul>
+          <div class="mini-economy"><div><small>Saldo</small><strong>15</strong></div><div class="mini-progress"><i></i></div><span>FINAL BOSS · 15 TOKENS</span></div>
+        </article>
+        <article class="feature-card reveal"><span class="feature-number">02</span><div class="feature-icon">🔐</div><p class="feature-kicker">SECRETOS</p><h3>Nombres en clave</h3><p>Motes, frases y recuerdos que el grupo debe descubrir para abrir contenido o activar el final.</p><div class="chip-cloud"><span>Peseta</span><span>Il consigliere</span><span>???</span></div></article>
+        <article class="feature-card reveal"><span class="feature-number">03</span><div class="feature-icon">🎡</div><p class="feature-kicker">AZAR</p><h3>Ruletas y decisiones</h3><p>Pruebas, participantes, premios, castigos o equipos elegidos en directo sin discusiones.</p></article>
+        <article class="feature-card reveal"><span class="feature-number">04</span><div class="feature-icon">📸</div><p class="feature-kicker">RECUERDOS</p><h3>Galería y revelaciones</h3><p>Fotos ocultas, memes, vídeos y contenido que aparece cuando vosotros decidáis.</p><div class="photo-pair"><img loading="lazy" src="assets/gallery-pechotes.webp" alt="Ejemplo de imagen personalizada"><img loading="lazy" src="assets/gallery-parlita.webp" alt="Ejemplo de imagen personalizada"></div></article>
+        <article class="feature-card reveal"><span class="feature-number">05</span><div class="feature-icon">🎵</div><p class="feature-kicker">BANDA SONORA</p><h3>Radio, himnos y vídeos</h3><p>Canciones del grupo, versiones, audios, TikTok y clips reproducibles desde la propia experiencia.</p></article>
+        <article class="feature-card reveal"><span class="feature-number">06</span><div class="feature-icon">💥</div><p class="feature-kicker">DESENLACE</p><h3>Sorpresa final</h3><p>Una revelación animada y preparada a medida: tatuaje, actividad, vídeo, mensaje o cualquier locura viable.</p><button class="text-button" type="button" data-open-final-preview>Ver ejemplo <span>↗</span></button></article>
+        <article class="feature-card reveal"><span class="feature-number">07</span><div class="feature-icon">🎮</div><p class="feature-kicker">EXTENSIONES</p><h3>Juegos e integraciones</h3><p>Minijuegos propios, cartas, TikTok, mapas, formularios o enlaces externos integrados con coherencia.</p></article>
+        <article class="feature-card reveal"><span class="feature-number">08</span><div class="feature-icon">📺</div><p class="feature-kicker">PAQUETE LIVE</p><h3>Panel compartido</h3><p>Para proyectos avanzados: clasificación, equipos, pruebas con fotos, panel del comité y estado sincronizado.</p><small class="feature-disclaimer">Requiere backend y se presupuesta según alcance.</small></article>
       </div>
     </section>
 
-    <section class="contact" id="contacto">
-      <div class="section-shell contact-wrap">
-        <div class="contact-copy reveal">
-          <p class="eyebrow"><span></span> Empecemos por la idea</p>
-          <h2>Contadme cómo es vuestro grupo.<br><em>Yo convierto el caos en una web.</em></h2>
-          <p>No hace falta tenerlo todo decidido. Con la fecha, el número de personas y una explicación rápida ya podemos plantear la experiencia.</p>
-          <div class="contact-direct">
-            <small>Contacto directo</small>
-            <a href="mailto:eduardo.efernandez.rodriguez@gmail.com">eduardo.efernandez.rodriguez@gmail.com</a>
-            <button type="button" id="copy-email">Copiar correo</button>
+    <section class="styles-section" id="estilos">
+      <div class="shell styles-wrap">
+        <div class="styles-copy reveal">
+          <p class="eyebrow"><span></span> No todas las despedidas se parecen</p>
+          <h2>Elegimos un universo visual que encaje con vuestro grupo</h2>
+          <p>Antonverse es una estética. Vuestra experiencia puede ser elegante, deportiva, mafiosa, festivalera o completamente nueva.</p>
+          <div class="style-picker" role="list" aria-label="Estilos visuales">
+            <button class="active" type="button" data-style="canalla" role="listitem"><i></i><span><b>Canalla</b><small>Neón, humor y caos</small></span></button>
+            <button type="button" data-style="elegante" role="listitem"><i></i><span><b>Elegante</b><small>Negro, crema y dorado</small></span></button>
+            <button type="button" data-style="videojuego" role="listitem"><i></i><span><b>Videojuego</b><small>Niveles y logros</small></span></button>
+            <button type="button" data-style="mafia" role="listitem"><i></i><span><b>Mafia</b><small>Expedientes y misiones</small></span></button>
+            <button type="button" data-style="reality" role="listitem"><i></i><span><b>Reality</b><small>Votos y confesionario</small></span></button>
+            <button type="button" data-style="festival" role="listitem"><i></i><span><b>Festival</b><small>Cartel y escenarios</small></span></button>
           </div>
         </div>
-
-        <form class="contact-form reveal" id="contact-form">
-          <div class="form-grid">
-            <label><span>Nombre *</span><input type="text" name="name" required autocomplete="name" placeholder="Tu nombre"></label>
-            <label><span>Correo *</span><input type="email" name="email" required autocomplete="email" placeholder="tu@email.com"></label>
-            <label><span>Fecha aproximada</span><input type="date" name="date"></label>
-            <label><span>Número de personas</span><input type="number" name="people" min="2" max="100" placeholder="12"></label>
-            <label class="full"><span>Tipo de proyecto</span><select name="package" id="package-select"><option value="Aún no lo sé">Aún no lo sé</option><option value="Esencial">Esencial · desde 450 €</option><option value="Experiencia">Experiencia · desde 850 €</option><option value="A medida">A medida · desde 1.300 €</option></select></label>
-            <label class="full"><span>¿Qué tenéis en mente? *</span><textarea name="message" required rows="5" placeholder="Cuéntame quién es el protagonista, qué bromas tenéis y qué os gustaría que pasara en la web..."></textarea></label>
+        <div class="style-preview theme-canalla reveal" id="style-preview">
+          <div class="style-browser"><div><i></i><i></i><i></i><span id="style-url">despedidaverse.com/vuestro-grupo</span></div>
+            <section>
+              <p id="style-kicker">EVENTO ACTIVO · NIVEL 01</p>
+              <h3 id="style-title">LA ÚLTIMA NOCHE DE LIBERTAD</h3>
+              <p id="style-copy">Completa las misiones, reúne tokens y desbloquea el desenlace.</p>
+              <div class="style-widget"><span>PROGRESO</span><strong>08 / 12</strong><i><b></b></i></div>
+              <button type="button">ENTRAR EN LA MISIÓN</button>
+            </section>
           </div>
-          <label class="consent"><input type="checkbox" required><span>Confirmo que quiero enviar esta información por correo para recibir una propuesta.</span></label>
-          <button class="button button-primary submit-button" type="submit">Preparar solicitud <span>→</span></button>
-          <p class="form-note">La web no almacena estos datos: al enviar se abrirá tu aplicación de correo con el mensaje preparado.</p>
+          <span class="style-label" id="style-label">ESTILO CANALLA</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-study shell" id="caso">
+      <div class="case-heading reveal">
+        <p class="eyebrow"><span></span> Caso real · proyecto piloto</p>
+        <h2>Antonverse: una despedida convertida en plataforma</h2>
+        <p>No es un concepto inventado para vender. La primera experiencia nació para una despedida real y fue creciendo con el grupo hasta convertirse en el producto que ofrecemos.</p>
+      </div>
+      <div class="case-grid">
+        <div class="case-media reveal">
+          <button class="case-main-shot" type="button" data-lightbox="assets/antonverse-dashboard.webp"><img loading="lazy" src="assets/antonverse-dashboard.webp" alt="Panel de Antonverse"></button>
+          <div class="case-small-shots"><button type="button" data-lightbox="assets/antonverse-tute.webp"><img loading="lazy" src="assets/antonverse-tute.webp" alt="Integración Tute IA"></button><button type="button" data-lightbox="assets/antonverse-tiktok.webp"><img loading="lazy" src="assets/antonverse-tiktok.webp" alt="Integración TikTok"></button></div>
+          <button class="video-button" type="button" data-open-video><span>▶</span><div><small>VER VÍDEO</small><strong>Así se presenta el servicio</strong></div></button>
+        </div>
+        <div class="case-detail reveal">
+          <div class="case-metrics"><article><strong>60+</strong><span>nombres secretos</span></article><article><strong>25+</strong><span>pistas musicales</span></article><article><strong>8</strong><span>módulos jugables</span></article><article><strong>1 QR</strong><span>para toda la experiencia</span></article></div>
+          <h3>Qué se construyó</h3>
+          <ul class="case-list"><li>Identidad visual y narrativa propia</li><li>Tienda de retos con tokens y niveles</li><li>Nombres en clave con desbloqueo final</li><li>Ruleta, galería, radio, TikTok y Tute IA</li><li>Cuenta atrás, apertura y cierre programados</li><li>Optimización específica para móvil</li></ul>
+          <div class="honest-proof"><span>✓</span><p><strong>Prueba social honesta.</strong> Es un proyecto propio y probado; no publicamos testimonios inventados ni cifras falsas.</p></div>
+          <a class="button button-primary" href="https://elptowalter.github.io/antonverse/" target="_blank" rel="noopener">Abrir Antonverse <span>↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="why-us shell">
+      <div class="section-heading reveal">
+        <p class="eyebrow"><span></span> Qué nos hace competitivos</p>
+        <h2>El valor no está en tener una web. Está en que solo pueda pertenecer a vosotros.</h2>
+      </div>
+      <div class="why-grid">
+        <article class="reveal"><span>01</span><h3>Personalización real</h3><p>No cambiamos un nombre y dos colores. La historia, el humor, los textos y las mecánicas salen del grupo.</p></article>
+        <article class="reveal"><span>02</span><h3>Móvil primero</h3><p>Botones grandes, carga optimizada y pruebas en diferentes anchos. La experiencia ocurre desde el teléfono.</p></article>
+        <article class="reveal"><span>03</span><h3>Dirección creativa</h3><p>La IA acelera recursos, pero el concepto, la selección y la coherencia visual tienen revisión humana.</p></article>
+        <article class="reveal"><span>04</span><h3>Entrega acompañada</h3><p>Versión privada, revisiones acordadas, QR, publicación y soporte hasta el evento según el paquete.</p></article>
+      </div>
+    </section>
+
+    <section class="pricing shell" id="precios">
+      <div class="section-heading reveal">
+        <p class="eyebrow"><span></span> Paquetes transparentes</p>
+        <h2>Desde una presentación potente hasta una experiencia sincronizada</h2>
+        <p>Los precios son orientativos. El presupuesto final depende del contenido, plazo, funciones y número de revisiones.</p>
+      </div>
+      <div class="pricing-grid">
+        <article class="price-card reveal">
+          <p class="price-label">ESENCIAL</p><h3>La presentación</h3><p class="price"><small>desde</small><strong>450 €</strong></p>
+          <p>Para centralizar el plan, presentar el universo y sorprender desde el primer escaneo.</p>
+          <ul><li>Diseño adaptado al grupo</li><li>Cuenta atrás y programa</li><li>Galería y enlaces</li><li>QR y publicación</li><li>1 ronda de cambios</li></ul>
+          <a class="button button-secondary package-button" href="#contacto" data-package="Esencial">Consultar Esencial</a>
+        </article>
+        <article class="price-card featured-price reveal">
+          <span class="popular">RECOMENDADO</span><p class="price-label">UNIVERSO</p><h3>La experiencia completa</h3><p class="price"><small>desde</small><strong>850 €</strong></p>
+          <p>La versión tipo Antonverse: jugable, personalizada y pensada para acompañar todo el evento.</p>
+          <ul><li>Todo lo incluido en Esencial</li><li>Tokens, tienda y retos</li><li>Nombres secretos y ruleta</li><li>Música, vídeo y galería</li><li>Sorpresa final animada</li><li>2 rondas de cambios</li></ul>
+          <a class="button button-primary package-button" href="#contacto" data-package="Universo">Quiero un Universo</a>
+        </article>
+        <article class="price-card reveal">
+          <p class="price-label">LIVE</p><h3>Evento sincronizado</h3><p class="price"><small>desde</small><strong>1.300 €</strong></p>
+          <p>Para clasificaciones, equipos, pruebas subidas por invitados y control del comité en directo.</p>
+          <ul><li>Backend y estado compartido</li><li>Panel privado del comité</li><li>Clasificación y equipos</li><li>Pruebas con foto o vídeo</li><li>Feed y modo pantalla</li><li>Soporte reforzado</li></ul>
+          <a class="button button-secondary package-button" href="#contacto" data-package="Live">Estudiar proyecto Live</a>
+        </article>
+      </div>
+
+      <div class="comparison reveal">
+        <div class="comparison-head"><h3>Comparador rápido</h3><button type="button" id="toggle-comparison">Ver tabla completa</button></div>
+        <div class="comparison-scroll">
+          <table>
+            <thead><tr><th>Función</th><th>Esencial</th><th>Universo</th><th>Live</th></tr></thead>
+            <tbody>
+              <tr><td>Diseño personalizado</td><td>✓</td><td>✓</td><td>✓</td></tr>
+              <tr><td>QR, cuenta atrás y galería</td><td>✓</td><td>✓</td><td>✓</td></tr>
+              <tr><td>Tokens, retos y ruleta</td><td>—</td><td>✓</td><td>✓</td></tr>
+              <tr><td>Nombres y sorpresa final</td><td>—</td><td>✓</td><td>✓</td></tr>
+              <tr class="comparison-extra"><td>Estado compartido</td><td>—</td><td>Opcional</td><td>✓</td></tr>
+              <tr class="comparison-extra"><td>Panel del comité</td><td>—</td><td>—</td><td>✓</td></tr>
+              <tr class="comparison-extra"><td>Fotos y vídeos enviados</td><td>—</td><td>Opcional</td><td>✓</td></tr>
+              <tr class="comparison-extra"><td>Soporte durante evento</td><td>—</td><td>Opcional</td><td>✓</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="calculator-section" id="calculadora">
+      <div class="shell calculator-wrap">
+        <div class="calculator-copy reveal">
+          <p class="eyebrow"><span></span> Estimación en menos de un minuto</p>
+          <h2>Configura vuestra idea</h2>
+          <p>Selecciona un punto de partida y las funciones principales. Obtendrás un rango realista para iniciar la conversación.</p>
+          <ul><li>Estimación no contractual</li><li>IVA y dominio no incluidos</li><li>Se confirma tras revisar el material</li></ul>
+        </div>
+        <div class="calculator reveal" id="calculator">
+          <div class="calc-row calc-packages">
+            <label>Paquete base</label>
+            <div class="segmented" id="base-package">
+              <button class="active" type="button" data-base="450" data-level="Esencial">Esencial</button>
+              <button type="button" data-base="850" data-level="Universo">Universo</button>
+              <button type="button" data-base="1300" data-level="Live">Live</button>
+            </div>
+          </div>
+          <div class="calc-grid">
+            <label><span>Participantes</span><select id="calc-people"><option value="0">Hasta 15</option><option value="60">16–30</option><option value="140">31–60</option><option value="260">Más de 60</option></select></label>
+            <label><span>Plazo</span><select id="calc-urgency"><option value="0">3 semanas o más</option><option value="120">Entre 10 y 20 días</option><option value="280">Menos de 10 días</option></select></label>
+            <label><span>Dirección visual</span><select id="calc-style"><option value="0">Adaptación de estilo</option><option value="160">Concepto visual nuevo</option><option value="320">Dirección artística premium</option></select></label>
+            <label><span>Revisiones</span><select id="calc-revisions"><option value="0">Incluidas en paquete</option><option value="90">+1 ronda</option><option value="170">+2 rondas</option></select></label>
+          </div>
+          <fieldset class="calc-extras">
+            <legend>Extras</legend>
+            <label><input type="checkbox" value="100" data-extra="Vídeo promocional"><span>🎬 Vídeo promocional</span></label>
+            <label><input type="checkbox" value="120" data-extra="Pack visual con IA"><span>🖼️ Pack visual</span></label>
+            <label><input type="checkbox" value="160" data-extra="Canción personalizada"><span>🎵 Canción personalizada</span></label>
+            <label><input type="checkbox" value="240" data-extra="Minijuego nuevo"><span>🎮 Minijuego nuevo</span></label>
+            <label><input type="checkbox" value="180" data-extra="Álbum colaborativo"><span>📸 Álbum colaborativo</span></label>
+            <label><input type="checkbox" value="190" data-extra="Soporte durante evento"><span>🛟 Soporte en evento</span></label>
+          </fieldset>
+          <div class="calc-result">
+            <div><small>RANGO ORIENTATIVO</small><strong id="calc-range">450–550 €</strong><span id="calc-level">Paquete Esencial</span></div>
+            <button class="button button-primary" id="use-estimate" type="button">Usar esta estimación <span>↓</span></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="process shell" id="proceso">
+      <div class="section-heading reveal">
+        <p class="eyebrow"><span></span> Del primer audio al QR</p>
+        <h2>El cliente cuenta la historia. Nosotros organizamos el caos.</h2>
+      </div>
+      <ol class="process-list">
+        <li class="reveal"><span>01</span><div><h3>Brief de entrada</h3><p>Fecha, participantes, protagonista, bromas, límites, imágenes, canciones y objetivos.</p></div></li>
+        <li class="reveal"><span>02</span><div><h3>Propuesta cerrada</h3><p>Estructura, estética, calendario, funciones, revisiones y presupuesto antes de construir.</p></div></li>
+        <li class="reveal"><span>03</span><div><h3>Versión privada</h3><p>Se entrega una URL protegida para revisar contenidos y comprobar el móvil.</p></div></li>
+        <li class="reveal"><span>04</span><div><h3>Publicación y evento</h3><p>QR definitivo, copia de seguridad, apertura programada y soporte contratado.</p></div></li>
+        <li class="reveal"><span>05</span><div><h3>Cierre o recuerdo</h3><p>La web puede cerrarse, mantenerse privada o convertirse en álbum final del fin de semana.</p></div></li>
+      </ol>
+    </section>
+
+    <section class="faq shell" id="faq">
+      <div class="section-heading reveal"><p class="eyebrow"><span></span> Preguntas importantes</p><h2>Antes de firmar la condena</h2></div>
+      <div class="faq-grid">
+        <details class="reveal"><summary>¿Esto es una plantilla?</summary><p>Usamos una base técnica para trabajar con eficiencia, pero el diseño, contenido, bromas, reglas y estructura se adaptan al proyecto contratado.</p></details>
+        <details class="reveal"><summary>¿Necesitamos instalar una aplicación?</summary><p>No. Se accede desde un enlace o QR mediante el navegador del móvil.</p></details>
+        <details class="reveal"><summary>¿Cuánto material debemos entregar?</summary><p>Como mínimo: participantes, fecha, fotos, bromas internas y funciones deseadas. Cuanto mejor sea el material, más personal será el resultado.</p></details>
+        <details class="reveal"><summary>¿Funciona para despedidas de soltera o grupos mixtos?</summary><p>Sí. La marca y el producto no dependen de un género ni de un tipo único de humor.</p></details>
+        <details class="reveal"><summary>¿Puede funcionar para cumpleaños o viajes?</summary><p>Sí. La misma estructura puede adaptarse a cumpleaños, aniversarios, viajes de amigos, graduaciones y eventos privados.</p></details>
+        <details class="reveal"><summary>¿Qué ocurre con las fotos?</summary><p>El cliente debe tener autorización para utilizar el material que entrega. Podemos limitar el acceso, programar el cierre y acordar la eliminación posterior.</p></details>
+        <details class="reveal"><summary>¿Cómo se paga?</summary><p>La propuesta estándar es 50 % para reservar el proyecto y 50 % antes de la publicación definitiva.</p></details>
+        <details class="reveal"><summary>¿El QR cambia con las actualizaciones?</summary><p>No, siempre que se mantenga la misma dirección. Se puede mejorar la web sin volver a imprimirlo.</p></details>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contacto">
+      <div class="shell contact-wrap">
+        <div class="contact-copy reveal">
+          <p class="eyebrow"><span></span> Empecemos por la historia</p>
+          <h2>Cuéntanos quién es el protagonista y hasta dónde podemos llegar</h2>
+          <p>No necesitas un documento perfecto. Con una fecha, el tamaño del grupo y una idea general podemos preparar el siguiente paso.</p>
+          <div class="contact-points"><span><b>1</b> Respuesta para confirmar viabilidad</span><span><b>2</b> Alcance y presupuesto por escrito</span><span><b>3</b> Reserva con el 50 %</span></div>
+          <div class="direct-contact"><small>CORREO PROVISIONAL</small><a id="contact-email-link" href="mailto:eduardo.efernandez.rodriguez@gmail.com">eduardo.efernandez.rodriguez@gmail.com</a><button id="copy-email" type="button">Copiar correo</button></div>
+        </div>
+
+        <form class="lead-form reveal" id="lead-form">
+          <div class="form-head"><span>PASO ÚNICO</span><strong>Solicitud de propuesta</strong></div>
+          <div class="form-grid">
+            <label><span>Nombre *</span><input required name="name" autocomplete="name" placeholder="Tu nombre"></label>
+            <label><span>Correo *</span><input required type="email" name="email" autocomplete="email" placeholder="tu@email.com"></label>
+            <label><span>Teléfono</span><input name="phone" autocomplete="tel" placeholder="+34..."></label>
+            <label><span>Fecha aproximada</span><input type="date" name="date"></label>
+            <label><span>Tipo de evento</span><select name="event"><option>Despedida de soltero</option><option>Despedida de soltera</option><option>Despedida mixta</option><option>Cumpleaños</option><option>Viaje de amigos</option><option>Otro evento privado</option></select></label>
+            <label><span>Participantes</span><input name="people" type="number" min="2" max="300" placeholder="12"></label>
+            <label><span>Paquete</span><select name="package" id="lead-package"><option>Aún no lo sé</option><option>Esencial</option><option>Universo</option><option>Live</option></select></label>
+            <label><span>Presupuesto aproximado</span><select name="budget"><option>Prefiero recibir orientación</option><option>450–700 €</option><option>700–1.000 €</option><option>1.000–1.500 €</option><option>Más de 1.500 €</option></select></label>
+            <label class="full"><span>Idea, protagonista y límites del humor *</span><textarea required name="message" rows="6" placeholder="Quién es, qué bromas tiene el grupo, qué funciones os gustan y qué cosas no queréis incluir..."></textarea></label>
+          </div>
+          <label class="consent"><input type="checkbox" required><span>Acepto que esta información se utilice únicamente para responder a la solicitud. La web no almacena el formulario: prepara un correo en tu dispositivo.</span></label>
+          <input type="hidden" name="estimate" id="lead-estimate">
+          <button class="button button-primary form-submit" type="submit">Preparar solicitud por correo <span>→</span></button>
+          <div class="form-tools"><button type="button" id="copy-request">Copiar resumen</button><span id="form-status" aria-live="polite"></span></div>
         </form>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="shell reveal">
+        <p>NO HAGÁIS OTRA DESPEDIDA MÁS</p>
+        <h2>Cread un universo que solo entienda vuestro grupo.</h2>
+        <a class="button button-light" href="#contacto">Pedir propuesta <span>→</span></a>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="footer-main">
-      <a class="brand" href="#top"><span class="brand-mark">DV</span><span class="brand-copy"><strong>DespedidaVerse</strong><small>STUDIO</small></span></a>
-      <p>Experiencias web personalizadas para despedidas que merecen algo más que un grupo de WhatsApp.</p>
-      <div class="footer-links"><a href="#servicios">Servicios</a><a href="#precios">Precios</a><a href="#contacto">Contacto</a><a href="privacidad.html">Privacidad</a></div>
+    <div class="shell footer-grid">
+      <div><img src="assets/logo.svg" alt="DespedidaVerse Studio" width="280" height="82"><p>Experiencias web personalizadas para despedidas, cumpleaños y eventos privados.</p></div>
+      <div><strong>Explorar</strong><a href="#demo">Demo</a><a href="#incluye">Funciones</a><a href="#precios">Precios</a><a href="#contacto">Contacto</a></div>
+      <div><strong>Información</strong><a href="privacidad.html">Privacidad</a><a href="condiciones.html">Condiciones</a><button type="button" id="install-app" hidden>Instalar web</button></div>
+      <div><strong>Contacto</strong><a href="mailto:eduardo.efernandez.rodriguez@gmail.com">Correo</a><span>España · Servicio online</span></div>
     </div>
-    <div class="footer-bottom"><span>© <span id="year"></span> DespedidaVerse Studio</span><span>Diseñado y desarrollado por Eduardo Fernández</span></div>
+    <div class="shell footer-bottom"><span>© <span id="year"></span> DespedidaVerse Studio</span><span>Diseño y desarrollo: Eduardo Fernández</span></div>
   </footer>
+
+  <a class="floating-contact" href="#contacto" aria-label="Pedir presupuesto"><span>✦</span><strong>Pedir presupuesto</strong></a>
 
   <dialog class="media-modal" id="video-modal">
     <button class="modal-close" type="button" aria-label="Cerrar">×</button>
-    <video controls playsinline preload="metadata" poster="assets/social-preview.jpg"><source src="assets/antonverse-teaser.mp4" type="video/mp4"></video>
+    <video controls playsinline preload="metadata" poster="assets/social-preview.jpg"><source src="assets/studio-teaser.mp4" type="video/mp4"></video>
   </dialog>
 
-  <dialog class="lightbox" id="lightbox">
+  <dialog class="media-modal final-preview-modal" id="final-modal">
     <button class="modal-close" type="button" aria-label="Cerrar">×</button>
-    <img src="" alt="Vista ampliada del proyecto">
+    <div class="final-reveal-card"><p>PUTADA FINAL DESBLOQUEADA</p><img src="assets/putada-final-tatuaje.webp" alt="Ejemplo de prueba final: hacerse un tatuaje"><h3>HACERSE UN TATUAJE</h3><span>Ejemplo de referencia de Antonverse</span></div>
   </dialog>
 
+  <dialog class="lightbox" id="lightbox"><button class="modal-close" type="button" aria-label="Cerrar">×</button><img src="" alt="Vista ampliada"></dialog>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <noscript><div class="noscript">La web puede consultarse sin JavaScript, pero la demo y la calculadora necesitan tenerlo activado.</div></noscript>
 </body>
 </html>

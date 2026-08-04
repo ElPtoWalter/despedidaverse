@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 150" role="img" aria-labelledby="t d">
+<title id="t">DespedidaVerse Studio</title><desc id="d">Logotipo de DespedidaVerse Studio</desc>
+<defs>
+  <linearGradient id="g" x1="0" x2="1"><stop stop-color="#ff5ac8"/><stop offset=".52" stop-color="#a67cff"/><stop offset="1" stop-color="#5ee7ff"/></linearGradient>
+  <filter id="s"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect x="5" y="15" width="118" height="118" rx="32" fill="#10091f" stroke="url(#g)" stroke-width="5"/>
+<path d="M31 96 52 51l22 45 22-45 18 45" fill="none" stroke="url(#g)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" filter="url(#s)"/>
+<circle cx="52" cy="51" r="6" fill="#ffe36e"/><circle cx="74" cy="96" r="6" fill="#fff"/><circle cx="96" cy="51" r="6" fill="#5ee7ff"/>
+<text x="145" y="79" font-family="Arial Black,Arial,sans-serif" font-size="55" fill="#fff" letter-spacing="-2">DESPEDIDA</text>
+<text x="145" y="127" font-family="Arial Black,Arial,sans-serif" font-size="55" fill="url(#g)" letter-spacing="-2">VERSE</text>
+<text x="438" y="126" font-family="Arial,sans-serif" font-size="18" fill="#ffe36e" letter-spacing="5">STUDIO</text>
+</svg>

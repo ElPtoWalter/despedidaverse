@@ -1,37 +1,44 @@
-# DespedidaVerse Studio · v1
+# DespedidaVerse Studio v2 Pro
 
-Web comercial estática para ofrecer webs personalizadas para despedidas.
+Web comercial estática y profesional para ofrecer experiencias digitales personalizadas para despedidas.
 
-## Qué incluye
+## Incluye
+- portada comercial y propuesta de valor;
+- demo interactiva con ruleta, tienda, tokens, nombres y final;
+- 8 bloques de producto;
+- selector de seis estilos visuales;
+- caso de estudio real de Antonverse;
+- vídeo comercial integrado;
+- tres paquetes y tabla comparativa;
+- calculadora orientativa;
+- proceso, FAQ y formulario;
+- privacidad, condiciones y funcionamiento sin cookies publicitarias;
+- PWA instalable y caché básica;
+- SEO social, JSON-LD, robots y sitemap;
+- optimización responsive.
 
-- Diseño profesional responsive y prioritario para móvil.
-- Presentación de servicios y caso real Antonverse.
-- Galería ampliable y teaser en vídeo.
-- Tres paquetes de precios.
-- Configurador de presupuesto orientativo.
-- Formulario que prepara un correo sin almacenar datos.
-- Preguntas frecuentes, privacidad básica y SEO social.
-- Sin backend, analítica ni cookies no esenciales.
+## Contacto
+El correo actual es provisional:
+`eduardo.efernandez.rodriguez@gmail.com`
 
-## Publicación en GitHub Pages
+Cuando exista el correo comercial, hay que sustituirlo en:
+- `index.html`
+- `script.js`
+- `privacidad.html`
+- `condiciones.html`
 
-1. Crea un repositorio nuevo.
-2. Sube **todo el contenido de esta carpeta**, manteniendo la carpeta `assets`.
-3. En `Settings > Pages`, selecciona la rama principal y la carpeta raíz.
-4. Espera a que GitHub publique la URL.
+## WhatsApp
+No se ha publicado un número personal. Cuando exista un número comercial se puede sustituir el botón flotante de presupuesto por un enlace de WhatsApp.
 
-## Antes de publicar como negocio
+## Publicación recomendada
+Crear un repositorio llamado:
+`despedidaverse-studio`
 
-- Confirmar el nombre comercial `DespedidaVerse Studio` o sustituirlo.
-- Añadir teléfono o WhatsApp cuando exista un número comercial.
-- Completar los datos fiscales y el aviso legal correspondientes.
-- Revisar precios, condiciones de contratación e impuestos aplicables.
-- Sustituir el correo de contacto en `index.html`, `script.js` y `privacidad.html` si fuera necesario.
+Subir sueltos todos los archivos y la carpeta `assets`.  
+Con ese nombre funcionarán las URL ya incluidas en `canonical`, `robots.txt` y `sitemap.xml`.
 
-## Archivos principales
+Si se usa otro repositorio o dominio, sustituir:
+`https://elptowalter.github.io/despedidaverse-studio/`
 
-- `index.html`: contenido y estructura.
-- `styles.css`: diseño completo.
-- `script.js`: menú, animaciones, configurador, galería y formulario.
-- `privacidad.html`: política básica para esta versión.
-- `assets/`: imágenes, vídeo, favicon y vista previa social.
+## Límites honestos
+La demo comercial es local y no utiliza backend. Las funciones Live (estado compartido, panel del comité, subidas y clasificación) requieren desarrollo y configuración de base de datos por proyecto.
