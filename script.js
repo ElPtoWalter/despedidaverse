@@ -1,5 +1,6 @@
 (() => {
-  const CONTACT_EMAIL = 'fdez.edu00@gmail.com';
+  const CONFIG = window.DV_CONFIG || {};
+  const CONTACT_EMAIL = CONFIG.contactEmail || 'fdez.edu00@gmail.com';
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
   const toast = $('#toast');
@@ -296,16 +297,72 @@
     try { await navigator.clipboard.writeText(text); showToast('Resumen copiado'); }
     catch { showToast('No se pudo copiar automáticamente'); }
   });
-  $('#lead-form')?.addEventListener('submit', event => {
-    event.preventDefault();
-    if (!event.currentTarget.reportValidity()) return;
+  const leadForm = $('#lead-form');
+  const submitFrame = $('#dv-submit-frame');
+  let formSubmittedToBackend = false;
+
+  function configureExternalLinks() {
+    const emailLink = $('#contact-email-link');
+    if (emailLink) {
+      emailLink.href = `mailto:${CONTACT_EMAIL}`;
+      emailLink.textContent = CONTACT_EMAIL;
+    }
+    const tallyLink = $('#tally-contact-link');
+    if (tallyLink && CONFIG.tallyFormUrl) {
+      tallyLink.href = CONFIG.tallyFormUrl;
+      tallyLink.hidden = false;
+    }
+    $$('.payment-button[data-payment]').forEach(button => {
+      const url = CONFIG.paymentLinks?.[button.dataset.payment];
+      if (url) {
+        button.href = url;
+        button.target = '_blank';
+        button.rel = 'noopener';
+        button.hidden = false;
+      }
+    });
+  }
+
+  leadForm?.addEventListener('submit', event => {
+    if (!event.currentTarget.reportValidity()) {
+      event.preventDefault();
+      return;
+    }
     const data = new FormData(event.currentTarget);
+    const status = $('#form-status');
+    const label = $('.submit-label', event.currentTarget);
+
+    if (CONFIG.appsScriptUrl) {
+      event.currentTarget.action = CONFIG.appsScriptUrl;
+      formSubmittedToBackend = true;
+      event.currentTarget.classList.add('is-sending');
+      if (status) status.textContent = 'Registrando solicitud…';
+      if (label) label.textContent = 'Enviando…';
+      setTimeout(() => {
+        event.currentTarget.classList.remove('is-sending');
+        event.currentTarget.classList.add('is-success');
+        if (status) status.textContent = 'Solicitud enviada. Revisa tu correo.';
+        if (label) label.textContent = 'Solicitud enviada ✓';
+        showToast('Solicitud registrada');
+        setTimeout(() => { location.href = 'gracias.html'; }, 900);
+      }, 1600);
+      return;
+    }
+
+    event.preventDefault();
     const subject = `Solicitud DespedidaVerse — ${data.get('name')}`;
     const body = buildRequest();
     location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    $('#form-status').textContent = 'Correo preparado';
+    if (status) status.textContent = 'Correo preparado';
     showToast('Solicitud preparada en tu correo');
   });
+
+  submitFrame?.addEventListener('load', () => {
+    if (!formSubmittedToBackend) return;
+    formSubmittedToBackend = false;
+  });
+
+  configureExternalLinks();
 
   // PWA
   let installPrompt = null;

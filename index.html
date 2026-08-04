@@ -17,6 +17,7 @@
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="preload" href="assets/antonverse-dashboard.webp" as="image" type="image/webp">
   <link rel="stylesheet" href="styles.css">
+  <script defer src="config.js"></script>
   <script defer src="script.js"></script>
   <title>DespedidaVerse Studio · Experiencias web para despedidas</title>
   <script type="application/ld+json">
@@ -55,6 +56,7 @@
       <a href="#estilos">Estilos</a>
       <a href="#caso">Caso real</a>
       <a href="#precios">Precios</a>
+      <a href="cliente.html">Área cliente</a>
       <a href="#contacto" class="nav-cta">Pedir propuesta</a>
     </nav>
   </header>
@@ -275,18 +277,21 @@
           <p>Para centralizar el plan, presentar el universo y sorprender desde el primer escaneo.</p>
           <ul><li>Diseño adaptado al grupo</li><li>Cuenta atrás y programa</li><li>Galería y enlaces</li><li>QR y publicación</li><li>1 ronda de cambios</li></ul>
           <a class="button button-secondary package-button" href="#contacto" data-package="Esencial">Consultar Esencial</a>
+          <a class="button payment-button" data-payment="esencial" href="#" hidden>Reservar Esencial</a>
         </article>
         <article class="price-card featured-price reveal">
           <span class="popular">RECOMENDADO</span><p class="price-label">UNIVERSO</p><h3>La experiencia completa</h3><p class="price"><small>desde</small><strong>850 €</strong></p>
           <p>La versión tipo Antonverse: jugable, personalizada y pensada para acompañar todo el evento.</p>
           <ul><li>Todo lo incluido en Esencial</li><li>Tokens, tienda y retos</li><li>Nombres secretos y ruleta</li><li>Música, vídeo y galería</li><li>Sorpresa final animada</li><li>2 rondas de cambios</li></ul>
           <a class="button button-primary package-button" href="#contacto" data-package="Universo">Quiero un Universo</a>
+          <a class="button payment-button" data-payment="universo" href="#" hidden>Reservar Universo</a>
         </article>
         <article class="price-card reveal">
           <p class="price-label">LIVE</p><h3>Evento sincronizado</h3><p class="price"><small>desde</small><strong>1.300 €</strong></p>
           <p>Para clasificaciones, equipos, pruebas subidas por invitados y control del comité en directo.</p>
           <ul><li>Backend y estado compartido</li><li>Panel privado del comité</li><li>Clasificación y equipos</li><li>Pruebas con foto o vídeo</li><li>Feed y modo pantalla</li><li>Soporte reforzado</li></ul>
           <a class="button button-secondary package-button" href="#contacto" data-package="Live">Estudiar proyecto Live</a>
+          <a class="button payment-button" data-payment="live" href="#" hidden>Reservar Live</a>
         </article>
       </div>
 
@@ -350,6 +355,26 @@
       </div>
     </section>
 
+    <section class="automation-section shell" id="automatizacion">
+      <div class="section-heading reveal">
+        <p class="eyebrow"><span></span> Un proceso pensado para no perder nada</p>
+        <h2>Solicitud, presupuesto, materiales y seguimiento en un único flujo</h2>
+        <p>Cuando activemos la automatización, cada consulta recibirá un identificador, confirmación por correo, estado del proyecto y acceso privado para entregar el material.</p>
+      </div>
+      <div class="automation-grid">
+        <article class="reveal"><span>01</span><i>✉️</i><h3>Solicitud registrada</h3><p>La información entra en el CRM y el cliente recibe su código de seguimiento.</p></article>
+        <article class="reveal"><span>02</span><i>📄</i><h3>Presupuesto asistido</h3><p>Se genera un borrador PDF con el paquete, extras y condiciones para revisión.</p></article>
+        <article class="reveal"><span>03</span><i>🔐</i><h3>Área de cliente</h3><p>Consulta del estado, próximos pasos, pago y enlace de vista previa.</p></article>
+        <article class="reveal"><span>04</span><i>📦</i><h3>Brief ordenado</h3><p>Participantes, motes, retos y enlaces de archivos llegan estructurados.</p></article>
+        <article class="reveal"><span>05</span><i>⏰</i><h3>Recordatorios</h3><p>Avisos de material pendiente, revisiones y fechas críticas antes del evento.</p></article>
+        <article class="reveal"><span>06</span><i>🚀</i><h3>Publicación automática</h3><p>Las actualizaciones aprobadas se despliegan sin volver a montar la web a mano.</p></article>
+      </div>
+      <div class="automation-actions reveal">
+        <a class="button button-primary" href="cliente.html">Entrar al área de cliente <span>→</span></a>
+        <a class="button button-secondary" href="onboarding.html">Entregar material</a>
+      </div>
+    </section>
+
     <section class="process shell" id="proceso">
       <div class="section-heading reveal">
         <p class="eyebrow"><span></span> Del primer audio al QR</p>
@@ -386,9 +411,13 @@
           <p>No necesitas un documento perfecto. Con una fecha, el tamaño del grupo y una idea general podemos preparar el siguiente paso.</p>
           <div class="contact-points"><span><b>1</b> Respuesta para confirmar viabilidad</span><span><b>2</b> Alcance y presupuesto por escrito</span><span><b>3</b> Reserva con el 50 %</span></div>
           <div class="direct-contact"><small>CORREO DE CONTACTO</small><a id="contact-email-link" href="mailto:fdez.edu00@gmail.com">fdez.edu00@gmail.com</a><button id="copy-email" type="button">Copiar correo</button></div>
+          <div class="contact-shortcuts"><a href="cliente.html">Consultar un proyecto</a><a href="onboarding.html">Entregar materiales</a><a id="tally-contact-link" href="#" target="_blank" rel="noopener" hidden>Formulario ampliado</a></div>
         </div>
 
-        <form class="lead-form reveal" id="lead-form">
+        <form class="lead-form reveal" id="lead-form" method="post" target="dv-submit-frame">
+          <input type="hidden" name="action" value="lead">
+          <input type="hidden" name="source" value="web-comercial">
+          <input type="hidden" name="siteVersion" value="v4-automation">
           <div class="form-head"><span>PASO ÚNICO</span><strong>Solicitud de propuesta</strong></div>
           <div class="form-grid">
             <label><span>Nombre *</span><input required name="name" autocomplete="name" placeholder="Tu nombre"></label>
@@ -401,11 +430,12 @@
             <label><span>Presupuesto aproximado</span><select name="budget"><option>Prefiero recibir orientación</option><option>450–700 €</option><option>700–1.000 €</option><option>1.000–1.500 €</option><option>Más de 1.500 €</option></select></label>
             <label class="full"><span>Idea, protagonista y límites del humor *</span><textarea required name="message" rows="6" placeholder="Quién es, qué bromas tiene el grupo, qué funciones os gustan y qué cosas no queréis incluir..."></textarea></label>
           </div>
-          <label class="consent"><input type="checkbox" required><span>Acepto que esta información se utilice únicamente para responder a la solicitud. La web no almacena el formulario: prepara un correo en tu dispositivo.</span></label>
+          <label class="consent"><input type="checkbox" required><span>Acepto que esta información se utilice para responder, preparar una propuesta y gestionar el posible proyecto. Consulta la política de privacidad.</span></label>
           <input type="hidden" name="estimate" id="lead-estimate">
-          <button class="button button-primary form-submit" type="submit">Preparar solicitud por correo <span>→</span></button>
+          <button class="button button-primary form-submit" type="submit"><span class="submit-label">Enviar solicitud</span> <span>→</span></button>
           <div class="form-tools"><button type="button" id="copy-request">Copiar resumen</button><span id="form-status" aria-live="polite"></span></div>
         </form>
+        <iframe class="submit-frame" name="dv-submit-frame" id="dv-submit-frame" title="Envío de solicitud"></iframe>
       </div>
     </section>
 
@@ -422,7 +452,7 @@
     <div class="shell footer-grid">
       <div><img src="assets/logo.svg" alt="DespedidaVerse Studio" width="280" height="82"><p>Experiencias web personalizadas para despedidas, cumpleaños y eventos privados.</p></div>
       <div><strong>Explorar</strong><a href="#demo">Demo</a><a href="#incluye">Funciones</a><a href="#precios">Precios</a><a href="#contacto">Contacto</a></div>
-      <div><strong>Información</strong><a href="privacidad.html">Privacidad</a><a href="condiciones.html">Condiciones</a><button type="button" id="install-app" hidden>Instalar web</button></div>
+      <div><strong>Información</strong><a href="cliente.html">Área de cliente</a><a href="onboarding.html">Entrega de material</a><a href="privacidad.html">Privacidad</a><a href="condiciones.html">Condiciones</a><button type="button" id="install-app" hidden>Instalar web</button></div>
       <div><strong>Contacto</strong><a href="mailto:fdez.edu00@gmail.com">Correo</a><span>España · Servicio online</span></div>
     </div>
     <div class="shell footer-bottom"><span>© <span id="year"></span> DespedidaVerse Studio</span><span>Diseño y desarrollo: Eduardo Fernández</span></div>
