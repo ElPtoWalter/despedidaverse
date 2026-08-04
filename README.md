@@ -19,3 +19,11 @@ No publiques el ZIP privado de automatización, secretos de Stripe, IDs internos
 
 ## Modo de emergencia
 Si `appsScriptUrl` está vacío, los formularios preparan un correo a `fdez.edu00@gmail.com`.
+
+
+## Identidad visual v5
+- Nuevo logotipo profesional integrado en cabecera, pie y área privada.
+- Nuevo icono de navegador y PWA.
+- Vista previa social actualizada.
+- El archivo principal utilizado por la web es `assets/logo-final.webp`.
+- También se incluye `assets/logo-final.png` para otros usos.
