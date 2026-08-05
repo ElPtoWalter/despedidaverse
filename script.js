@@ -13,6 +13,51 @@
     showToast.timer = setTimeout(() => toast.classList.remove('show'), 2500);
   }
 
+
+  function enforceOfficialPortalLinks() {
+    const officialLinks = {
+      client: 'https://despedidaverse.com/cliente',
+      onboarding: 'https://despedidaverse.com/onboarding',
+      privacy: 'https://despedidaverse.com/privacidad',
+      terms: 'https://despedidaverse.com/condiciones'
+    };
+
+    document.querySelectorAll('a').forEach(link => {
+      const raw = link.getAttribute('href') || '';
+      const text = (link.textContent || '').toLowerCase();
+
+      if (
+        raw === '/cliente' ||
+        raw.endsWith('/cliente.html') ||
+        raw.includes('elptowalter.github.io/cliente') ||
+        text.includes('área de cliente') ||
+        text.includes('area de cliente') ||
+        text.includes('consultar un proyecto')
+      ) {
+        link.href = officialLinks.client;
+      }
+
+      if (
+        raw === '/onboarding' ||
+        raw.endsWith('/onboarding.html') ||
+        text.includes('entregar materiales') ||
+        text.includes('entrega de material')
+      ) {
+        link.href = officialLinks.onboarding;
+      }
+
+      if (raw === '/privacidad' || raw.endsWith('/privacidad.html')) {
+        link.href = officialLinks.privacy;
+      }
+
+      if (raw === '/condiciones' || raw.endsWith('/condiciones.html')) {
+        link.href = officialLinks.terms;
+      }
+    });
+  }
+
+  enforceOfficialPortalLinks();
+
   // Header and menu
   const header = $('.site-header');
   const nav = $('#main-nav');
@@ -355,7 +400,7 @@
     }
     params.set('action', 'lead');
     params.set('source', 'web-comercial');
-    params.set('siteVersion', 'v10-routes');
+    params.set('siteVersion', 'v11-domain-links');
     return params;
   }
 
@@ -374,7 +419,7 @@
     const payload = new FormData(form);
     payload.set('action', 'lead');
     payload.set('source', 'web-comercial');
-    payload.set('siteVersion', 'v10-routes');
+    payload.set('siteVersion', 'v11-domain-links');
     payload.set(
       'submissionNonce',
       `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`
@@ -432,7 +477,7 @@
       setTimeout(() => event.currentTarget.reset(), 150);
 
       setTimeout(() => {
-        location.href = '/gracias?enviada=1';
+        location.href = 'https://despedidaverse.com/gracias?enviada=1';
       }, 1100);
     } catch (error) {
       console.error('No se pudo lanzar el formulario:', error);

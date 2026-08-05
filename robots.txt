@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://elptowalter.github.io/despedidaverse-studio/sitemap.xml
+Sitemap: https://despedidaverse.com/sitemap.xml

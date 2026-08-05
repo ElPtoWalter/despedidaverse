@@ -3,6 +3,6 @@
   <url><loc>https://despedidaverse.com/</loc><priority>1.0</priority></url>
   <url><loc>https://despedidaverse.com/privacidad</loc><priority>0.3</priority></url>
   <url><loc>https://despedidaverse.com/condiciones</loc><priority>0.3</priority></url>
-  <url><loc>https://despedidaverse.com/cliente.html</loc><priority>0.4</priority></url>
-  <url><loc>https://despedidaverse.com/onboarding.html</loc><priority>0.2</priority></url>
+  <url><loc>https://despedidaverse.com/cliente</loc><priority>0.4</priority></url>
+  <url><loc>https://despedidaverse.com/onboarding</loc><priority>0.2</priority></url>
 </urlset>

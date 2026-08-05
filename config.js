@@ -17,5 +17,5 @@ window.DV_CONFIG = Object.freeze({
   clientAreaEnabled: true,
   onboardingEnabled: true,
   directSubmitEnabled: true,
-  siteVersion: 'v10-routes'
+  siteVersion: 'v11-domain-links'
 });

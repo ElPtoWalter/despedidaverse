@@ -1,15 +1,15 @@
-DESPEDIDAVERSE v10 · CORRECCIÓN ERR_TOO_MANY_REDIRECTS
+DESPEDIDAVERSE v11 · BOTÓN ÁREA DE CLIENTE
 
 Sube todos estos archivos a la raíz del repositorio y sustituye los anteriores.
 
-El archivo fundamental es `_redirects`, pero deben subirse todos para que
-la web utilice rutas limpias de forma consistente.
+Corrección principal:
+El botón y todos los enlaces del portal apuntan ahora directamente a:
+https://despedidaverse.com/cliente
 
 Después:
-1. espera a que Cloudflare termine el despliegue;
-2. abre una ventana de incógnito;
-3. entra directamente en:
-   https://despedidaverse.com/cliente
-4. no uses `/cliente.html`.
+1. espera al despliegue de Cloudflare;
+2. abre https://despedidaverse.com en incógnito;
+3. pulsa Área de cliente;
+4. debe abrir https://despedidaverse.com/cliente.
 
-No hay que modificar Cloudflare, DNS, Apps Script ni el CRM.
+No hay que tocar Cloudflare, DNS, Apps Script ni el CRM.
