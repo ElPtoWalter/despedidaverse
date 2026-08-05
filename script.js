@@ -225,7 +225,7 @@
   });
 
   // Calculator
-  const calcState = { base: 450, level: 'Esencial' };
+  const calcState = { base: 549, level: 'Esencial' };
   const calcRange = $('#calc-range');
   const calcLevel = $('#calc-level');
   function calculate() {

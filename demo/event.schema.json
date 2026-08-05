@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DespedidaVerse Clean Template v2",
+  "type": "object",
+  "required": [
+    "version",
+    "meta",
+    "brand",
+    "event",
+    "modules"
+  ],
+  "properties": {
+    "version": {
+      "const": 2
+    },
+    "meta": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 3
+        },
+        "language": {
+          "type": "string"
+        },
+        "template": {
+          "type": "string"
+        }
+      }
+    },
+    "brand": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tagline": {
+          "type": "string"
+        },
+        "intro": {
+          "type": "string"
+        },
+        "cover": {
+          "type": "string"
+        },
+        "accent": {
+          "type": "string"
+        },
+        "accent2": {
+          "type": "string"
+        }
+      }
+    },
+    "event": {
+      "type": "object",
+      "required": [
+        "openAt",
+        "closeAt",
+        "adminCode"
+      ],
+      "properties": {
+        "openAt": {
+          "type": "string"
+        },
+        "closeAt": {
+          "type": "string"
+        },
+        "adminCode": {
+          "type": "string",
+          "minLength": 4
+        },
+        "initialTokens": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "modules": {
+      "type": "object"
+    },
+    "links": {
+      "type": "array"
+    },
+    "challenges": {
+      "type": "array"
+    },
+    "secretNames": {
+      "type": "array"
+    },
+    "gallery": {
+      "type": "array"
+    },
+    "radio": {
+      "type": "array"
+    },
+    "final": {
+      "type": "object"
+    }
+  }
+}

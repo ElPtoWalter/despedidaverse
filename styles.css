@@ -109,3 +109,6 @@ dialog{max-width:min(900px,calc(100% - 24px));padding:0;border:1px solid rgba(25
     width: 280px;
   }
 }
+
+/* ===== v6 lanzamiento: precio final y demo limpia ===== */
+.price span{display:block;margin-left:auto;color:var(--green);font-size:.66rem;font-weight:900;letter-spacing:.04em;white-space:nowrap}.demo-full-cta{display:flex;align-items:center;justify-content:space-between;gap:22px;margin-top:24px;padding:22px;border:1px solid rgba(93,231,255,.24);border-radius:22px;background:linear-gradient(135deg,rgba(93,231,255,.08),rgba(255,88,196,.07))}.demo-full-cta small,.demo-full-cta strong{display:block}.demo-full-cta small{color:var(--cyan);font-size:.65rem;font-weight:950;letter-spacing:.12em}.demo-full-cta strong{margin-top:5px;max-width:650px}.demo-full-cta .button{flex:0 0 auto}@media(max-width:760px){.demo-full-cta{align-items:stretch;flex-direction:column}.demo-full-cta .button{width:100%}.price{flex-wrap:wrap}.price span{width:100%;margin:4px 0 0}}

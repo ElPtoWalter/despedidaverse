@@ -1,0 +1,153 @@
+{
+  "version": 2,
+  "meta": {
+    "id": "ejemplo-clean-2026",
+    "language": "es",
+    "template": "clean-v2"
+  },
+  "brand": {
+    "name": "EjemploVerse",
+    "eyebrow": "Despedida privada",
+    "tagline": "La última misión de Alex",
+    "intro": "Una experiencia sencilla: completar retos, descubrir claves y abrir el desenlace. Todo lo importante está a dos pulsaciones.",
+    "cover": "assets/cover.webp",
+    "accent": "#dc64ff",
+    "accent2": "#58dcff",
+    "background": "#0b0b10",
+    "surface": "#121218"
+  },
+  "event": {
+    "protagonist": "Alex",
+    "openAt": "2026-01-01T10:00:00+01:00",
+    "closeAt": "2027-12-31T23:59:00+01:00",
+    "adminCode": "CAMBIAME",
+    "initialTokens": 8,
+    "lockedMessage": "La experiencia todavía está bloqueada.",
+    "closedMessage": "La experiencia ha finalizado. El comité puede reabrirla desde este dispositivo."
+  },
+  "modules": {
+    "challenges": true,
+    "names": true,
+    "gallery": true,
+    "radio": false,
+    "links": true,
+    "final": true
+  },
+  "links": [
+    {
+      "label": "TikTok del evento",
+      "url": "https://www.tiktok.com/",
+      "icon": "↗",
+      "description": "Perfil oficial",
+      "featured": true
+    },
+    {
+      "label": "Ubicación principal",
+      "url": "https://maps.google.com/",
+      "icon": "⌖",
+      "description": "Abrir mapa",
+      "featured": true
+    },
+    {
+      "label": "Juego del grupo",
+      "url": "https://example.com/",
+      "icon": "◎",
+      "description": "Abrir minijuego",
+      "featured": false
+    }
+  ],
+  "challenges": [
+    {
+      "id": "reto-himno",
+      "title": "Cantar el himno del grupo",
+      "description": "Interpretación completa y sin excusas. El comité decide cuándo y dónde.",
+      "cost": 2,
+      "level": "Fácil",
+      "note": "Validación del comité"
+    },
+    {
+      "id": "reto-trend",
+      "title": "Recrear un trend de TikTok",
+      "description": "El grupo elige el vídeo de referencia y graba una versión propia.",
+      "cost": 3,
+      "level": "Medio",
+      "note": "Requiere vídeo"
+    },
+    {
+      "id": "reto-foto",
+      "title": "Foto con un desconocido",
+      "description": "La otra persona debe aceptar aparecer en la fotografía.",
+      "cost": 4,
+      "level": "Alto",
+      "note": "Con consentimiento"
+    },
+    {
+      "id": "reto-discurso",
+      "title": "Discurso improvisado",
+      "description": "Noventa segundos defendiendo por qué merece casarse.",
+      "cost": 2,
+      "level": "Fácil",
+      "note": "Sin preparación"
+    }
+  ],
+  "secretNames": [
+    {
+      "id": "peseta",
+      "label": "Peseta",
+      "answers": [
+        "peseta"
+      ]
+    },
+    {
+      "id": "parlita",
+      "label": "Parlita",
+      "answers": [
+        "parlita",
+        "padre parlita"
+      ]
+    },
+    {
+      "id": "consigliere",
+      "label": "Il Consigliere",
+      "answers": [
+        "il consigliere",
+        "consigliere"
+      ]
+    },
+    {
+      "id": "gran-figure",
+      "label": "El gran figure",
+      "answers": [
+        "el gran figure",
+        "gran figure"
+      ]
+    }
+  ],
+  "gallery": [
+    {
+      "id": "archivo-1",
+      "src": "assets/sample-1.webp",
+      "title": "Uff, qué pechotes",
+      "caption": "Archivo clasificado de ejemplo.",
+      "locked": true
+    },
+    {
+      "id": "archivo-2",
+      "src": "assets/sample-2.webp",
+      "title": "El hijo de Parlita",
+      "caption": "Segundo recuerdo de ejemplo.",
+      "locked": true
+    }
+  ],
+  "radio": [],
+  "final": {
+    "title": "Hacerse un tatuaje",
+    "description": "Ejemplo de desenlace. La prueba final debe acordarse con el cliente y respetar los límites del protagonista.",
+    "image": "assets/final.webp",
+    "lockedTitle": "El desenlace sigue oculto",
+    "lockedDescription": "Descubre todos los nombres en clave para desbloquearlo.",
+    "unlock": {
+      "type": "allNames"
+    }
+  }
+}

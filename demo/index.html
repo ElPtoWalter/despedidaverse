@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b0b10">
+  <meta name="description" content="Experiencia privada creada con DespedidaVerse.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icon-192.png" type="image/png">
+  <link rel="stylesheet" href="app.css">
+  <script defer src="app.js"></script>
+  <title>DespedidaVerse</title>
+</head>
+<body>
+  <div id="boot" class="boot" aria-live="polite"><span></span><p>Preparando la experiencia…</p></div>
+
+  <section id="gate" class="gate" hidden>
+    <div class="gate-backdrop" id="gate-backdrop"></div>
+    <div class="gate-card">
+      <p class="overline" id="gate-eyebrow">EVENTO PRIVADO</p>
+      <h1 id="gate-name">Cargando…</h1>
+      <p id="gate-message" class="gate-copy">Preparando la experiencia.</p>
+      <div id="countdown" class="countdown" aria-live="polite"></div>
+      <button id="gate-admin-toggle" class="text-action" type="button">Acceso del comité</button>
+      <form id="gate-admin" class="gate-admin" hidden>
+        <label for="gate-code">Código del comité</label>
+        <div><input id="gate-code" autocomplete="one-time-code"><button type="submit">Entrar</button></div>
+      </form>
+    </div>
+  </section>
+
+  <div id="app" class="app" hidden>
+    <header class="app-header">
+      <button id="home-logo" class="event-brand" type="button" aria-label="Volver al inicio">
+        <span class="event-mark" id="event-mark">DV</span>
+        <span><small id="event-eyebrow">EVENTO PRIVADO</small><strong id="event-name">Evento</strong></span>
+      </button>
+      <div class="header-actions">
+        <button id="token-pill" class="token-pill" type="button"><small>TOKENS</small><strong id="tokens">0</strong></button>
+        <button id="more-button" class="icon-button" type="button" aria-label="Más opciones" aria-expanded="false">•••</button>
+      </div>
+    </header>
+
+    <div class="app-shell">
+      <nav id="desktop-nav" class="primary-nav" aria-label="Secciones principales"></nav>
+
+      <main id="main-content" tabindex="-1">
+        <section class="view active" data-view="home">
+          <article class="home-hero" id="home-hero">
+            <div class="home-hero-content">
+              <span id="event-status" class="status-chip">EVENTO ACTIVO</span>
+              <h1 id="hero-title">Bienvenidos</h1>
+              <p id="hero-copy"></p>
+              <button id="continue-button" class="primary-button" type="button">Continuar misión <span>→</span></button>
+            </div>
+          </article>
+
+          <section class="summary" aria-label="Resumen del progreso">
+            <article><span>Secretos</span><strong id="summary-names">0 / 0</strong><i><b id="names-progress"></b></i></article>
+            <article><span>Retos comprados</span><strong id="summary-challenges">0 / 0</strong><i><b id="challenges-progress"></b></i></article>
+            <article><span>Saldo disponible</span><strong><span id="summary-tokens">0</span> tokens</strong><small>El comité puede modificarlo</small></article>
+          </section>
+
+          <section class="next-step card">
+            <div><p class="overline">SIGUIENTE PASO</p><h2 id="next-title">Empieza la misión</h2><p id="next-copy">Elige una de las acciones disponibles.</p></div>
+            <button id="next-button" class="secondary-button" type="button">Abrir</button>
+          </section>
+
+          <section id="featured-links-section" class="home-links" hidden>
+            <div class="section-title compact"><div><p class="overline">ACCESOS</p><h2>Enlaces útiles</h2></div></div>
+            <div id="featured-links" class="link-row"></div>
+          </section>
+        </section>
+
+        <section class="view" data-view="play">
+          <div class="section-title"><div><p class="overline">JUGAR</p><h1>Misiones y secretos</h1><p>Dos mecánicas, una sola progresión. Sin paneles innecesarios.</p></div></div>
+          <div id="play-tabs" class="subnav" role="tablist"></div>
+
+          <section class="subview active" data-subview="challenges">
+            <div class="toolbar"><div id="challenge-filters" class="filter-chips"></div><span id="challenge-count"></span></div>
+            <div id="challenge-list" class="challenge-list"></div>
+          </section>
+
+          <section class="subview" data-subview="names">
+            <div class="names-layout">
+              <article class="secret-entry card">
+                <p class="overline">ARCHIVO SECRETO</p>
+                <h2>Introduce una clave</h2>
+                <p>Los acentos, espacios y mayúsculas no importan.</p>
+                <form id="secret-form"><label class="sr-only" for="secret-input">Nombre en clave</label><div><input id="secret-input" autocomplete="off" placeholder="Escribe una respuesta"><button type="submit">Comprobar</button></div></form>
+                <p id="secret-feedback" class="feedback" aria-live="polite"></p>
+              </article>
+              <article class="discovered card">
+                <div class="discovered-head"><div><p class="overline">DESCUBIERTOS</p><h2 id="discovered-count">0 de 0</h2></div><span id="discovered-percent">0%</span></div>
+                <i class="large-progress"><b id="discovered-bar"></b></i>
+                <div id="discovered-list" class="discovered-list"><p class="empty-state">Todavía no se ha descubierto ninguno.</p></div>
+              </article>
+            </div>
+          </section>
+        </section>
+
+        <section class="view" data-view="memories">
+          <div class="section-title"><div><p class="overline">RECUERDOS</p><h1>Contenido del evento</h1><p>Fotos, música y accesos agrupados en una sola sección.</p></div></div>
+          <div id="memory-tabs" class="subnav" role="tablist"></div>
+
+          <section class="subview active" data-subview="gallery">
+            <div id="gallery-grid" class="gallery-grid"></div>
+            <button id="gallery-more" class="secondary-button load-more" type="button" hidden>Mostrar más</button>
+          </section>
+
+          <section class="subview" data-subview="radio">
+            <article class="player card">
+              <div class="player-art"><span>♪</span></div>
+              <div><p class="overline">SONANDO</p><h2 id="track-title">Selecciona una canción</h2><p id="track-artist">Radio del evento</p></div>
+              <audio id="audio" controls preload="none"></audio>
+            </article>
+            <div id="radio-list" class="track-list"></div>
+          </section>
+
+          <section class="subview" data-subview="links">
+            <div id="links-grid" class="links-grid"></div>
+          </section>
+        </section>
+
+        <section class="view" data-view="final">
+          <div class="section-title"><div><p class="overline">DESENLACE</p><h1>La prueba final</h1><p>El desenlace permanece oculto hasta cumplir la condición configurada.</p></div></div>
+          <article id="final-card" class="final-card locked">
+            <div id="final-lock" class="final-lock">✦</div>
+            <p id="final-kicker" class="overline">BLOQUEADO</p>
+            <h2 id="final-title">Todavía no</h2>
+            <p id="final-description">Completa la misión para desbloquear el contenido final.</p>
+            <img id="final-image" hidden alt="Contenido final">
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Secciones principales"></nav>
+    <footer class="product-footer"><span>Experiencia privada</span><small>Powered by DespedidaVerse</small></footer>
+  </div>
+
+  <div id="more-menu" class="more-menu" hidden>
+    <button id="committee-button" type="button">Panel del comité</button>
+    <button id="export-button" type="button">Exportar progreso</button>
+    <button id="reset-button" class="danger-text" type="button">Reiniciar este dispositivo</button>
+  </div>
+
+  <dialog id="committee-dialog" class="dialog">
+    <button class="dialog-close" type="button" aria-label="Cerrar">×</button>
+    <p class="overline">CONTROL LOCAL</p><h2>Panel del comité</h2>
+    <p class="dialog-note">En esta plantilla estática, estas acciones afectan únicamente a este dispositivo.</p>
+    <div class="admin-stats"><article><span>Tokens</span><strong id="admin-tokens">0</strong></article><article><span>Secretos</span><strong id="admin-names">0</strong></article><article><span>Retos</span><strong id="admin-challenges">0</strong></article></div>
+    <div class="admin-control"><label for="token-adjust">Ajustar tokens</label><div><input id="token-adjust" type="number" value="5"><button id="apply-token-adjust" type="button">Aplicar</button></div></div>
+    <div class="admin-actions"><button data-admin="unlock-final" type="button">Desbloquear final</button><button data-admin="lock-final" type="button">Volver a bloquear</button><button data-admin="close-event" type="button">Cerrar evento</button><button data-admin="reopen-event" type="button">Reabrir evento</button></div>
+    <label class="import-progress"><span>Importar copia de progreso</span><input id="import-progress" type="file" accept="application/json"></label>
+  </dialog>
+
+  <dialog id="lightbox" class="dialog lightbox"><button class="dialog-close" type="button" aria-label="Cerrar">×</button><img alt="Vista ampliada"><div><h2></h2><p></p></div></dialog>
+  <dialog id="final-dialog" class="dialog final-dialog"><button class="dialog-close" type="button" aria-label="Cerrar">×</button><div class="final-dialog-content"><p class="overline">FINAL DESBLOQUEADO</p><img alt="Contenido final"><h2></h2><p></p></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
