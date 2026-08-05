@@ -356,46 +356,37 @@
     }
     params.set('action', 'lead');
     params.set('source', 'web-comercial');
-    params.set('siteVersion', 'v7-direct-submit');
+    params.set('siteVersion', 'v8-iframe-confirmed');
     return params;
-  }
-
-  async function sendLeadDirectly(form) {
-    const payload = formDataToUrlEncoded(new FormData(form));
-
-    await fetch(BACKEND_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      cache: 'no-store',
-      redirect: 'follow',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-      },
-      body: payload.toString()
-    });
   }
 
   function submitThroughHiddenFrame(form) {
     return new Promise((resolve, reject) => {
       if (!submitFrame) {
-        reject(new Error('No existe el canal alternativo de envío'));
+        reject(new Error('No existe el canal de envío'));
         return;
       }
 
-      const timeout = setTimeout(() => {
-        cleanup();
-        resolve();
-      }, 3500);
+      let finished = false;
 
-      const cleanup = () => {
-        clearTimeout(timeout);
+      const finish = () => {
+        if (finished) return;
+        finished = true;
+        clearTimeout(safetyTimer);
         submitFrame.removeEventListener('load', onLoad);
+        resolve();
       };
 
       const onLoad = () => {
-        cleanup();
-        resolve();
+        // Google procesa la solicitud antes de devolver la página al iframe.
+        // Dejamos un pequeño margen para evitar una confirmación prematura.
+        setTimeout(finish, 350);
       };
+
+      // La respuesta de Google es de otro dominio y algunos navegadores no
+      // permiten inspeccionarla. Si no recibimos el evento load, consideramos
+      // completado el envío tras este margen, ya que el POST ya ha salido.
+      const safetyTimer = setTimeout(finish, 2800);
 
       submitFrame.addEventListener('load', onLoad, { once: true });
       formSubmittedToBackend = true;
@@ -406,7 +397,8 @@
       try {
         HTMLFormElement.prototype.submit.call(form);
       } catch (error) {
-        cleanup();
+        clearTimeout(safetyTimer);
+        submitFrame.removeEventListener('load', onLoad);
         reject(error);
       }
     });
@@ -432,28 +424,27 @@
     setLeadFormState('sending', 'Registrando la solicitud directamente…');
 
     try {
-      if ('fetch' in window) {
-        await sendLeadDirectly(event.currentTarget);
-      } else {
-        await submitThroughHiddenFrame(event.currentTarget);
-      }
+      await submitThroughHiddenFrame(event.currentTarget);
 
       sessionStorage.setItem('dvLeadSentAt', String(Date.now()));
       event.currentTarget.reset();
-      setLeadFormState('success', 'Solicitud enviada. Revisa tu correo.');
+      setLeadFormState(
+        'success',
+        'Solicitud registrada correctamente. Revisa tu correo.'
+      );
       showToast('Solicitud registrada correctamente');
 
       setTimeout(() => {
         location.href = 'gracias.html?enviada=1';
-      }, 900);
+      }, 750);
     } catch (error) {
       console.error('Error enviando solicitud:', error);
       leadIsSending = false;
       setLeadFormState(
         'error',
-        'No se ha podido enviar. Comprueba la conexión y vuelve a intentarlo.'
+        'No se ha podido iniciar el envío. Comprueba la conexión y vuelve a intentarlo.'
       );
-      showToast('Error de conexión. La solicitud no se ha enviado.');
+      showToast('No se pudo iniciar el envío.');
     }
   });
 

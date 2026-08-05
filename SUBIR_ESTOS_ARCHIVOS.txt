@@ -1,0 +1,22 @@
+DESPEDIDAVERSE v8 · CORRECCIÓN DEL FALSO ERROR
+
+Sube a la raíz del repositorio y sustituye:
+- index.html
+- script.js
+- config.js
+- sw.js
+
+No hace falta tocar assets ni el Apps Script.
+
+Después:
+1. espera a que Cloudflare termine;
+2. abre la web en incógnito;
+3. envía una sola solicitud de prueba;
+4. usa otro correo o espera 15 minutos para no activar el bloqueo de duplicados.
+
+Resultado esperado:
+- no se abre Gmail;
+- no aparece error de conexión;
+- muestra confirmación;
+- llega el correo;
+- se crea el lead y la carpeta.
