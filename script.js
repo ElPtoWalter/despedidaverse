@@ -355,7 +355,7 @@
     }
     params.set('action', 'lead');
     params.set('source', 'web-comercial');
-    params.set('siteVersion', 'v9-stable-submit');
+    params.set('siteVersion', 'v10-routes');
     return params;
   }
 
@@ -374,7 +374,7 @@
     const payload = new FormData(form);
     payload.set('action', 'lead');
     payload.set('source', 'web-comercial');
-    payload.set('siteVersion', 'v9-stable-submit');
+    payload.set('siteVersion', 'v10-routes');
     payload.set(
       'submissionNonce',
       `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`
@@ -432,7 +432,7 @@
       setTimeout(() => event.currentTarget.reset(), 150);
 
       setTimeout(() => {
-        location.href = 'gracias.html?enviada=1';
+        location.href = '/gracias?enviada=1';
       }, 1100);
     } catch (error) {
       console.error('No se pudo lanzar el formulario:', error);

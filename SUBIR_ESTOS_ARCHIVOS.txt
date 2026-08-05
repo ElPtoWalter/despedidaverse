@@ -1,27 +1,15 @@
-DESPEDIDAVERSE v9 · ENVÍO ESTABLE
+DESPEDIDAVERSE v10 · CORRECCIÓN ERR_TOO_MANY_REDIRECTS
 
-Sube a la raíz del repositorio y sustituye:
-- index.html
-- script.js
-- config.js
-- sw.js
-- gracias.html
+Sube todos estos archivos a la raíz del repositorio y sustituye los anteriores.
 
-No hace falta tocar:
-- assets
-- Google Apps Script
-- Cloudflare
-- CRM
+El archivo fundamental es `_redirects`, pero deben subirse todos para que
+la web utilice rutas limpias de forma consistente.
 
 Después:
-1. espera al despliegue automático;
-2. abre la web en incógnito;
-3. usa otro correo o espera 15 minutos;
-4. envía una solicitud.
+1. espera a que Cloudflare termine el despliegue;
+2. abre una ventana de incógnito;
+3. entra directamente en:
+   https://despedidaverse.com/cliente
+4. no uses `/cliente.html`.
 
-Resultado:
-- no abre Gmail;
-- no intenta leer la respuesta externa de Google;
-- muestra éxito inmediatamente;
-- después abre la página de agradecimiento;
-- el backend sigue creando correo, lead y carpeta.
+No hay que modificar Cloudflare, DNS, Apps Script ni el CRM.

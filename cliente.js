@@ -36,7 +36,7 @@
     preview.hidden = !p.previewUrl; if (p.previewUrl) preview.href = p.previewUrl;
     const pay = document.querySelector('#payment-link');
     pay.hidden = !p.paymentUrl; if (p.paymentUrl) pay.href = p.paymentUrl;
-    document.querySelector('#onboarding-link').href = `onboarding.html?id=${encodeURIComponent(p.id || '')}&code=${encodeURIComponent(p.accessCode || '')}`;
+    document.querySelector('#onboarding-link').href = `/onboarding?id=${encodeURIComponent(p.id || '')}&code=${encodeURIComponent(p.accessCode || '')}`;
     message.textContent = 'Estado actualizado.';
     panel.classList.add('visible');
   };
