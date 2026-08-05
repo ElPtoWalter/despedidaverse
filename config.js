@@ -17,5 +17,5 @@ window.DV_CONFIG = Object.freeze({
   clientAreaEnabled: true,
   onboardingEnabled: true,
   directSubmitEnabled: true,
-  siteVersion: 'v8-iframe-confirmed'
+  siteVersion: 'v9-stable-submit'
 });

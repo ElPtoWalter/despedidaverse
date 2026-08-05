@@ -1,22 +1,27 @@
-DESPEDIDAVERSE v8 · CORRECCIÓN DEL FALSO ERROR
+DESPEDIDAVERSE v9 · ENVÍO ESTABLE
 
 Sube a la raíz del repositorio y sustituye:
 - index.html
 - script.js
 - config.js
 - sw.js
+- gracias.html
 
-No hace falta tocar assets ni el Apps Script.
+No hace falta tocar:
+- assets
+- Google Apps Script
+- Cloudflare
+- CRM
 
 Después:
-1. espera a que Cloudflare termine;
+1. espera al despliegue automático;
 2. abre la web en incógnito;
-3. envía una sola solicitud de prueba;
-4. usa otro correo o espera 15 minutos para no activar el bloqueo de duplicados.
+3. usa otro correo o espera 15 minutos;
+4. envía una solicitud.
 
-Resultado esperado:
-- no se abre Gmail;
-- no aparece error de conexión;
-- muestra confirmación;
-- llega el correo;
-- se crea el lead y la carpeta.
+Resultado:
+- no abre Gmail;
+- no intenta leer la respuesta externa de Google;
+- muestra éxito inmediatamente;
+- después abre la página de agradecimiento;
+- el backend sigue creando correo, lead y carpeta.

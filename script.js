@@ -302,7 +302,6 @@
   const BACKEND_URL = String(
     CONFIG.appsScriptUrl || 'https://script.google.com/macros/s/AKfycbxIqb1g2-7QK3lugDkGcfQWU2o3r2c-qSp-om2cdNa_4s6enhqTS457SIuI1xL_kno0HQ/exec'
   ).trim();
-  let formSubmittedToBackend = false;
   let leadIsSending = false;
 
   function configureExternalLinks() {
@@ -356,55 +355,51 @@
     }
     params.set('action', 'lead');
     params.set('source', 'web-comercial');
-    params.set('siteVersion', 'v8-iframe-confirmed');
+    params.set('siteVersion', 'v9-stable-submit');
     return params;
   }
 
-  function submitThroughHiddenFrame(form) {
-    return new Promise((resolve, reject) => {
-      if (!submitFrame) {
-        reject(new Error('No existe el canal de envío'));
-        return;
-      }
+  function launchLeadPost(form) {
+    if (!submitFrame) {
+      throw new Error('No existe el canal de envío');
+    }
 
-      let finished = false;
+    const transportForm = document.createElement('form');
+    transportForm.method = 'post';
+    transportForm.action = BACKEND_URL;
+    transportForm.target = 'dv-submit-frame';
+    transportForm.acceptCharset = 'UTF-8';
+    transportForm.style.display = 'none';
 
-      const finish = () => {
-        if (finished) return;
-        finished = true;
-        clearTimeout(safetyTimer);
-        submitFrame.removeEventListener('load', onLoad);
-        resolve();
-      };
+    const payload = new FormData(form);
+    payload.set('action', 'lead');
+    payload.set('source', 'web-comercial');
+    payload.set('siteVersion', 'v9-stable-submit');
+    payload.set(
+      'submissionNonce',
+      `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`
+    );
 
-      const onLoad = () => {
-        // Google procesa la solicitud antes de devolver la página al iframe.
-        // Dejamos un pequeño margen para evitar una confirmación prematura.
-        setTimeout(finish, 350);
-      };
+    for (const [name, value] of payload.entries()) {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = name;
+      input.value = typeof value === 'string' ? value : String(value);
+      transportForm.appendChild(input);
+    }
 
-      // La respuesta de Google es de otro dominio y algunos navegadores no
-      // permiten inspeccionarla. Si no recibimos el evento load, consideramos
-      // completado el envío tras este margen, ya que el POST ya ha salido.
-      const safetyTimer = setTimeout(finish, 2800);
+    document.body.appendChild(transportForm);
 
-      submitFrame.addEventListener('load', onLoad, { once: true });
-      formSubmittedToBackend = true;
-      form.action = BACKEND_URL;
-      form.method = 'post';
-      form.target = 'dv-submit-frame';
-
-      try {
-        HTMLFormElement.prototype.submit.call(form);
-      } catch (error) {
-        clearTimeout(safetyTimer);
-        submitFrame.removeEventListener('load', onLoad);
-        reject(error);
-      }
-    });
+    try {
+      HTMLFormElement.prototype.submit.call(transportForm);
+    } finally {
+      // El formulario ya ha sido entregado al navegador. No intentamos leer
+      // la respuesta de Google porque es de otro dominio.
+      setTimeout(() => transportForm.remove(), 5000);
+    }
   }
 
-  leadForm?.addEventListener('submit', async event => {
+  leadForm?.addEventListener('submit', event => {
     event.preventDefault();
 
     if (leadIsSending) return;
@@ -424,34 +419,32 @@
     setLeadFormState('sending', 'Registrando la solicitud directamente…');
 
     try {
-      await submitThroughHiddenFrame(event.currentTarget);
+      launchLeadPost(event.currentTarget);
 
       sessionStorage.setItem('dvLeadSentAt', String(Date.now()));
-      event.currentTarget.reset();
       setLeadFormState(
         'success',
-        'Solicitud registrada correctamente. Revisa tu correo.'
+        'Solicitud enviada correctamente. Recibirás la confirmación por correo.'
       );
-      showToast('Solicitud registrada correctamente');
+      showToast('Solicitud enviada correctamente');
+
+      // No limpiamos los campos hasta haber lanzado el POST.
+      setTimeout(() => event.currentTarget.reset(), 150);
 
       setTimeout(() => {
         location.href = 'gracias.html?enviada=1';
-      }, 750);
+      }, 1100);
     } catch (error) {
-      console.error('Error enviando solicitud:', error);
+      console.error('No se pudo lanzar el formulario:', error);
       leadIsSending = false;
       setLeadFormState(
         'error',
-        'No se ha podido iniciar el envío. Comprueba la conexión y vuelve a intentarlo.'
+        'No se pudo iniciar el envío. Recarga la página y vuelve a intentarlo.'
       );
       showToast('No se pudo iniciar el envío.');
     }
   });
 
-  submitFrame?.addEventListener('load', () => {
-    if (!formSubmittedToBackend) return;
-    formSubmittedToBackend = false;
-  });
 
   configureExternalLinks();
 
