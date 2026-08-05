@@ -16,9 +16,9 @@
   <link rel="icon" href="assets/favicon.png" type="image/svg+xml">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="preload" href="assets/antonverse-dashboard.webp" as="image" type="image/webp">
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="config.js"></script>
-  <script defer src="script.js"></script>
+  <link rel="stylesheet" href="styles.css?v=7-direct">
+  <script defer src="config.js?v=7-direct"></script>
+  <script defer src="script.js?v=7-direct"></script>
   <title>DespedidaVerse Studio · Experiencias web para despedidas</title>
   <script type="application/ld+json">
   {
@@ -415,10 +415,15 @@
           <div class="contact-shortcuts"><a href="cliente.html">Consultar un proyecto</a><a href="onboarding.html">Entregar materiales</a><a id="tally-contact-link" href="#" target="_blank" rel="noopener" hidden>Formulario ampliado</a></div>
         </div>
 
-        <form class="lead-form reveal" id="lead-form" method="post" target="dv-submit-frame">
+        <form class="lead-form reveal" id="lead-form" method="post" action="https://script.google.com/macros/s/AKfycbxIqb1g2-7QK3lugDkGcfQWU2o3r2c-qSp-om2cdNa_4s6enhqTS457SIuI1xL_kno0HQ/exec" target="dv-submit-frame" novalidate>
           <input type="hidden" name="action" value="lead">
           <input type="hidden" name="source" value="web-comercial">
-          <input type="hidden" name="siteVersion" value="v6-launch">
+          <input type="hidden" name="siteVersion" value="v7-direct-submit">
+          <div class="dv-honeypot" aria-hidden="true">
+            <label>No rellenar este campo
+              <input type="text" name="website" tabindex="-1" autocomplete="off">
+            </label>
+          </div>
           <div class="form-head"><span>PASO ÚNICO</span><strong>Solicitud de propuesta</strong></div>
           <div class="form-grid">
             <label><span>Nombre *</span><input required name="name" autocomplete="name" placeholder="Tu nombre"></label>

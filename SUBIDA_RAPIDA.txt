@@ -1,0 +1,20 @@
+SUBIDA RÁPIDA v7
+
+Sube estos archivos a la raíz del repositorio y sustituye los anteriores:
+- index.html
+- script.js
+- config.js
+- styles.css
+- sw.js
+- _headers
+- gracias.html
+
+No hace falta tocar la carpeta assets.
+
+Después:
+1. espera al despliegue de Cloudflare;
+2. abre la web en incógnito;
+3. recarga una vez;
+4. envía una solicitud de prueba.
+
+El formulario no debe abrir Gmail.

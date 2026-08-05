@@ -299,7 +299,11 @@
   });
   const leadForm = $('#lead-form');
   const submitFrame = $('#dv-submit-frame');
+  const BACKEND_URL = String(
+    CONFIG.appsScriptUrl || 'https://script.google.com/macros/s/AKfycbxIqb1g2-7QK3lugDkGcfQWU2o3r2c-qSp-om2cdNa_4s6enhqTS457SIuI1xL_kno0HQ/exec'
+  ).trim();
   let formSubmittedToBackend = false;
+  let leadIsSending = false;
 
   function configureExternalLinks() {
     const emailLink = $('#contact-email-link');
@@ -323,38 +327,134 @@
     });
   }
 
-  leadForm?.addEventListener('submit', event => {
-    if (!event.currentTarget.reportValidity()) {
-      event.preventDefault();
-      return;
-    }
-    const data = new FormData(event.currentTarget);
+  function setLeadFormState(state, message) {
+    if (!leadForm) return;
     const status = $('#form-status');
-    const label = $('.submit-label', event.currentTarget);
+    const label = $('.submit-label', leadForm);
+    const submit = $('.form-submit', leadForm);
 
-    if (CONFIG.appsScriptUrl) {
-      event.currentTarget.action = CONFIG.appsScriptUrl;
+    leadForm.classList.toggle('is-sending', state === 'sending');
+    leadForm.classList.toggle('is-success', state === 'success');
+    leadForm.classList.toggle('is-error', state === 'error');
+
+    if (submit) submit.disabled = state === 'sending' || state === 'success';
+    if (status) status.textContent = message || '';
+
+    if (label) {
+      label.textContent =
+        state === 'sending' ? 'Enviando…' :
+        state === 'success' ? 'Solicitud enviada ✓' :
+        state === 'error' ? 'Reintentar envío' :
+        'Enviar solicitud';
+    }
+  }
+
+  function formDataToUrlEncoded(formData) {
+    const params = new URLSearchParams();
+    for (const [key, value] of formData.entries()) {
+      params.append(key, typeof value === 'string' ? value : String(value));
+    }
+    params.set('action', 'lead');
+    params.set('source', 'web-comercial');
+    params.set('siteVersion', 'v7-direct-submit');
+    return params;
+  }
+
+  async function sendLeadDirectly(form) {
+    const payload = formDataToUrlEncoded(new FormData(form));
+
+    await fetch(BACKEND_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      cache: 'no-store',
+      redirect: 'follow',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+      },
+      body: payload.toString()
+    });
+  }
+
+  function submitThroughHiddenFrame(form) {
+    return new Promise((resolve, reject) => {
+      if (!submitFrame) {
+        reject(new Error('No existe el canal alternativo de envío'));
+        return;
+      }
+
+      const timeout = setTimeout(() => {
+        cleanup();
+        resolve();
+      }, 3500);
+
+      const cleanup = () => {
+        clearTimeout(timeout);
+        submitFrame.removeEventListener('load', onLoad);
+      };
+
+      const onLoad = () => {
+        cleanup();
+        resolve();
+      };
+
+      submitFrame.addEventListener('load', onLoad, { once: true });
       formSubmittedToBackend = true;
-      event.currentTarget.classList.add('is-sending');
-      if (status) status.textContent = 'Registrando solicitud…';
-      if (label) label.textContent = 'Enviando…';
-      setTimeout(() => {
-        event.currentTarget.classList.remove('is-sending');
-        event.currentTarget.classList.add('is-success');
-        if (status) status.textContent = 'Solicitud enviada. Revisa tu correo.';
-        if (label) label.textContent = 'Solicitud enviada ✓';
-        showToast('Solicitud registrada');
-        setTimeout(() => { location.href = 'gracias.html'; }, 900);
-      }, 1600);
+      form.action = BACKEND_URL;
+      form.method = 'post';
+      form.target = 'dv-submit-frame';
+
+      try {
+        HTMLFormElement.prototype.submit.call(form);
+      } catch (error) {
+        cleanup();
+        reject(error);
+      }
+    });
+  }
+
+  leadForm?.addEventListener('submit', async event => {
+    event.preventDefault();
+
+    if (leadIsSending) return;
+
+    if (!event.currentTarget.reportValidity()) {
+      setLeadFormState('error', 'Revisa los campos obligatorios.');
       return;
     }
 
-    event.preventDefault();
-    const subject = `Solicitud DespedidaVerse — ${data.get('name')}`;
-    const body = buildRequest();
-    location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    if (status) status.textContent = 'Correo preparado';
-    showToast('Solicitud preparada en tu correo');
+    if (!BACKEND_URL || !BACKEND_URL.startsWith('https://script.google.com/')) {
+      setLeadFormState('error', 'El sistema de solicitudes no está disponible.');
+      showToast('No se pudo conectar con el sistema');
+      return;
+    }
+
+    leadIsSending = true;
+    setLeadFormState('sending', 'Registrando la solicitud directamente…');
+
+    try {
+      if ('fetch' in window) {
+        await sendLeadDirectly(event.currentTarget);
+      } else {
+        await submitThroughHiddenFrame(event.currentTarget);
+      }
+
+      sessionStorage.setItem('dvLeadSentAt', String(Date.now()));
+      event.currentTarget.reset();
+      setLeadFormState('success', 'Solicitud enviada. Revisa tu correo.');
+      showToast('Solicitud registrada correctamente');
+
+      setTimeout(() => {
+        location.href = 'gracias.html?enviada=1';
+      }, 900);
+    } catch (error) {
+      console.error('Error enviando solicitud:', error);
+      leadIsSending = false;
+      setLeadFormState(
+        'error',
+        'No se ha podido enviar. Comprueba la conexión y vuelve a intentarlo.'
+      );
+      showToast('Error de conexión. La solicitud no se ha enviado.');
+    }
   });
 
   submitFrame?.addEventListener('load', () => {
