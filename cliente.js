@@ -109,8 +109,15 @@
     text('#project-materials', project.materialsStatus);
     text('#project-updated', project.lastUpdate);
     text('#project-next', project.nextStep);
+    text('#project-quote', project.quoteStatus);
+    text('#project-build', `${project.buildStatus || 'Pendiente'} · ${project.qaStatus || 'Pendiente'}`);
+    text('#project-revisions', `${project.revisionsUsed || 0} / ${project.revisionLimit || 0}`);
 
     renderTimeline(project.stage || project.status);
+
+    const manageLink = document.querySelector('#manage-link');
+    manageLink.hidden = !project.portalUrl;
+    if (project.portalUrl) manageLink.href = project.portalUrl;
 
     const previewLink = document.querySelector('#preview-link');
     previewLink.hidden = !project.previewUrl;
