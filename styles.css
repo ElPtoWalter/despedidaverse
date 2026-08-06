@@ -148,3 +148,5 @@ dialog{max-width:min(900px,calc(100% - 24px));padding:0;border:1px solid rgba(25
   cursor: wait;
   opacity: .74;
 }
+
+.pricing-grid-four{grid-template-columns:repeat(4,1fr)}.pricing-grid-four .price-card ul{min-height:270px}@media(max-width:1150px){.pricing-grid-four{grid-template-columns:1fr 1fr}}@media(max-width:700px){.pricing-grid-four{grid-template-columns:1fr}}

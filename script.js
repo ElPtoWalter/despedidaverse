@@ -270,7 +270,7 @@
   });
 
   // Calculator
-  const calcState = { base: 549, level: 'Esencial' };
+  const calcState = { base: 149, level: 'Esencial' };
   const calcRange = $('#calc-range');
   const calcLevel = $('#calc-level');
   function calculate() {
@@ -400,7 +400,7 @@
     }
     params.set('action', 'lead');
     params.set('source', 'web-comercial');
-    params.set('siteVersion', 'v11-domain-links');
+    params.set('siteVersion', 'v12-productized');
     return params;
   }
 
@@ -419,7 +419,7 @@
     const payload = new FormData(form);
     payload.set('action', 'lead');
     payload.set('source', 'web-comercial');
-    payload.set('siteVersion', 'v11-domain-links');
+    payload.set('siteVersion', 'v12-productized');
     payload.set(
       'submissionNonce',
       `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`

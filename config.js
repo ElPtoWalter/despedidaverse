@@ -10,6 +10,7 @@ window.DV_CONFIG = Object.freeze({
 
   paymentLinks: {
     esencial: '',
+    juego: '',
     universo: '',
     live: ''
   },
@@ -17,5 +18,5 @@ window.DV_CONFIG = Object.freeze({
   clientAreaEnabled: true,
   onboardingEnabled: true,
   directSubmitEnabled: true,
-  siteVersion: 'v11-domain-links'
+  siteVersion: 'v12-productized'
 });
