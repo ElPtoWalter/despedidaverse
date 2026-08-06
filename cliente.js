@@ -1,61 +1,227 @@
 (() => {
+  'use strict';
+
   const config = window.DV_CONFIG || {};
   const form = document.querySelector('#status-form');
   const message = document.querySelector('#status-message');
   const panel = document.querySelector('#project-status');
-  let activeScript = null;
-  let timeout = null;
+  const bridgeFrame = document.querySelector('#status-bridge-frame');
 
-  function text(id, value) { const el = document.querySelector(id); if (el) el.textContent = value || '—'; }
-  function escapeValue(value) { return String(value || '').replace(/[<>&\"']/g, ''); }
-  function renderTimeline(current) {
-    const stages = ['Solicitud recibida','Propuesta preparada','Reserva confirmada','Material recibido','Diseño y desarrollo','Vista previa','Proyecto publicado'];
-    const index = Math.max(0, stages.findIndex(s => s.toLowerCase() === String(current || '').toLowerCase()));
-    document.querySelector('#project-timeline').innerHTML = stages.map((stage, i) => `<div class="timeline-step ${i < index ? 'done' : i === index ? 'active' : ''}"><i></i><div><strong>${stage}</strong><span>${i < index ? 'Completado' : i === index ? 'Estado actual' : 'Pendiente'}</span></div></div>`).join('');
+  let requestTimer = null;
+  let activeRequestToken = '';
+  let requestInProgress = false;
+
+  function text(selector, value) {
+    const element = document.querySelector(selector);
+    if (element) element.textContent = value || '—';
   }
-  window.dvStatusCallback = payload => {
-    clearTimeout(timeout);
-    activeScript?.remove();
+
+  function escapeValue(value) {
+    return String(value || '').replace(/[<>&"']/g, '');
+  }
+
+  function setMessage(value, state = '') {
+    message.textContent = value;
+    message.dataset.state = state;
+  }
+
+  function setLoading(loading) {
+    requestInProgress = loading;
+    const button = form.querySelector('button[type="submit"]');
+    const inputs = form.querySelectorAll('input');
+
+    button.disabled = loading;
+    button.textContent = loading ? 'Consultando…' : 'Consultar estado';
+    inputs.forEach(input => {
+      input.readOnly = loading;
+    });
+  }
+
+  function renderTimeline(current) {
+    const stages = [
+      'Solicitud recibida',
+      'Propuesta preparada',
+      'Reserva confirmada',
+      'Material recibido',
+      'Diseño y desarrollo',
+      'Vista previa',
+      'Proyecto publicado'
+    ];
+
+    const normalizedCurrent = String(current || '').trim().toLowerCase();
+    let index = stages.findIndex(
+      stage => stage.toLowerCase() === normalizedCurrent
+    );
+
+    if (index < 0) index = 0;
+
+    const timeline = document.querySelector('#project-timeline');
+    timeline.innerHTML = stages.map((stage, stageIndex) => {
+      const cssClass =
+        stageIndex < index ? 'done' :
+        stageIndex === index ? 'active' :
+        '';
+
+      const label =
+        stageIndex < index ? 'Completado' :
+        stageIndex === index ? 'Estado actual' :
+        'Pendiente';
+
+      return `
+        <div class="timeline-step ${cssClass}">
+          <i></i>
+          <div>
+            <strong>${stage}</strong>
+            <span>${label}</span>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  function clearRequest() {
+    clearTimeout(requestTimer);
+    requestTimer = null;
+    setLoading(false);
+  }
+
+  function renderPayload(payload) {
+    clearRequest();
+
     if (!payload || !payload.ok) {
-      message.textContent = payload?.message || 'No se ha encontrado un proyecto con esos datos.';
+      setMessage(
+        payload?.message ||
+          'No se ha encontrado un proyecto con esos datos.',
+        'error'
+      );
       panel.classList.remove('visible');
       return;
     }
-    const p = payload.project || {};
-    text('#project-id', p.id);
-    text('#project-name', p.name || 'Proyecto DespedidaVerse');
-    text('#project-badge', p.status);
-    text('#project-package', p.package);
-    text('#project-date', p.eventDate);
-    text('#project-payment', p.paymentStatus);
-    text('#project-materials', p.materialsStatus);
-    text('#project-updated', p.lastUpdate);
-    text('#project-next', p.nextStep);
-    renderTimeline(p.stage || p.status);
-    const preview = document.querySelector('#preview-link');
-    preview.hidden = !p.previewUrl; if (p.previewUrl) preview.href = p.previewUrl;
-    const pay = document.querySelector('#payment-link');
-    pay.hidden = !p.paymentUrl; if (p.paymentUrl) pay.href = p.paymentUrl;
-    document.querySelector('#onboarding-link').href = `https://despedidaverse.com/onboarding?id=${encodeURIComponent(p.id || '')}&code=${encodeURIComponent(p.accessCode || '')}`;
-    message.textContent = 'Estado actualizado.';
+
+    const project = payload.project || {};
+
+    text('#project-id', project.id);
+    text('#project-name', project.name || 'Proyecto DespedidaVerse');
+    text('#project-badge', project.status);
+    text('#project-package', project.package);
+    text('#project-date', project.eventDate);
+    text('#project-payment', project.paymentStatus);
+    text('#project-materials', project.materialsStatus);
+    text('#project-updated', project.lastUpdate);
+    text('#project-next', project.nextStep);
+
+    renderTimeline(project.stage || project.status);
+
+    const previewLink = document.querySelector('#preview-link');
+    previewLink.hidden = !project.previewUrl;
+    if (project.previewUrl) previewLink.href = project.previewUrl;
+
+    const paymentLink = document.querySelector('#payment-link');
+    paymentLink.hidden = !project.paymentUrl;
+    if (project.paymentUrl) paymentLink.href = project.paymentUrl;
+
+    const onboardingLink = document.querySelector('#onboarding-link');
+    onboardingLink.href =
+      `https://despedidaverse.com/onboarding` +
+      `?id=${encodeURIComponent(project.id || '')}` +
+      `&code=${encodeURIComponent(project.accessCode || '')}`;
+
+    setMessage('Estado actualizado correctamente.', 'success');
     panel.classList.add('visible');
-  };
+  }
+
+  function validBridgeMessage(event) {
+    if (!bridgeFrame || event.source !== bridgeFrame.contentWindow) {
+      return false;
+    }
+
+    const data = event.data;
+    return Boolean(
+      data &&
+      data.type === 'despedidaverse:status' &&
+      data.requestToken &&
+      data.requestToken === activeRequestToken
+    );
+  }
+
+  window.addEventListener('message', event => {
+    if (!validBridgeMessage(event)) return;
+    renderPayload(event.data.payload);
+  });
+
+  function requestProjectStatus(id, code) {
+    if (!config.appsScriptUrl) {
+      setMessage(
+        'Falta conectar Google Apps Script en config.js.',
+        'error'
+      );
+      return;
+    }
+
+    activeRequestToken =
+      `${Date.now()}-${Math.random().toString(36).slice(2, 12)}`;
+
+    const params = new URLSearchParams({
+      action: 'status_bridge',
+      id,
+      code,
+      requestToken: activeRequestToken,
+      parentOrigin: location.origin,
+      _: String(Date.now())
+    });
+
+    setLoading(true);
+    setMessage('Consultando el estado del proyecto…', 'loading');
+    panel.classList.remove('visible');
+
+    bridgeFrame.src =
+      `${config.appsScriptUrl}?${params.toString()}`;
+
+    requestTimer = setTimeout(() => {
+      clearRequest();
+      setMessage(
+        'La consulta ha tardado demasiado. Recarga la página y vuelve a intentarlo.',
+        'error'
+      );
+    }, 15000);
+  }
+
   form.addEventListener('submit', event => {
     event.preventDefault();
-    if (!config.appsScriptUrl) { message.textContent = 'El área de cliente está preparada, pero falta conectar Google Apps Script en config.js.'; return; }
-    const id = document.querySelector('#status-id').value.trim();
-    const code = document.querySelector('#status-code').value.trim();
-    message.textContent = 'Consultando…'; panel.classList.remove('visible');
-    activeScript?.remove();
-    activeScript = document.createElement('script');
-    const sep = config.appsScriptUrl.includes('?') ? '&' : '?';
-    activeScript.src = `${config.appsScriptUrl}${sep}action=status&id=${encodeURIComponent(id)}&code=${encodeURIComponent(code)}&callback=dvStatusCallback&_=${Date.now()}`;
-    activeScript.onerror = () => { message.textContent = 'No ha sido posible conectar con el sistema.'; };
-    document.body.append(activeScript);
-    timeout = setTimeout(() => { activeScript?.remove(); message.textContent = 'La consulta ha tardado demasiado. Revisa la conexión.'; }, 12000);
+    if (requestInProgress) return;
+
+    const id = document.querySelector('#status-id').value
+      .trim()
+      .toUpperCase();
+
+    const code = document.querySelector('#status-code').value
+      .trim()
+      .toUpperCase();
+
+    if (!id || !code) {
+      setMessage(
+        'Introduce el identificador y el código de acceso.',
+        'error'
+      );
+      return;
+    }
+
+    requestProjectStatus(id, code);
   });
+
   const params = new URLSearchParams(location.search);
-  if (params.get('id')) document.querySelector('#status-id').value = escapeValue(params.get('id'));
-  if (params.get('code')) document.querySelector('#status-code').value = escapeValue(params.get('code'));
-  if (params.get('id') && params.get('code')) form.requestSubmit();
+
+  if (params.get('id')) {
+    document.querySelector('#status-id').value =
+      escapeValue(params.get('id')).toUpperCase();
+  }
+
+  if (params.get('code')) {
+    document.querySelector('#status-code').value =
+      escapeValue(params.get('code')).toUpperCase();
+  }
+
+  if (params.get('id') && params.get('code')) {
+    form.requestSubmit();
+  }
 })();
