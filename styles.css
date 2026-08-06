@@ -186,3 +186,32 @@ dialog{max-width:min(900px,calc(100% - 24px));padding:0;border:1px solid rgba(25
 .management-fallback[hidden] {
   display: none;
 }
+
+
+/* v14.3 · portal sin iframe */
+.management-redirect-shell {
+  min-height: min(620px, 72vh);
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 18px;
+  padding: clamp(28px, 6vw, 64px);
+  text-align: center;
+}
+
+.management-security-note {
+  max-width: 520px;
+  margin: 0;
+  color: var(--muted, #bcb3ca);
+  font-size: .9rem;
+  line-height: 1.55;
+}
+
+.management-loading strong {
+  font-size: clamp(1.15rem, 3vw, 1.45rem);
+}
+
+.management-loading span {
+  display: block;
+  margin-top: 8px;
+}

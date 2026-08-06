@@ -1,4 +1,4 @@
-const CACHE = 'despedidaverse-v14-2-routes';
+const CACHE = 'despedidaverse-v14-3-no-iframe';
 
 const ASSETS = [
   '/',

@@ -3,16 +3,40 @@
 
   const config = window.DV_CONFIG || {};
   const params = new URLSearchParams(location.search);
-  const id = String(params.get('id') || '').trim().toUpperCase();
-  const code = String(params.get('code') || '').trim().toUpperCase();
 
-  const frame = document.querySelector('#management-frame');
+  const id = String(params.get('id') || '')
+    .trim()
+    .toUpperCase();
+
+  const code = String(params.get('code') || '')
+    .trim()
+    .toUpperCase();
+
   const loading = document.querySelector('#management-loading');
-  const fallback = document.querySelector('#management-fallback');
+  const directLink = document.querySelector('#management-direct-link');
 
-  if (!config.appsScriptUrl || !id || !code) {
-    loading.textContent =
-      'Faltan el identificador o el código de acceso.';
+  function showError(message) {
+    if (!loading) return;
+
+    loading.innerHTML =
+      `<strong>No se puede abrir el portal.</strong>` +
+      `<span>${message}</span>`;
+
+    if (directLink) directLink.hidden = true;
+  }
+
+  if (!config.appsScriptUrl) {
+    showError('Falta conectar Google Apps Script en config.js.');
+    return;
+  }
+
+  if (!id || !code) {
+    showError('Faltan el identificador o el código de acceso.');
+    return;
+  }
+
+  if (!/^DV-\d{4}-\d{4,}$/.test(id)) {
+    showError('El identificador no tiene un formato válido.');
     return;
   }
 
@@ -25,27 +49,23 @@
 
   const portalUrl = `${config.appsScriptUrl}?${query.toString()}`;
 
-  if (fallback) {
-    fallback.href = portalUrl;
+  sessionStorage.setItem('dvProjectId', id);
+  sessionStorage.setItem('dvProjectCode', code);
+
+  if (directLink) {
+    directLink.href = portalUrl;
+    directLink.hidden = false;
   }
 
-  let loaded = false;
-
-  frame.addEventListener('load', () => {
-    loaded = true;
-    loading.hidden = true;
-    frame.hidden = false;
-  });
-
-  frame.src = portalUrl;
-
-  window.setTimeout(() => {
-    if (loaded) return;
-
+  if (loading) {
     loading.innerHTML =
-      '<strong>El portal está tardando más de lo normal.</strong>' +
-      '<span>Puedes abrirlo directamente con el botón inferior.</span>';
+      '<strong>Abriendo la gestión privada…</strong>' +
+      '<span>Serás redirigido al portal seguro del proyecto.</span>';
+  }
 
-    if (fallback) fallback.hidden = false;
-  }, 9000);
+  // Apps Script se abre como documento principal. Así google.script.run,
+  // formularios y cargas de archivos funcionan en su contexto nativo.
+  window.setTimeout(() => {
+    location.replace(portalUrl);
+  }, 350);
 })();
