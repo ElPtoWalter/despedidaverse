@@ -17,7 +17,7 @@
   }
 
   function openProjectPortal(id, code) {
-    const url = new URL('/gestion', location.origin);
+    const url = new URL('https://despedidaverse.com/gestion');
     url.searchParams.set('id', id);
     url.searchParams.set('code', code);
     url.searchParams.set('_', String(Date.now()));
