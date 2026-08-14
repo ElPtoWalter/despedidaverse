@@ -1,4 +1,4 @@
-const CACHE = 'despedidaverse-v17-private-case-freeze';
+const CACHE = 'despedidaverse-v18-2-safe-recovery';
 
 const ASSETS = [
   '/',

@@ -1,0 +1,94 @@
+{
+  "version": "18.2",
+  "base": "V15",
+  "baseTagBalance": {
+    "section": [
+      20,
+      20
+    ],
+    "div": [
+      129,
+      129
+    ],
+    "article": [
+      36,
+      36
+    ],
+    "main": [
+      1,
+      1
+    ],
+    "header": [
+      1,
+      1
+    ],
+    "nav": [
+      1,
+      1
+    ],
+    "aside": [
+      1,
+      1
+    ],
+    "form": [
+      2,
+      2
+    ]
+  },
+  "finalTagBalance": {
+    "section": [
+      20,
+      20
+    ],
+    "div": [
+      129,
+      129
+    ],
+    "article": [
+      36,
+      36
+    ],
+    "main": [
+      1,
+      1
+    ],
+    "header": [
+      1,
+      1
+    ],
+    "nav": [
+      1,
+      1
+    ],
+    "aside": [
+      1,
+      1
+    ],
+    "form": [
+      2,
+      2
+    ]
+  },
+  "styles": [
+    "canalla",
+    "elegante",
+    "videojuego",
+    "mafia",
+    "reality",
+    "festival",
+    "deportivo"
+  ],
+  "sections": {
+    "demo": 5423,
+    "incluye": 10477,
+    "estilos": 14049,
+    "caso": 16717,
+    "asi-se-vive": 19138,
+    "precios": 25547,
+    "contacto": 38439
+  },
+  "antonversePublic": false,
+  "standaloneDemo": false,
+  "javascript": true,
+  "localReferences": true
+}
