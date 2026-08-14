@@ -60,3 +60,12 @@ Si `appsScriptUrl` está vacío, los formularios preparan un correo a `fdez.edu0
 - Progreso en 4 hitos y desenlace final.
 - CTA final directo a solicitud de propuesta.
 - La mini-demo de la home se mantiene como teaser y enlaza a la demo completa.
+
+
+## V17 · Private Case Freeze
+- Antonverse deja de tener cualquier enlace público desde la web comercial.
+- Se identifica expresamente como experiencia original cerrada.
+- Los QR reales mostrados en camiseta/diseño han sido sustituidos dentro de las propias imágenes por paneles no funcionales.
+- Se elimina `/demo/` y la DemoVerse Express separada.
+- Solo queda la DemoVerse compacta integrada en la home.
+- La web comercial no publica URL funcional, códigos, QR originales ni archivos internos de Antonverse.

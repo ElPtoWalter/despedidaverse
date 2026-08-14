@@ -1,4 +1,4 @@
-const CACHE = 'despedidaverse-v16-demoverse-express';
+const CACHE = 'despedidaverse-v17-private-case-freeze';
 
 const ASSETS = [
   '/',
@@ -18,10 +18,6 @@ const ASSETS = [
   '/gracias',
   '/gracias.html',
   '/offline.html',
-  '/demo/',
-  '/demo/index.html',
-  '/demo/app.css',
-  '/demo/app.js',
   '/assets/logo-final.webp',
   '/assets/favicon.png',
   '/assets/app-icon-192.png',

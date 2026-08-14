@@ -1,0 +1,28 @@
+{
+  "version": "17",
+  "antonversePublicLink": false,
+  "standaloneDemo": false,
+  "inlineDemo": true,
+  "protectedQrAssets": [
+    "assets/antonverse-camiseta-qr.webp",
+    "assets/antonverse-camiseta-diseno.webp"
+  ],
+  "qrChecks": {
+    "assets/antonverse-camiseta-qr.webp": {
+      "decoded": false,
+      "detected": false
+    },
+    "assets/antonverse-camiseta-diseno.webp": {
+      "decoded": false,
+      "detected": false
+    }
+  },
+  "validation": {
+    "html": true,
+    "javascript": true,
+    "serviceWorker": true,
+    "localReferences": true,
+    "noAntonverseUrl": true,
+    "noStandaloneDemoPath": true
+  }
+}
