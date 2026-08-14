@@ -35,3 +35,15 @@ Si `appsScriptUrl` está vacío, los formularios preparan un correo a `fdez.edu0
 - Demo limpia incluida en `/demo/`.
 - Preparación para Cloudflare Pages mediante `_headers`, `_redirects` y `404.html`.
 - Guía `CLOUDFLARE_PAGES.md`.
+
+
+## v15 · Caso real y QR físico (14/08/2026)
+
+- Nueva sección **Así se vive** con fotografías reales de Antonverse.
+- QR de la despedida explicado como elemento físico: camiseta, cartel, acreditación, pegatina o invitación.
+- Fotos optimizadas a WebP.
+- Vídeo vertical de Antonverse integrado como demostración de lo que vive detrás del QR.
+- Sin testimonios inventados; preparada una política de prueba social verificable.
+- Precios/productos alineados: Esencial, Juego y Universo cerrados; Live marcado como desarrollo/a medida.
+- Juego actualizado a 18 putadas / hasta 12 identidades.
+- Universo actualizado a 36 putadas / hasta 30 identidades.

@@ -1,4 +1,4 @@
-const CACHE = 'despedidaverse-v14-3-no-iframe';
+const CACHE = 'despedidaverse-v15-real-case';
 
 const ASSETS = [
   '/',
@@ -22,7 +22,9 @@ const ASSETS = [
   '/assets/favicon.png',
   '/assets/app-icon-192.png',
   '/assets/app-icon-512.png',
-  '/assets/antonverse-dashboard.webp'
+  '/assets/antonverse-dashboard.webp',
+  '/assets/antonverse-camiseta-qr.webp',
+  '/assets/antonverse-grupo-real.webp'
 ];
 
 self.addEventListener('install', event => {
