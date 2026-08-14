@@ -47,3 +47,16 @@ Si `appsScriptUrl` está vacío, los formularios preparan un correo a `fdez.edu0
 - Precios/productos alineados: Esencial, Juego y Universo cerrados; Live marcado como desarrollo/a medida.
 - Juego actualizado a 18 putadas / hasta 12 identidades.
 - Universo actualizado a 36 putadas / hasta 30 identidades.
+
+
+## V16 · DemoVerse Express
+- `/demo/` rehecha como experiencia comercial interactiva de ~90 segundos.
+- Entrada con nombre ficticio, sin registro ni envío de datos.
+- 5 tokens iniciales.
+- Ruleta conectada visualmente con la tienda.
+- Tienda por precios + carrito + compra agrupada simulada.
+- Nombres/apodos secretos.
+- Archivo reward/premium.
+- Progreso en 4 hitos y desenlace final.
+- CTA final directo a solicitud de propuesta.
+- La mini-demo de la home se mantiene como teaser y enlaza a la demo completa.

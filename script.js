@@ -126,12 +126,12 @@
   }));
 
   const wheelResults = [
-    'Conseguir que un desconocido os dedique un brindis.',
-    'Bailar 30 segundos sin música.',
-    'Pedir una foto como si fuerais famosos.',
-    'Improvisar un discurso de boda.',
-    'Cantar el estribillo del himno del grupo.',
-    'El comité elige un accesorio para la siguiente hora.'
+    'Dar un brindis presidencial de 30 segundos.',
+    'Bailar 20 segundos sin música.',
+    'Recrear una portada de disco con el grupo.',
+    'Improvisar una rueda de prensa solemne.',
+    'Narrar una conversación como una final deportiva.',
+    'El comité elige un accesorio para la siguiente ronda.'
   ];
   $('#spin-wheel')?.addEventListener('click', event => {
     const wheel = $('#demo-wheel');

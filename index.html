@@ -59,7 +59,7 @@
       <span></span><span></span><span></span><i class="sr-only">Abrir menú</i>
     </button>
     <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
-      <a href="#demo">Probar demo</a>
+      <a href="demo/">Demo interactiva</a>
       <a href="#incluye">Qué incluye</a>
       <a href="#estilos">Estilos</a>
       <a href="#caso">Caso real</a>
@@ -76,13 +76,13 @@
         <h1>No montamos una página.<br><em>Montamos el juego de vuestra despedida.</em></h1>
         <p class="hero-lead">Retos, monedas, nombres secretos, ruleta, música, fotos, minijuegos y una putada final. Todo hecho alrededor de vuestro grupo y listo para abrir desde un QR.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#demo">Probar la experiencia <span>↓</span></a>
+          <a class="button button-primary" href="demo/" target="_blank" rel="noopener">Probar demo 90 s <span>↗</span></a>
           <a class="button button-secondary" href="#calculadora">Calcular presupuesto</a>
         </div>
         <div class="trust-pills" aria-label="Ventajas">
           <span><b>✓</b> Sin instalar apps</span>
           <span><b>✓</b> Diseñada para móvil</span>
-          <span><b>✓</b> Contenido privado</span>
+          <span><b>✓</b> Contenido privado</span><span><b>▶</b> Demo sin registro</span>
         </div>
       </div>
 
@@ -111,8 +111,15 @@
     <section class="demo-section shell" id="demo">
       <div class="section-heading reveal">
         <p class="eyebrow"><span></span> No te lo explicamos: pruébalo</p>
-        <h2>Una demo jugable dentro de nuestra propia web</h2>
-        <p>Haz girar la ruleta, compra un reto y descubre nombres secretos. Tu proyecto tendrá otro diseño, otras bromas y otras reglas.</p>
+        <h2>Prueba DespedidaVerse antes de pedir una propuesta</h2>
+        <p>Aquí tienes una muestra rápida. Si quieres sentir el flujo completo, abre <b>DemoVerse Express</b>: nombre, tokens, ruleta, carrito, identidades, recuerdos y desenlace en unos 90 segundos.</p>
+      </div>
+
+      <div class="demo-express-strip reveal" aria-label="Qué incluye la demo completa">
+        <article><span>01</span><strong>Entra con tu nombre</strong><small>Sin registro ni datos reales</small></article>
+        <article><span>02</span><strong>Gana y gasta tokens</strong><small>Ruleta + tienda + carrito</small></article>
+        <article><span>03</span><strong>Descubre secretos</strong><small>Nombres y archivo</small></article>
+        <article><span>04</span><strong>Abre el final</strong><small>Un desenlace de muestra</small></article>
       </div>
 
       <div class="demo-console reveal" id="demo-console">
@@ -134,7 +141,7 @@
           <section class="demo-panel active" data-demo-panel="roulette">
             <div class="demo-panel-copy">
               <p class="panel-kicker">MISIÓN ALEATORIA</p>
-              <h3>La ruleta decide quién pierde la dignidad</h3>
+              <h3>La ruleta decide qué putada entra en juego</h3>
               <p id="wheel-result">Pulsa para lanzar una prueba.</p>
               <button class="button button-primary" id="spin-wheel" type="button">Girar ruleta</button>
             </div>
@@ -148,9 +155,9 @@
               <p id="shop-status">Tienes 5 tokens disponibles.</p>
             </div>
             <div class="demo-shop">
-              <article><span>🎤</span><div><small>2 TOKENS</small><strong>Cantar el himno del grupo</strong></div><button type="button" data-buy-cost="2">Comprar</button></article>
-              <article><span>🕺</span><div><small>3 TOKENS</small><strong>Recrear un trend de TikTok</strong></div><button type="button" data-buy-cost="3">Comprar</button></article>
-              <article><span>📸</span><div><small>4 TOKENS</small><strong>Foto con un desconocido</strong></div><button type="button" data-buy-cost="4">Comprar</button></article>
+              <article><span>🎤</span><div><small>1 TOKEN</small><strong>Brindis presidencial</strong></div><button type="button" data-buy-cost="1">Comprar</button></article>
+              <article><span>🕺</span><div><small>2 TOKENS</small><strong>Modo estatua durante una ronda</strong></div><button type="button" data-buy-cost="2">Comprar</button></article>
+              <article><span>📸</span><div><small>3 TOKENS</small><strong>Recrear una portada de disco</strong></div><button type="button" data-buy-cost="3">Comprar</button></article>
             </div>
           </section>
 
@@ -183,7 +190,14 @@
         </div>
       </div>
       <p class="demo-note reveal"><b>Esto es solo una muestra.</b> Cada despedida recibe sus propios nombres, mecánicas, diseño, precios, canciones y desenlace.</p>
-      <div class="demo-full-cta reveal"><div><small>PLANTILLA DE PRODUCTO OPTIMIZADA</small><strong>Prueba la experiencia limpia que utilizaremos como base para futuros clientes.</strong></div><a class="button button-primary" href="demo/" target="_blank" rel="noopener">Abrir demo completa <span>↗</span></a></div>
+      <div class="demo-full-cta demo-full-cta-v16 reveal">
+        <div>
+          <small>DEMOVERSE EXPRESS · SIN REGISTRO</small>
+          <strong>Prueba una mini despedida de principio a fin.</strong>
+          <p>≈ 90 segundos · datos ficticios · tokens · ruleta · carrito · nombres · recuerdos · desenlace</p>
+        </div>
+        <a class="button button-primary" href="demo/" target="_blank" rel="noopener">Entrar en la demo <span>↗</span></a>
+      </div>
     </section>
 
     <section class="features shell" id="incluye">
@@ -509,7 +523,7 @@
   <footer class="site-footer">
     <div class="shell footer-grid">
       <div><img src="assets/logo-final.webp" alt="DespedidaVerse Studio" width="320" height="80"><p>Experiencias web personalizadas para despedidas, cumpleaños y eventos privados.</p></div>
-      <div><strong>Explorar</strong><a href="#demo">Demo</a><a href="#asi-se-vive">Caso real</a><a href="#precios">Precios</a><a href="#contacto">Contacto</a></div>
+      <div><strong>Explorar</strong><a href="demo/">Demo interactiva</a><a href="#asi-se-vive">Caso real</a><a href="#precios">Precios</a><a href="#contacto">Contacto</a></div>
       <div><strong>Información</strong><a href="https://despedidaverse.com/cliente">Área de cliente</a><a href="https://despedidaverse.com/onboarding">Entrega de material</a><a href="https://despedidaverse.com/privacidad">Privacidad</a><a href="https://despedidaverse.com/condiciones">Condiciones</a><button type="button" id="install-app" hidden>Instalar web</button></div>
       <div><strong>Contacto</strong><a href="mailto:fdez.edu00@gmail.com">Correo</a><span>España · Servicio online</span><span>Precios mostrados con IVA incluido</span></div>
     </div>

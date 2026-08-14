@@ -3,160 +3,116 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#0b0b10">
-  <meta name="description" content="Experiencia privada creada con DespedidaVerse.">
-  <link rel="manifest" href="manifest.webmanifest">
-  <link rel="icon" href="assets/icon-192.png" type="image/png">
+  <meta name="theme-color" content="#09050f">
+  <meta name="description" content="Demo interactiva de DespedidaVerse. Prueba tokens, ruleta, tienda, nombres secretos, recuerdos y desenlace en menos de dos minutos.">
+  <meta name="robots" content="index,follow">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="app.css">
   <script defer src="app.js"></script>
-  <title>DespedidaVerse</title>
+  <title>DemoVerse Express · DespedidaVerse</title>
 </head>
 <body>
-  <div id="boot" class="boot" aria-live="polite"><span></span><p>Preparando la experiencia…</p></div>
+  <div class="noise" aria-hidden="true"></div>
 
-  <section id="gate" class="gate" hidden>
-    <div class="gate-backdrop" id="gate-backdrop"></div>
+  <section class="gate" id="gate">
+    <div class="gate-glow gate-a"></div><div class="gate-glow gate-b"></div>
     <div class="gate-card">
-      <p class="overline" id="gate-eyebrow">EVENTO PRIVADO</p>
-      <h1 id="gate-name">Cargando…</h1>
-      <p id="gate-message" class="gate-copy">Preparando la experiencia.</p>
-      <div id="countdown" class="countdown" aria-live="polite"></div>
-      <button id="gate-admin-toggle" class="text-action" type="button">Acceso del comité</button>
-      <form id="gate-admin" class="gate-admin" hidden>
-        <label for="gate-code">Código del comité</label>
-        <div><input id="gate-code" autocomplete="one-time-code"><button type="submit">Entrar</button></div>
+      <a class="demo-brand" href="../" aria-label="Volver a DespedidaVerse"><img src="../assets/logo-final.webp" alt="DespedidaVerse" width="360" height="90"></a>
+      <span class="demo-chip">DEMO INTERACTIVA · 90 SEGUNDOS</span>
+      <h1>Entra en<br><em>DemoVerse.</em></h1>
+      <p>Una muestra ficticia y reducida de lo que puede vivir vuestro grupo. No necesitas registrarte y no envía ningún dato.</p>
+      <form id="gate-form" class="gate-form">
+        <label for="player-name">¿Cómo te llamas?</label>
+        <div><input id="player-name" maxlength="24" autocomplete="off" placeholder="Tu nombre" required><button type="submit">Entrar <span>→</span></button></div>
       </form>
+      <div class="gate-points"><span>✓ 5 tokens iniciales</span><span>✓ Sin registro</span><span>✓ Se reinicia cuando quieras</span></div>
+      <a class="back-link" href="../">← Volver a la web comercial</a>
     </div>
   </section>
 
-  <div id="app" class="app" hidden>
+  <div class="app" id="app" hidden>
     <header class="app-header">
-      <button id="home-logo" class="event-brand" type="button" aria-label="Volver al inicio">
-        <span class="event-mark" id="event-mark">DV</span>
-        <span><small id="event-eyebrow">EVENTO PRIVADO</small><strong id="event-name">Evento</strong></span>
-      </button>
-      <div class="header-actions">
-        <button id="token-pill" class="token-pill" type="button"><small>TOKENS</small><strong id="tokens">0</strong></button>
-        <button id="more-button" class="icon-button" type="button" aria-label="Más opciones" aria-expanded="false">•••</button>
-      </div>
+      <button class="event-brand" data-view="home" type="button"><span>DV</span><div><small>DEMO INTERACTIVA</small><strong>DEMOVERSE</strong></div></button>
+      <div class="head-actions"><button class="how-btn" id="how-btn" type="button">? Cómo jugar</button><div class="token-pill"><small>TOKENS</small><strong id="token-count">5</strong></div></div>
     </header>
 
-    <div class="app-shell">
-      <nav id="desktop-nav" class="primary-nav" aria-label="Secciones principales"></nav>
+    <div class="progress-line"><i id="global-progress"></i></div>
 
-      <main id="main-content" tabindex="-1">
-        <section class="view active" data-view="home">
-          <article class="home-hero" id="home-hero">
-            <div class="home-hero-content">
-              <span id="event-status" class="status-chip">EVENTO ACTIVO</span>
-              <h1 id="hero-title">Bienvenidos</h1>
-              <p id="hero-copy"></p>
-              <button id="continue-button" class="primary-button" type="button">Continuar misión <span>→</span></button>
-            </div>
+    <main>
+      <section class="view active" data-panel="home">
+        <div class="hero-card">
+          <div class="hero-copy">
+            <span class="kicker">EVENTO FICTICIO · DEMO</span>
+            <h1 id="hello-title">Buenas.</h1>
+            <p>Explora cuatro mecánicas y abre el desenlace. En una despedida real todo esto se construye con vuestro grupo, fotos, canciones, anécdotas y límites.</p>
+            <button class="primary" type="button" data-view="roulette">Empezar por la ruleta <span>→</span></button>
+          </div>
+          <div class="hero-stats">
+            <article><small>RETOS COMPRADOS</small><strong id="home-bought">0</strong></article>
+            <article><small>IDENTIDADES</small><strong><span id="home-names">0</span>/3</strong></article>
+            <article><small>ARCHIVO</small><strong><span id="home-memory">0</span>/2</strong></article>
+          </div>
+        </div>
+        <section class="demo-path">
+          <article><b>01</b><span>Gira la ruleta</span><i id="milestone-wheel"></i></article>
+          <article><b>02</b><span>Compra una putada</span><i id="milestone-buy"></i></article>
+          <article><b>03</b><span>Descubre un nombre</span><i id="milestone-name"></i></article>
+          <article><b>04</b><span>Abre un recuerdo</span><i id="milestone-memory"></i></article>
+        </section>
+      </section>
+
+      <section class="view" data-panel="roulette">
+        <div class="view-head"><div><span class="kicker">AZAR</span><h2>Ruleta de putadas</h2><p>En el producto real la ruleta utiliza el mismo catálogo de la tienda.</p></div><button class="secondary" data-view="shop" type="button">Ir a tienda</button></div>
+        <div class="roulette-layout">
+          <div class="wheel-stage"><div class="pointer"></div><div class="wheel" id="wheel"><span>DV</span></div></div>
+          <article class="roulette-result" id="roulette-result"><small>RESULTADO</small><h3>Hazla girar.</h3><p>La ruleta escogerá una putada de esta demo.</p><button class="primary" id="spin" type="button">Girar ruleta</button></article>
+        </div>
+      </section>
+
+      <section class="view" data-panel="shop">
+        <div class="view-head"><div><span class="kicker">TIENDA</span><h2>Gasta tus tokens</h2><p>Añade varias putadas al carrito y cómpralas juntas.</p></div><button class="cart-button" id="cart-button" type="button">🛒 <span id="cart-count">0</span> · <b id="cart-total">0</b> t</button></div>
+        <div class="shop-tabs" id="shop-tabs"><button class="active" data-cost="all">Todas</button><button data-cost="1">1 t</button><button data-cost="2">2 t</button><button data-cost="3">3 t</button><button data-cost="5">5 t</button></div>
+        <div class="shop-grid" id="shop-grid"></div>
+      </section>
+
+      <section class="view" data-panel="names">
+        <div class="view-head"><div><span class="kicker">IDENTIDADES</span><h2>Nombres y apodos</h2><p>Los secretos pueden ser motes o simplemente nombres de los integrantes.</p></div></div>
+        <div class="names-layout">
+          <article class="secret-card">
+            <small>PRUEBA CON</small><h3>peseta · parlita · consigliere</h3><form id="secret-form"><input id="secret-input" autocomplete="off" placeholder="Escribe una identidad"><button class="primary" type="submit">Comprobar</button></form><p id="secret-feedback" class="feedback"></p>
           </article>
+          <div class="secret-grid" id="secret-grid"><span>???</span><span>???</span><span>???</span></div>
+        </div>
+      </section>
 
-          <section class="summary" aria-label="Resumen del progreso">
-            <article><span>Secretos</span><strong id="summary-names">0 / 0</strong><i><b id="names-progress"></b></i></article>
-            <article><span>Retos comprados</span><strong id="summary-challenges">0 / 0</strong><i><b id="challenges-progress"></b></i></article>
-            <article><span>Saldo disponible</span><strong><span id="summary-tokens">0</span> tokens</strong><small>El comité puede modificarlo</small></article>
-          </section>
+      <section class="view" data-panel="memories">
+        <div class="view-head"><div><span class="kicker">ARCHIVO</span><h2>Recuerdos que también juegan</h2><p>Unos archivos dan tokens. Los más especiales pueden costarlos.</p></div></div>
+        <div class="memory-grid" id="memory-grid">
+          <article class="memory-card reward" data-memory="0"><img src="assets/sample-1.webp" alt="Recuerdo de demostración"><div class="memory-cover"><small>RECUERDO · +1 TOKEN</small><strong>Archivo #01</strong><button class="primary" type="button">Revelar</button></div></article>
+          <article class="memory-card premium" data-memory="1"><img src="assets/sample-2.webp" alt="Recuerdo premium de demostración"><div class="memory-cover"><small>EXPEDIENTE PREMIUM · 2 TOKENS</small><strong>Archivo #02</strong><button class="primary" type="button">Desbloquear</button></div></article>
+        </div>
+      </section>
 
-          <section class="next-step card">
-            <div><p class="overline">SIGUIENTE PASO</p><h2 id="next-title">Empieza la misión</h2><p id="next-copy">Elige una de las acciones disponibles.</p></div>
-            <button id="next-button" class="secondary-button" type="button">Abrir</button>
-          </section>
+      <section class="view" data-panel="final">
+        <div class="view-head"><div><span class="kicker">DESENLACE</span><h2>La última putada</h2><p>En una experiencia real puede depender de nombres, progreso, tiempo o reglas del comité.</p></div></div>
+        <article class="final-card" id="final-card"><div class="final-symbol">✦</div><small id="final-kicker">BLOQUEADA</small><h3 id="final-title">Completa las 4 acciones de la demo.</h3><p id="final-copy">Cuando el progreso llegue al 100 %, podrás abrir el desenlace.</p><button class="primary" id="final-open" type="button" disabled>Abrir final</button></article>
+      </section>
+    </main>
 
-          <section id="featured-links-section" class="home-links" hidden>
-            <div class="section-title compact"><div><p class="overline">ACCESOS</p><h2>Enlaces útiles</h2></div></div>
-            <div id="featured-links" class="link-row"></div>
-          </section>
-        </section>
-
-        <section class="view" data-view="play">
-          <div class="section-title"><div><p class="overline">JUGAR</p><h1>Misiones y secretos</h1><p>Dos mecánicas, una sola progresión. Sin paneles innecesarios.</p></div></div>
-          <div id="play-tabs" class="subnav" role="tablist"></div>
-
-          <section class="subview active" data-subview="challenges">
-            <div class="toolbar"><div id="challenge-filters" class="filter-chips"></div><span id="challenge-count"></span></div>
-            <div id="challenge-list" class="challenge-list"></div>
-          </section>
-
-          <section class="subview" data-subview="names">
-            <div class="names-layout">
-              <article class="secret-entry card">
-                <p class="overline">ARCHIVO SECRETO</p>
-                <h2>Introduce una clave</h2>
-                <p>Los acentos, espacios y mayúsculas no importan.</p>
-                <form id="secret-form"><label class="sr-only" for="secret-input">Nombre en clave</label><div><input id="secret-input" autocomplete="off" placeholder="Escribe una respuesta"><button type="submit">Comprobar</button></div></form>
-                <p id="secret-feedback" class="feedback" aria-live="polite"></p>
-              </article>
-              <article class="discovered card">
-                <div class="discovered-head"><div><p class="overline">DESCUBIERTOS</p><h2 id="discovered-count">0 de 0</h2></div><span id="discovered-percent">0%</span></div>
-                <i class="large-progress"><b id="discovered-bar"></b></i>
-                <div id="discovered-list" class="discovered-list"><p class="empty-state">Todavía no se ha descubierto ninguno.</p></div>
-              </article>
-            </div>
-          </section>
-        </section>
-
-        <section class="view" data-view="memories">
-          <div class="section-title"><div><p class="overline">RECUERDOS</p><h1>Contenido del evento</h1><p>Fotos, música y accesos agrupados en una sola sección.</p></div></div>
-          <div id="memory-tabs" class="subnav" role="tablist"></div>
-
-          <section class="subview active" data-subview="gallery">
-            <div id="gallery-grid" class="gallery-grid"></div>
-            <button id="gallery-more" class="secondary-button load-more" type="button" hidden>Mostrar más</button>
-          </section>
-
-          <section class="subview" data-subview="radio">
-            <article class="player card">
-              <div class="player-art"><span>♪</span></div>
-              <div><p class="overline">SONANDO</p><h2 id="track-title">Selecciona una canción</h2><p id="track-artist">Radio del evento</p></div>
-              <audio id="audio" controls preload="none"></audio>
-            </article>
-            <div id="radio-list" class="track-list"></div>
-          </section>
-
-          <section class="subview" data-subview="links">
-            <div id="links-grid" class="links-grid"></div>
-          </section>
-        </section>
-
-        <section class="view" data-view="final">
-          <div class="section-title"><div><p class="overline">DESENLACE</p><h1>La prueba final</h1><p>El desenlace permanece oculto hasta cumplir la condición configurada.</p></div></div>
-          <article id="final-card" class="final-card locked">
-            <div id="final-lock" class="final-lock">✦</div>
-            <p id="final-kicker" class="overline">BLOQUEADO</p>
-            <h2 id="final-title">Todavía no</h2>
-            <p id="final-description">Completa la misión para desbloquear el contenido final.</p>
-            <img id="final-image" hidden alt="Contenido final">
-          </article>
-        </section>
-      </main>
-    </div>
-
-    <nav id="mobile-nav" class="mobile-nav" aria-label="Secciones principales"></nav>
-    <footer class="product-footer"><span>Experiencia privada</span><small>Powered by DespedidaVerse</small></footer>
+    <nav class="bottom-nav">
+      <button class="active" data-view="home" type="button"><span>⌂</span>Inicio</button>
+      <button data-view="roulette" type="button"><span>◉</span>Ruleta</button>
+      <button data-view="shop" type="button"><span>🛒</span>Tienda</button>
+      <button data-view="names" type="button"><span>⌘</span>Nombres</button>
+      <button data-view="memories" type="button"><span>▦</span>Archivo</button>
+      <button data-view="final" type="button"><span>✦</span>Final</button>
+    </nav>
   </div>
 
-  <div id="more-menu" class="more-menu" hidden>
-    <button id="committee-button" type="button">Panel del comité</button>
-    <button id="export-button" type="button">Exportar progreso</button>
-    <button id="reset-button" class="danger-text" type="button">Reiniciar este dispositivo</button>
-  </div>
-
-  <dialog id="committee-dialog" class="dialog">
-    <button class="dialog-close" type="button" aria-label="Cerrar">×</button>
-    <p class="overline">CONTROL LOCAL</p><h2>Panel del comité</h2>
-    <p class="dialog-note">En esta plantilla estática, estas acciones afectan únicamente a este dispositivo.</p>
-    <div class="admin-stats"><article><span>Tokens</span><strong id="admin-tokens">0</strong></article><article><span>Secretos</span><strong id="admin-names">0</strong></article><article><span>Retos</span><strong id="admin-challenges">0</strong></article></div>
-    <div class="admin-control"><label for="token-adjust">Ajustar tokens</label><div><input id="token-adjust" type="number" value="5"><button id="apply-token-adjust" type="button">Aplicar</button></div></div>
-    <div class="admin-actions"><button data-admin="unlock-final" type="button">Desbloquear final</button><button data-admin="lock-final" type="button">Volver a bloquear</button><button data-admin="close-event" type="button">Cerrar evento</button><button data-admin="reopen-event" type="button">Reabrir evento</button></div>
-    <label class="import-progress"><span>Importar copia de progreso</span><input id="import-progress" type="file" accept="application/json"></label>
-  </dialog>
-
-  <dialog id="lightbox" class="dialog lightbox"><button class="dialog-close" type="button" aria-label="Cerrar">×</button><img alt="Vista ampliada"><div><h2></h2><p></p></div></dialog>
-  <dialog id="final-dialog" class="dialog final-dialog"><button class="dialog-close" type="button" aria-label="Cerrar">×</button><div class="final-dialog-content"><p class="overline">FINAL DESBLOQUEADO</p><img alt="Contenido final"><h2></h2><p></p></div></dialog>
-  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div class="overlay" id="help-overlay" hidden><section class="modal-card"><button class="modal-x" data-close="help-overlay">×</button><span class="kicker">CÓMO JUGAR</span><h2>Cuatro acciones. Un final.</h2><ol><li><b>Gira</b> la ruleta.</li><li><b>Compra</b> al menos una putada.</li><li><b>Descubre</b> un nombre o apodo.</li><li><b>Revela</b> un recuerdo.</li></ol><p>Esta demo no envía información ni representa un evento real.</p><button class="primary" data-close="help-overlay" type="button">Entendido</button></section></div>
+  <div class="overlay" id="cart-overlay" hidden><section class="modal-card cart-modal"><button class="modal-x" data-close="cart-overlay">×</button><span class="kicker">TU CARRITO</span><h2>Compra de prueba</h2><div id="cart-lines" class="cart-lines"></div><div class="cart-summary"><span>Total</span><strong><b id="cart-modal-total">0</b> tokens</strong></div><button class="primary" id="checkout" type="button">Comprar todo</button></section></div>
+  <div class="overlay" id="purchase-overlay" hidden><section class="modal-card purchase-modal"><button class="modal-x" data-close="purchase-overlay">×</button><span class="success-badge">✓ COMPRA REALIZADA</span><h2 id="purchase-title">El comité ha recibido la compra.</h2><div id="purchase-lines" class="purchase-lines"></div><p>En Juego/Universo enseñarías este ticket al comité. En Live la compra puede llegar al panel central.</p><button class="primary" data-close="purchase-overlay" type="button">Seguir jugando</button></section></div>
+  <div class="overlay cinematic" id="final-overlay" hidden><section><span>ARCHIVO COMPLETO</span><h2>Así termina una DemoVerse.</h2><p>En vuestra despedida el desenlace sería privado, personalizado y preparado alrededor del protagonista.</p><div class="final-demo-image"><img src="assets/final.webp" alt="Ejemplo visual de desenlace"></div><a class="primary link-primary" href="../#contacto">Quiero una despedida así →</a><button class="ghost" id="reset-demo" type="button">Reiniciar demo</button></section></div>
+  <div class="toast" id="toast"></div>
 </body>
 </html>
