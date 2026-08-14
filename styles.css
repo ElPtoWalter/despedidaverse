@@ -263,3 +263,14 @@ dialog{max-width:min(900px,calc(100% - 24px));padding:0;border:1px solid rgba(25
   margin:7px 0 0;color:var(--muted);font-size:.82rem;line-height:1.55;
 }
 .demo-inline-note p{margin:5px 0 0;color:var(--muted);font-size:.76rem}
+
+/* ===== v18 · 7 estilos ===== */
+.style-preview.theme-deportivo{background:#071712}
+.theme-deportivo .style-browser section{background:linear-gradient(145deg,#071711,#0a2a21);font-family:Inter,system-ui,sans-serif}
+.theme-deportivo .style-browser h3{font-style:italic;text-transform:uppercase;color:#f6fff2}
+.theme-deportivo .style-browser button{background:linear-gradient(135deg,#b9ff45,#50d9ff);color:#04100d}
+.theme-deportivo .style-widget b{background:linear-gradient(90deg,#b9ff45,#50d9ff)}
+.theme-deportivo .style-label{background:#b9ff45;color:#06110e}
+.style-production-note{margin:14px 0 0;padding:12px 13px;border:1px solid rgba(97,234,255,.16);border-radius:14px;background:rgba(97,234,255,.045);color:var(--muted);font-size:.74rem;line-height:1.55}
+.style-production-note b{color:#d9faff}
+@media(max-width:580px){.style-picker{grid-template-columns:1fr}.styles-wrap{gap:34px}}

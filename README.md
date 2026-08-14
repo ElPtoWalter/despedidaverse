@@ -69,3 +69,11 @@ Si `appsScriptUrl` está vacío, los formularios preparan un correo a `fdez.edu0
 - Se elimina `/demo/` y la DemoVerse Express separada.
 - Solo queda la DemoVerse compacta integrada en la home.
 - La web comercial no publica URL funcional, códigos, QR originales ni archivos internos de Antonverse.
+
+
+## V18 · 7 estilos
+- Restaurada la sección completa `#estilos`, dañada accidentalmente en V17.
+- Restaurado el bloque `Todo lo que puede convertir...` que había desaparecido junto con ella.
+- Selector visual: Canalla / Elegante / Videojuego / Mafia / Reality / Festival / Deportivo.
+- Añadido Deportivo al preview.
+- La web explica que esos siete estilos son los mismos que llegan al proceso de producción.

@@ -248,7 +248,8 @@
     videojuego: ['PARTIDA INICIADA · NIVEL 01','MISIÓN: SALVAR AL NOVIO','Suma experiencia, completa logros y derrota al jefe final.','ESTILO VIDEOJUEGO'],
     mafia: ['EXPEDIENTE RESERVADO · FAMILIA','EL ÚLTIMO TRABAJO','Cumple los contratos y demuestra tu lealtad a la familia.','ESTILO MAFIA'],
     reality: ['EMISIÓN EN DIRECTO · GALA 01','LA CASA DE LA DESPEDIDA','Vota, nomina y sobrevive a las decisiones del público.','ESTILO REALITY'],
-    festival: ['ACCESO GENERAL · FIN DE SEMANA','THE LAST FREEDOM FEST','Escenarios, horarios, retos y recuerdos en una sola pulsera digital.','ESTILO FESTIVAL']
+    festival: ['ACCESO GENERAL · FIN DE SEMANA','THE LAST FREEDOM FEST','Escenarios, horarios, retos y recuerdos en una sola pulsera digital.','ESTILO FESTIVAL'],
+    deportivo: ['CONVOCATORIA OFICIAL · ÚLTIMO PARTIDO','LA ÚLTIMA CONVOCATORIA','Retos, marcador, vestuario y competición alrededor del protagonista.','ESTILO DEPORTIVO']
   };
   const preview = $('#style-preview');
   $$('[data-style]').forEach(button => button.addEventListener('click', () => {
