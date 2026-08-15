@@ -18,5 +18,5 @@ window.DV_CONFIG = Object.freeze({
   clientAreaEnabled: true,
   onboardingEnabled: true,
   directSubmitEnabled: true,
-  siteVersion: 'v12-productized'
+  siteVersion: 'v20-commercial-freeze'
 });

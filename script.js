@@ -328,6 +328,7 @@
       `Participantes: ${data.get('people') || 'Sin definir'}`,
       `Paquete: ${data.get('package') || 'Sin definir'}`,
       `Presupuesto: ${data.get('budget') || 'Sin definir'}`,
+      `Privacidad: ${data.get('privacyAccepted') === 'yes' ? 'aceptada' : 'no registrada'} (${data.get('privacyVersion') || 'sin versión'})`,
       `Estimación web: ${data.get('estimate') || 'No calculada'}`,
       '',
       'Idea:',
@@ -401,7 +402,7 @@
     }
     params.set('action', 'lead');
     params.set('source', 'web-comercial');
-    params.set('siteVersion', 'v12-productized');
+    params.set('siteVersion', 'v20-commercial-freeze');
     return params;
   }
 
@@ -420,7 +421,7 @@
     const payload = new FormData(form);
     payload.set('action', 'lead');
     payload.set('source', 'web-comercial');
-    payload.set('siteVersion', 'v12-productized');
+    payload.set('siteVersion', 'v20-commercial-freeze');
     payload.set(
       'submissionNonce',
       `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`

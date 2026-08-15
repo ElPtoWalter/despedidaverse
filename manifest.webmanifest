@@ -1,7 +1,7 @@
 {
   "name": "DespedidaVerse Studio",
   "short_name": "DespedidaVerse",
-  "description": "Experiencias web personalizadas para despedidas.",
+  "description": "Experiencias web privadas y personalizadas para despedidas: Esencial, Juego y Universo.",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#0d0818",

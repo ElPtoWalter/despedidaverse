@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
+Disallow: /cliente
+Disallow: /gestion
+Disallow: /onboarding
+Disallow: /gracias
+Disallow: /setup
+Disallow: /offline
 
 Sitemap: https://despedidaverse.com/sitemap.xml

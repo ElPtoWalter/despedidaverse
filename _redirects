@@ -1,6 +1,6 @@
-# Rutas seguras para Cloudflare Workers Static Assets.
-# Cloudflare resuelve automáticamente /cliente, /gestion y demás páginas HTML.
-# No crear reglas del tipo /ruta -> /ruta.html porque generan bucles.
-
+# Rutas públicas canónicas
 /inicio / 301
-/demo /demo/ 301
+/demo / 301
+/demo/* / 301
+/setup / 404 302
+/setup.html /404.html 302
