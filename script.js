@@ -261,16 +261,6 @@
     $('#style-title').textContent = title;
     $('#style-copy').textContent = copy;
     $('#style-label').textContent = label;
-
-    // Si el visitante explora un estilo, lo trasladamos a la solicitud.
-    // No imponemos Canalla por defecto: solo se guarda cuando hay una elección real.
-    const leadStyle = $('#lead-style');
-    if (leadStyle) {
-      const option = Array.from(leadStyle.options).find(
-        item => String(item.value || item.textContent).toLowerCase() === key
-      );
-      if (option) leadStyle.value = option.value || option.textContent;
-    }
   }));
 
   // Comparison
@@ -337,7 +327,6 @@
       `Evento: ${data.get('event') || 'Sin indicar'}`,
       `Participantes: ${data.get('people') || 'Sin definir'}`,
       `Paquete: ${data.get('package') || 'Sin definir'}`,
-      `Estilo visual: ${data.get('style') || 'Sin definir'}`,
       `Presupuesto: ${data.get('budget') || 'Sin definir'}`,
       `Privacidad: ${data.get('privacyAccepted') === 'yes' ? 'aceptada' : 'no registrada'} (${data.get('privacyVersion') || 'sin versión'})`,
       `Estimación web: ${data.get('estimate') || 'No calculada'}`,
@@ -413,7 +402,7 @@
     }
     params.set('action', 'lead');
     params.set('source', 'web-comercial');
-    params.set('siteVersion', 'v20.1-lead-style-budget');
+    params.set('siteVersion', 'v20-commercial-freeze');
     return params;
   }
 
@@ -432,7 +421,7 @@
     const payload = new FormData(form);
     payload.set('action', 'lead');
     payload.set('source', 'web-comercial');
-    payload.set('siteVersion', 'v20.1-lead-style-budget');
+    payload.set('siteVersion', 'v20-commercial-freeze');
     payload.set(
       'submissionNonce',
       `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`
