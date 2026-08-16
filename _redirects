@@ -2,5 +2,5 @@
 /inicio / 301
 /demo / 301
 /demo/* / 301
-/setup / 404 302
+/setup /404.html 302
 /setup.html /404.html 302
