@@ -1,4 +1,4 @@
-const CACHE = 'despedidaverse-v20-commercial-freeze';
+const CACHE = 'despedidaverse-v20.1-lead-style-budget';
 const ASSETS = [
   '/', '/index.html', '/styles.css', '/script.js', '/config.js', '/offline.html',
   '/assets/logo-final.webp', '/assets/favicon.png', '/assets/app-icon-192.png', '/assets/app-icon-512.png',
