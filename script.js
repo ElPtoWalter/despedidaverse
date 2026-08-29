@@ -243,7 +243,7 @@
 
   // Style selector
   const styleData = {
-    canalla: ['EVENTO ACTIVO · NIVEL 01','LA ÚLTIMA NOCHE DE LIBERTAD','Completa las misiones, reúne tokens y desbloquea el desenlace.','ESTILO CANALLA'],
+    canalla: ['EVENTO ACTIVO · NIVEL 01','LA ÚLTIMA NOCHE DE LIBERTAD','Completa retos, reúne tokens y desbloquea el desenlace.','ESTILO CANALLA'],
     elegante: ['EDICIÓN PRIVADA · 2026','UNA NOCHE PARA RECORDAR','Un programa exclusivo, diseñado alrededor de vuestra historia.','ESTILO ELEGANTE'],
     videojuego: ['PARTIDA INICIADA · NIVEL 01','MISIÓN: SALVAR AL NOVIO','Suma experiencia, completa logros y derrota al jefe final.','ESTILO VIDEOJUEGO'],
     mafia: ['EXPEDIENTE RESERVADO · FAMILIA','EL ÚLTIMO TRABAJO','Cumple los contratos y demuestra tu lealtad a la familia.','ESTILO MAFIA'],
