@@ -17,7 +17,7 @@
   function enforceOfficialPortalLinks() {
     const officialLinks = {
       client: 'https://despedidaverse.com/cliente',
-      onboarding: 'https://despedidaverse.com/onboarding',
+      onboarding: 'https://despedidaverse.com/cliente',
       privacy: 'https://despedidaverse.com/privacidad',
       terms: 'https://despedidaverse.com/condiciones'
     };

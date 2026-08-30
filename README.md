@@ -1,4 +1,4 @@
-# DespedidaVerse Studio v4 · Web automatizable
+# DespedidaVerse Studio v21 · Cierre comercial de tres paquetes
 
 Esta carpeta es la web pública. Se puede publicar tal cual y seguirá funcionando con correo.
 
@@ -29,12 +29,13 @@ Si `appsScriptUrl` está vacío, los formularios preparan un correo a `fdez.edu0
 - También se incluye `assets/logo-final.png` para otros usos.
 
 
-## v6 Lanzamiento
-- Precios públicos con IVA incluido: 549 €, 999 € y 1.799 €.
+## v21 · Cierre comercial
+- Precios públicos con IVA incluido: Esencial 149 €, Juego 299 € y Universo 599 €.
 - Calculadora adaptada a precios finales.
 - Demo limpia incluida en `/demo/`.
 - Preparación para Cloudflare Pages mediante `_headers`, `_redirects` y `404.html`.
 - Guía `CLOUDFLARE_PAGES.md`.
+- LIVE permanece fuera de venta hasta superar su propio cierre y QA.
 
 
 ## v15 · Caso real y QR físico (14/08/2026)

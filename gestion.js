@@ -4,16 +4,18 @@
   const config = window.DV_CONFIG || {};
   const params = new URLSearchParams(location.search);
 
-  const id = String(params.get('id') || '')
+  const id = String(params.get('id') || sessionStorage.getItem('dvProjectId') || '')
     .trim()
     .toUpperCase();
 
-  const code = String(params.get('code') || '')
+  const code = String(params.get('code') || sessionStorage.getItem('dvProjectCode') || '')
     .trim()
     .toUpperCase();
 
   const loading = document.querySelector('#management-loading');
   const directLink = document.querySelector('#management-direct-link');
+
+  if (params.has('code')) history.replaceState(null, '', location.pathname);
 
   function showError(message) {
     if (!loading) return;

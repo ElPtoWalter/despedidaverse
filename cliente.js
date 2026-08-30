@@ -18,9 +18,6 @@
 
   function openProjectPortal(id, code) {
     const url = new URL('https://despedidaverse.com/gestion');
-    url.searchParams.set('id', id);
-    url.searchParams.set('code', code);
-    url.searchParams.set('_', String(Date.now()));
 
     sessionStorage.setItem('dvProjectId', id);
     sessionStorage.setItem('dvProjectCode', code);
@@ -66,6 +63,11 @@
 
   const initialId = clean(params.get('id') || storedId).toUpperCase();
   const initialCode = clean(params.get('code') || storedCode).toUpperCase();
+  const shouldAutostart = params.get('autostart') === '1';
+
+  if (initialId) sessionStorage.setItem('dvProjectId', initialId);
+  if (initialCode) sessionStorage.setItem('dvProjectCode', initialCode);
+  if (params.has('code')) history.replaceState(null, '', location.pathname);
 
   if (initialId) {
     document.querySelector('#status-id').value = initialId;
@@ -75,7 +77,7 @@
     document.querySelector('#status-code').value = initialCode;
   }
 
-  if (params.get('autostart') === '1' && initialId && initialCode) {
+  if (shouldAutostart && initialId && initialCode) {
     form.requestSubmit();
   }
 })();
