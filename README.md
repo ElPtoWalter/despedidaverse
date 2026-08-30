@@ -1,4 +1,4 @@
-# DespedidaVerse Studio v21 · Cierre comercial de tres paquetes
+# DespedidaVerse Studio v22 · Presentación comercial premium
 
 Esta carpeta es la web pública. Se puede publicar tal cual y seguirá funcionando con correo.
 
@@ -16,6 +16,13 @@ Esta carpeta es la web pública. Se puede publicar tal cual y seguirá funcionan
 
 ## Seguridad
 No publiques el ZIP privado de automatización, secretos de Stripe, IDs internos ni copias del CRM. `config.js` solo debe contener enlaces públicos.
+
+## v22 · Presentación premium y preparación de cobro
+
+- Jerarquía, profundidad, estados de foco y composición móvil refinados en la web comercial y el área de cliente.
+- Los tres productos tienen una identidad visual propia y un ejemplo completo con código de acceso visible.
+- El contrato comercial declara EUR, IVA incluido y pago verificado por servidor como requisito de producción.
+- El proveedor de pagos permanece desactivado hasta la fase específica de integración; no se simulan cobros desde el navegador.
 
 ## Modo de emergencia
 Si `appsScriptUrl` está vacío, los formularios preparan un correo a `fdez.edu00@gmail.com`.
