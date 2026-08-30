@@ -1,4 +1,4 @@
-# DespedidaVerse Studio v22 · Presentación comercial premium
+# DespedidaVerse Studio v23 · Dirección de arte máxima
 
 Esta carpeta es la web pública. Se puede publicar tal cual y seguirá funcionando con correo.
 
@@ -23,6 +23,13 @@ No publiques el ZIP privado de automatización, secretos de Stripe, IDs internos
 - Los tres productos tienen una identidad visual propia y un ejemplo completo con código de acceso visible.
 - El contrato comercial declara EUR, IVA incluido y pago verificado por servidor como requisito de producción.
 - El proveedor de pagos permanece desactivado hasta la fase específica de integración; no se simulan cobros desde el navegador.
+
+## v23 · Dirección de arte máxima
+
+- Marco comercial más sobrio, editorial y contemporáneo, con menos brillo decorativo y más jerarquía tipográfica.
+- Esencial adopta una gramática editorial cálida; Juego, una interfaz táctica; Universo, un atlas inmersivo.
+- Geometría, paletas, densidad, estados interactivos y composición responsive tratados de forma independiente por producto.
+- Se conserva la propuesta, el contenido, los accesos privados y la preparación de cobro existentes.
 
 ## Modo de emergencia
 Si `appsScriptUrl` está vacío, los formularios preparan un correo a `fdez.edu00@gmail.com`.
