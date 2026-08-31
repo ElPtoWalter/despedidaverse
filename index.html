@@ -18,9 +18,9 @@
   <link rel="icon" href="assets/favicon.png" type="image/png">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="preload" href="assets/antonverse-dashboard.webp" as="image" type="image/webp">
-  <link rel="stylesheet" href="styles.css?v=20-commercial-freeze">
-  <script defer src="config.js?v=20-commercial-freeze"></script>
-  <script defer src="script.js?v=20-commercial-freeze"></script>
+  <link rel="stylesheet" href="styles.css?v=24-commerce-pilot">
+  <script defer src="config.js?v=24-commerce-pilot"></script>
+  <script defer src="script.js?v=24-commerce-pilot"></script>
   <title>DespedidaVerse Studio · Experiencias web para despedidas</title>
   <script type="application/ld+json">
   {
@@ -436,6 +436,11 @@
           <a class="button button-secondary package-button" href="#contacto" data-package="Universo">Crear un Universo</a>
         </article>
       </div>
+      <aside class="payment-assurance reveal">
+        <div class="payment-assurance-mark" aria-hidden="true"><span>✓</span><b>STRIPE<br>VERIFIED</b></div>
+        <div><small>PAGO PRIVADO DESPUÉS DE ACEPTAR LA PROPUESTA</small><h3>El cobro no es un botón suelto. Es parte del control de producción.</h3><p>El enlace se habilita en el área de cliente, Stripe procesa el pago y el servidor concilia proyecto, paquete e importe antes de permitir la publicación. DespedidaVerse no almacena números de tarjeta ni CVC.</p></div>
+        <ol><li><b>01</b><span>Propuesta aceptada</span></li><li><b>02</b><span>Pago seguro</span></li><li><b>03</b><span>Producción autorizada</span></li></ol>
+      </aside>
       <div class="comparison reveal">
         <div class="comparison-head"><h3>Comparador rápido</h3><button type="button" id="toggle-comparison">Ver tabla completa</button></div>
         <div class="comparison-scroll"><table><thead><tr><th>Función</th><th>Esencial</th><th>Juego</th><th>Universo</th></tr></thead><tbody>
@@ -520,9 +525,10 @@
       <ol class="process-list">
         <li class="reveal"><span>01</span><div><h3>Primera solicitud</h3><p>Fecha, tamaño del grupo, tipo de experiencia y una idea general. No pedimos todo el material antes de saber si el proyecto encaja.</p></div></li>
         <li class="reveal"><span>02</span><div><h3>Propuesta clara</h3><p>Paquete, alcance, calendario, revisiones y precio por escrito antes de reservar nada.</p></div></li>
-        <li class="reveal"><span>03</span><div><h3>Material y producción</h3><p>Tras aceptar, el grupo completa un brief guiado y entrega fotos, mensajes, bromas y límites desde su área privada.</p></div></li>
-        <li class="reveal"><span>04</span><div><h3>Vista previa y publicación</h3><p>Revisamos la experiencia privada, hacemos las correcciones incluidas y entregamos el QR definitivo para móvil, camiseta o cartel.</p></div></li>
-        <li class="reveal"><span>05</span><div><h3>Cierre o recuerdo</h3><p>La web puede cerrarse, mantenerse privada o convertirse en álbum final del fin de semana.</p></div></li>
+        <li class="reveal"><span>03</span><div><h3>Reserva verificada</h3><p>Tras aceptar, el pago se abre en el área privada mediante Stripe. La producción solo se autoriza cuando el servidor concilia el cobro con la propuesta.</p></div></li>
+        <li class="reveal"><span>04</span><div><h3>Material y producción</h3><p>El grupo completa un brief guiado y entrega fotos, mensajes, bromas y límites desde su área privada.</p></div></li>
+        <li class="reveal"><span>05</span><div><h3>Vista previa y publicación</h3><p>Revisamos la experiencia privada, hacemos las correcciones incluidas y entregamos el QR definitivo para móvil, camiseta o cartel.</p></div></li>
+        <li class="reveal"><span>06</span><div><h3>Cierre o recuerdo</h3><p>La web puede cerrarse, mantenerse privada o convertirse en álbum final del fin de semana.</p></div></li>
       </ol>
     </section>
 
@@ -535,7 +541,7 @@
         <details class="reveal"><summary>¿Funciona para despedidas de soltera o grupos mixtos?</summary><p>Sí. La marca y el producto no dependen de un género ni de un tipo único de humor.</p></details>
         <details class="reveal"><summary>¿Puede funcionar para cumpleaños o viajes?</summary><p>Sí. La misma estructura puede adaptarse a cumpleaños, aniversarios, viajes de amigos, graduaciones y eventos privados.</p></details>
         <details class="reveal"><summary>¿Qué ocurre con las fotos?</summary><p>El cliente debe tener autorización para utilizar el material que entrega. Podemos limitar el acceso, programar el cierre y acordar la eliminación posterior.</p></details>
-        <details class="reveal"><summary>¿Cómo se paga?</summary><p>Antes de cualquier cobro recibiréis la propuesta con alcance, calendario, importe y hitos. Solo después de aceptarla se activa la reserva y el calendario de pagos indicado para ese proyecto.</p></details>
+        <details class="reveal"><summary>¿Cómo se paga?</summary><p>Antes de cualquier cobro recibiréis la propuesta con alcance, calendario, importe e hitos. Al aceptarla, el enlace de Stripe se habilita en el área privada. La producción no se autoriza desde la pantalla de vuelta: espera siempre la confirmación segura del servidor.</p></details>
         <details class="reveal"><summary>¿Podemos poner el QR en la camiseta?</summary><p>Sí. Es una de las formas más divertidas de convertir la web en parte física de la despedida. El QR principal puede integrarse en camiseta, cartel, pegatina, acreditación o invitación. La impresión no está incluida salvo acuerdo.</p></details>
         <details class="reveal"><summary>¿El QR cambia con las actualizaciones?</summary><p>No, siempre que se mantenga la misma dirección. Se puede mejorar la web sin volver a imprimirlo.</p></details>
       </div>
@@ -555,7 +561,7 @@
         <form class="lead-form reveal" id="lead-form" method="post" action="https://script.google.com/macros/s/AKfycbxIqb1g2-7QK3lugDkGcfQWU2o3r2c-qSp-om2cdNa_4s6enhqTS457SIuI1xL_kno0HQ/exec" target="dv-submit-frame" novalidate>
           <input type="hidden" name="action" value="lead">
           <input type="hidden" name="source" value="web-comercial">
-          <input type="hidden" name="siteVersion" value="v20-commercial-freeze">
+          <input type="hidden" name="siteVersion" value="v24-commerce-pilot">
           <input type="hidden" name="privacyVersion" value="2026-08-15">
           <div class="dv-honeypot" aria-hidden="true">
             <label>No rellenar este campo

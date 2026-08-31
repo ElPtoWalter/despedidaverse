@@ -15,8 +15,19 @@ window.DV_CONFIG = Object.freeze({
     live: ''
   },
 
+  commerceApiUrl: 'https://commerce.despedidaverse-factory.pages.dev',
+  commerce: {
+    currency: 'EUR',
+    vatIncluded: true,
+    paymentProvider: 'stripe',
+    checkoutPolicy: 'accepted_proposal_only',
+    productionRequires: 'server_verified_payment',
+    allowedStates: ['pending', 'paid', 'failed', 'refunded']
+  },
+  pilotEnabled: true,
+
   clientAreaEnabled: true,
   onboardingEnabled: true,
   directSubmitEnabled: true,
-  siteVersion: 'v20-commercial-freeze'
+  siteVersion: 'v24-commerce-pilot'
 });

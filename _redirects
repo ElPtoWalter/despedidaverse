@@ -4,3 +4,5 @@
 /demo/* / 301
 /setup /404.html 302
 /setup.html /404.html 302
+/pago /pago.html 200
+/piloto /piloto.html 200

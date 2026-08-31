@@ -1,4 +1,4 @@
-# DespedidaVerse Studio v23 · Dirección de arte máxima
+# DespedidaVerse Studio v24 · Commerce verificable + piloto privado
 
 Esta carpeta es la web pública. Se puede publicar tal cual y seguirá funcionando con correo.
 
@@ -12,6 +12,8 @@ Esta carpeta es la web pública. Se puede publicar tal cual y seguirá funcionan
 - `cliente.html`: seguimiento privado mediante identificador y código.
 - `onboarding.html`: entrega estructurada de materiales.
 - `gracias.html`: confirmación.
+- `pago.html`: retorno seguro; nunca confirma el cobro desde el navegador.
+- `piloto.html`: evaluación privada con invitación temporal y datos mínimos.
 - `setup.html`: genera la configuración sin editar código.
 
 ## Seguridad
@@ -30,6 +32,13 @@ No publiques el ZIP privado de automatización, secretos de Stripe, IDs internos
 - Esencial adopta una gramática editorial cálida; Juego, una interfaz táctica; Universo, un atlas inmersivo.
 - Geometría, paletas, densidad, estados interactivos y composición responsive tratados de forma independiente por producto.
 - Se conserva la propuesta, el contenido, los accesos privados y la preparación de cobro existentes.
+
+## v24 · Commerce verificable + piloto privado
+
+- Stripe se abre únicamente después de aceptar la propuesta y desde el flujo privado.
+- La vuelta del navegador es informativa; la autorización real depende del webhook firmado y de la conciliación del servidor.
+- El formulario piloto no pide nombre ni correo y solo funciona con invitaciones aleatorias, temporales y de uso limitado.
+- `config.js` conserva las URLs públicas, pero ningún secret de Stripe, Cloudflare o Apps Script.
 
 ## Modo de emergencia
 Si `appsScriptUrl` está vacío, los formularios preparan un correo a `fdez.edu00@gmail.com`.

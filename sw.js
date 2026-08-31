@@ -1,4 +1,4 @@
-const CACHE = 'despedidaverse-v23-maximum-art-direction';
+const CACHE = 'despedidaverse-v24-commerce-pilot';
 const ASSETS = [
   '/', '/index.html', '/styles.css', '/script.js', '/config.js', '/offline.html',
   '/assets/logo-final.webp', '/assets/favicon.png', '/assets/app-icon-192.png', '/assets/app-icon-512.png',
@@ -9,7 +9,7 @@ self.addEventListener('activate', event => { event.waitUntil(Promise.all([caches
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
   const url = new URL(event.request.url);
-  const privatePath = /^\/(cliente|gestion|onboarding|gracias)(?:\.html)?(?:\/|$)/.test(url.pathname);
+  const privatePath = /^\/(cliente|gestion|onboarding|gracias|pago|piloto)(?:\.html)?(?:\/|$)/.test(url.pathname);
   if (privatePath) { event.respondWith(fetch(event.request, {cache:'no-store'})); return; }
   event.respondWith(fetch(event.request, {redirect:'follow'}).then(response => {
     if (response && response.ok && response.type !== 'opaqueredirect') caches.open(CACHE).then(c => c.put(event.request,response.clone()));

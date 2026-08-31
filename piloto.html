@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="referrer" content="no-referrer">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#07090f">
+  <meta name="color-scheme" content="dark">
+  <script>
+    (function () {
+      var params = new URLSearchParams(location.search);
+      var token = params.get('token');
+      if (token && /^[a-f0-9]{64}$/i.test(token)) sessionStorage.setItem('dvPilotToken', token);
+      history.replaceState(null, '', location.pathname);
+    })();
+  </script>
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="styles.css?v=24-commerce-pilot">
+  <script defer src="config.js?v=24-commerce-pilot"></script>
+  <script defer src="piloto.js?v=24-commerce-pilot"></script>
+  <title>Prueba piloto · DespedidaVerse</title>
+</head>
+<body class="portal-page pilot-page">
+  <header class="portal-header">
+    <a href="/"><img src="assets/logo-final.webp" alt="DespedidaVerse Studio"></a>
+    <span>Programa piloto privado</span>
+  </header>
+  <main class="pilot-shell">
+    <section class="pilot-intro">
+      <p class="eyebrow"><span></span> Menos de tres minutos</p>
+      <h1>Ayúdanos a medir lo que importa</h1>
+      <p>Queremos saber si la experiencia se entiende, emociona y funciona sin fricción. No pedimos tu nombre, correo, código del proyecto ni información del pago.</p>
+    </section>
+
+    <form class="pilot-form" id="pilot-form" novalidate>
+      <section class="pilot-block">
+        <span class="pilot-number">01</span>
+        <div><h2>Tu punto de vista</h2><p>Elige el papel desde el que has probado la experiencia.</p></div>
+        <div class="pilot-choice-grid" data-required-group="role">
+          <label><input type="radio" name="role" value="organiza" required><span>Organizo</span></label>
+          <label><input type="radio" name="role" value="participa"><span>Participo</span></label>
+          <label><input type="radio" name="role" value="protagonista"><span>Soy protagonista</span></label>
+          <label><input type="radio" name="role" value="observa"><span>Observo la sesión</span></label>
+        </div>
+      </section>
+
+      <section class="pilot-block">
+        <span class="pilot-number">02</span>
+        <div><h2>Recorrido completado</h2><p>Marca cuántos de los seis pasos del guion pudiste terminar.</p></div>
+        <label class="pilot-range"><span><b id="task-output">6</b> de 6 tareas</span><input type="range" name="taskComplete" min="0" max="6" value="6"></label>
+        <label class="pilot-field"><span>Minutos aproximados para preparar y entender el acceso</span><input type="number" name="setupMinutes" min="0" max="180" value="5" inputmode="numeric" required></label>
+      </section>
+
+      <section class="pilot-block">
+        <span class="pilot-number">03</span>
+        <div><h2>Calidad percibida</h2><p>Valora cada señal del 1 al 5.</p></div>
+        <div class="pilot-rating-grid">
+          <label><span>Claridad</span><select name="clarity" required><option value="5">5 · Clarísimo</option><option value="4">4</option><option value="3">3</option><option value="2">2</option><option value="1">1 · Confuso</option></select></label>
+          <label><span>Calidad visual</span><select name="visualQuality" required><option value="5">5 · Excepcional</option><option value="4">4</option><option value="3">3</option><option value="2">2</option><option value="1">1 · Insuficiente</option></select></label>
+          <label><span>Sorpresa / emoción</span><select name="delight" required><option value="5">5 · Muchísima</option><option value="4">4</option><option value="3">3</option><option value="2">2</option><option value="1">1 · Ninguna</option></select></label>
+          <label><span>Fiabilidad</span><select name="reliability" required><option value="5">5 · Sin fallos</option><option value="4">4</option><option value="3">3</option><option value="2">2</option><option value="1">1 · Bloqueante</option></select></label>
+        </div>
+        <label class="pilot-range recommend-range"><span>¿Lo recomendarías? <b id="recommend-output">9</b>/10</span><input type="range" name="recommend" min="0" max="10" value="9"></label>
+      </section>
+
+      <section class="pilot-block">
+        <span class="pilot-number">04</span>
+        <div><h2>Lo que no cabe en una nota</h2><p>Dos respuestas opcionales, concretas y sin datos personales.</p></div>
+        <label class="pilot-field"><span>¿Qué fue lo mejor?</span><textarea name="highlight" rows="3" maxlength="600" placeholder="El momento, detalle o decisión que más funcionó…"></textarea></label>
+        <label class="pilot-field"><span>¿Qué te frenó o cambiarías primero?</span><textarea name="blocker" rows="3" maxlength="600" placeholder="Un fallo, duda o fricción concreta…"></textarea></label>
+      </section>
+
+      <input type="hidden" name="device" id="pilot-device" value="other">
+      <p class="pilot-message" id="pilot-message" aria-live="polite">La invitación es privada, caduca y tiene usos limitados.</p>
+      <button class="button button-primary pilot-submit" type="submit">Enviar evaluación</button>
+    </form>
+  </main>
+</body>
+</html>

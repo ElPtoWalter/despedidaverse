@@ -49,3 +49,23 @@
 /gracias.html
   Cache-Control: no-store
   X-Robots-Tag: noindex, nofollow, noarchive
+/pago
+  Cache-Control: no-store
+  Referrer-Policy: no-referrer
+  X-Robots-Tag: noindex, nofollow, noarchive
+/pago.html
+  Cache-Control: no-store
+  Referrer-Policy: no-referrer
+  X-Robots-Tag: noindex, nofollow, noarchive
+/piloto
+  Cache-Control: no-store
+  Referrer-Policy: no-referrer
+  X-Robots-Tag: noindex, nofollow, noarchive
+/piloto.html
+  Cache-Control: no-store
+  Referrer-Policy: no-referrer
+  X-Robots-Tag: noindex, nofollow, noarchive
+/pago.js
+  Cache-Control: no-store
+/piloto.js
+  Cache-Control: no-store

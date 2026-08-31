@@ -364,12 +364,15 @@
     }
     $$('.payment-button[data-payment]').forEach(button => {
       const url = CONFIG.paymentLinks?.[button.dataset.payment];
-      if (url) {
-        button.href = url;
+      if (!url) return;
+      try {
+        const paymentUrl = new URL(url);
+        if (paymentUrl.protocol !== 'https:' || paymentUrl.hostname !== 'buy.stripe.com') return;
+        button.href = paymentUrl.toString();
         button.target = '_blank';
-        button.rel = 'noopener';
+        button.rel = 'noopener noreferrer';
         button.hidden = false;
-      }
+      } catch {}
     });
   }
 
@@ -402,7 +405,7 @@
     }
     params.set('action', 'lead');
     params.set('source', 'web-comercial');
-    params.set('siteVersion', 'v20-commercial-freeze');
+    params.set('siteVersion', CONFIG.siteVersion || 'v24-commerce-pilot');
     return params;
   }
 
@@ -421,7 +424,7 @@
     const payload = new FormData(form);
     payload.set('action', 'lead');
     payload.set('source', 'web-comercial');
-    payload.set('siteVersion', 'v20-commercial-freeze');
+    payload.set('siteVersion', CONFIG.siteVersion || 'v24-commerce-pilot');
     payload.set(
       'submissionNonce',
       `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`
