@@ -15,11 +15,13 @@
 Se mantiene la arquitectura estática y el alojamiento existente. No hay dependencias de compilación nuevas.
 
 1. Editar el contenido de `_content/`, `catalog.js` o el marco común en `scripts/build-commercial.cjs`.
-2. Ejecutar `npm run build` (equivalente: `node scripts/build-commercial.cjs`).
-3. Ejecutar `npm test`. Los tests verifican precios, reparto, formulario, enlaces, accesibilidad estructural, compatibilidad de enlaces antiguos y que las páginas generadas coincidan con el código fuente.
+2. Ejecutar `node scripts/build-commercial.cjs`.
+3. Ejecutar `node --test tests/*.test.cjs`. Los tests verifican precios, reparto, formulario, enlaces, accesibilidad estructural, compatibilidad de enlaces antiguos y que las páginas generadas coincidan con el código fuente.
 4. Publicar juntos fuentes y HTML generado. No editar directamente los seis HTML generados.
 
 La solicitud mantiene el transporte y los campos del CRM, añade `catalogVersion` y transmite el precio del paquete como referencia en `estimate`. El servidor sigue siendo la única autoridad para presupuestos aceptados y pagos.
+
+El repositorio conserva su despliegue estático sin un manifiesto de paquetes en la raíz. El generador usa solo módulos de Node incorporados y el HTML se publica ya generado; el alojamiento no necesita instalar dependencias ni detectar un framework nuevo. Los archivos de autoría y pruebas quedan fuera de los assets públicos.
 
 ## Historial de la base v24
 

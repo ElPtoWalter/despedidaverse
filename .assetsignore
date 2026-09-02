@@ -1,0 +1,9 @@
+_content/**
+scripts/**
+tests/**
+*.md
+*.txt
+!robots.txt
+package.json
+package-lock.json
+node_modules/**
