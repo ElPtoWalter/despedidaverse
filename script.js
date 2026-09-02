@@ -62,15 +62,27 @@
   const header = $('.site-header');
   const nav = $('#main-nav');
   const menuToggle = $('.menu-toggle');
+  if (nav && menuToggle) document.body.classList.add('nav-ready');
   addEventListener('scroll', () => header?.classList.toggle('scrolled', scrollY > 24), { passive: true });
+  function closeMenu(restoreFocus = false) {
+    nav?.classList.remove('open');
+    menuToggle?.setAttribute('aria-expanded', 'false');
+    menuToggle?.setAttribute('aria-label', 'Abrir menú');
+    if (restoreFocus) menuToggle?.focus();
+  }
   menuToggle?.addEventListener('click', () => {
+    if (!nav) return;
     const open = nav.classList.toggle('open');
     menuToggle.setAttribute('aria-expanded', String(open));
+    menuToggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
   });
-  $$('#main-nav a').forEach(a => a.addEventListener('click', () => {
-    nav.classList.remove('open');
-    menuToggle?.setAttribute('aria-expanded', 'false');
-  }));
+  $$('#main-nav a').forEach(a => a.addEventListener('click', () => closeMenu()));
+  addEventListener('keydown', event => {
+    if (event.key === 'Escape' && nav?.classList.contains('open')) closeMenu(true);
+  });
+  document.addEventListener('click', event => {
+    if (nav?.classList.contains('open') && !header?.contains(event.target)) closeMenu();
+  });
 
   // Reveal
   if ('IntersectionObserver' in window) {
@@ -254,7 +266,11 @@
   const preview = $('#style-preview');
   $$('[data-style]').forEach(button => button.addEventListener('click', () => {
     const key = button.dataset.style;
-    $$('[data-style]').forEach(b => b.classList.toggle('active', b === button));
+    $$('[data-style]').forEach(b => {
+      b.classList.toggle('active', b === button);
+      b.setAttribute('aria-pressed', String(b === button));
+    });
+    if ($('#style-request-link')) $('#style-request-link').href = '/presupuesto?estilo=' + encodeURIComponent(key) + '#contacto';
     preview.className = `style-preview theme-${key} reveal visible`;
     const [kicker,title,copy,label] = styleData[key];
     $('#style-kicker').textContent = kicker;
@@ -270,50 +286,7 @@
     event.currentTarget.textContent = expanded ? 'Ocultar filas extra' : 'Ver tabla completa';
   });
 
-  // Calculator
-  const calcState = { base: 149, level: 'Esencial' };
-  const calcRange = $('#calc-range');
-  const calcLevel = $('#calc-level');
-  function calculate() {
-    let total = calcState.base;
-    total += Number($('#calc-people')?.value || 0);
-    total += Number($('#calc-urgency')?.value || 0);
-    total += Number($('#calc-style')?.value || 0);
-    total += Number($('#calc-revisions')?.value || 0);
-    $$('.calc-extras input:checked').forEach(input => total += Number(input.value));
-    const high = Math.ceil((total + Math.max(100, total * 0.12)) / 10) * 10;
-    const low = Math.floor(total / 10) * 10;
-    calcRange.textContent = `${low.toLocaleString('es-ES')}–${high.toLocaleString('es-ES')} €`;
-    calcLevel.textContent = `Paquete ${calcState.level}`;
-    return { low, high };
-  }
-  $$('#base-package button').forEach(button => button.addEventListener('click', () => {
-    $$('#base-package button').forEach(b => b.classList.toggle('active', b === button));
-    calcState.base = Number(button.dataset.base);
-    calcState.level = button.dataset.level;
-    calculate();
-  }));
-  $$('#calculator select, #calculator input').forEach(input => input.addEventListener('change', calculate));
-
-  $('#use-estimate')?.addEventListener('click', () => {
-    const { low, high } = calculate();
-    const packageSelect = $('#lead-package');
-    if (packageSelect) packageSelect.value = calcState.level;
-    const estimate = $('#lead-estimate');
-    if (estimate) estimate.value = `${low}–${high} € (${calcState.level})`;
-    const extras = $$('.calc-extras input:checked').map(i => i.dataset.extra);
-    const message = $('[name="message"]', $('#lead-form'));
-    if (message && !message.value.trim()) {
-      message.value = `Nos interesa el paquete ${calcState.level}. Extras seleccionados: ${extras.length ? extras.join(', ') : 'ninguno por ahora'}.\n\nNuestra idea: `;
-    }
-    $('#contacto')?.scrollIntoView({ behavior: 'smooth' });
-    showToast('Estimación añadida a la solicitud');
-  });
-
-  $$('.package-button').forEach(button => button.addEventListener('click', () => {
-    const select = $('#lead-package');
-    if (select) select.value = button.dataset.package || 'Aún no lo sé';
-  }));
+  // Shared package prices and the estimate are handled by pricing-ui.js.
 
   // Contact tools
   function buildRequest() {
@@ -327,6 +300,8 @@
       `Evento: ${data.get('event') || 'Sin indicar'}`,
       `Participantes: ${data.get('people') || 'Sin definir'}`,
       `Paquete: ${data.get('package') || 'Sin definir'}`,
+      `Estilo: ${data.get('style') || 'Sin definir'}`,
+      `Catálogo de referencia: ${data.get('catalogVersion') || 'Sin indicar'}`,
       `Presupuesto: ${data.get('budget') || 'Sin definir'}`,
       `Privacidad: ${data.get('privacyAccepted') === 'yes' ? 'aceptada' : 'no registrada'} (${data.get('privacyVersion') || 'sin versión'})`,
       `Estimación web: ${data.get('estimate') || 'No calculada'}`,
@@ -454,7 +429,8 @@
 
     if (leadIsSending) return;
 
-    if (!event.currentTarget.reportValidity()) {
+    const form = event.currentTarget;
+    if (!form.reportValidity()) {
       setLeadFormState('error', 'Revisa los campos obligatorios.');
       return;
     }
@@ -469,7 +445,7 @@
     setLeadFormState('sending', 'Registrando la solicitud directamente…');
 
     try {
-      launchLeadPost(event.currentTarget);
+      launchLeadPost(form);
 
       sessionStorage.setItem('dvLeadSentAt', String(Date.now()));
       setLeadFormState(
@@ -479,7 +455,7 @@
       showToast('Solicitud enviada correctamente');
 
       // No limpiamos los campos hasta haber lanzado el POST.
-      setTimeout(() => event.currentTarget.reset(), 150);
+      setTimeout(() => form.reset(), 150);
 
       setTimeout(() => {
         location.href = 'https://despedidaverse.com/gracias?enviada=1';
@@ -504,7 +480,7 @@
   addEventListener('beforeinstallprompt', event => {
     event.preventDefault();
     installPrompt = event;
-    installButton.hidden = false;
+    if (installButton) installButton.hidden = false;
   });
   installButton?.addEventListener('click', async () => {
     if (!installPrompt) return;
@@ -514,10 +490,9 @@
     installButton.hidden = true;
   });
   if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
-    addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
+    addEventListener('load', () => navigator.serviceWorker.register('/sw.js').catch(() => {}));
   }
 
-  $('#year').textContent = new Date().getFullYear();
+  if ($('#year')) $('#year').textContent = new Date().getFullYear();
   renderDemo();
-  calculate();
 })();

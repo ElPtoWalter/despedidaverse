@@ -1,7 +1,16 @@
-# Rutas públicas canónicas
+# Preserve the production domain and its existing private routes.
 /inicio / 301
-/demo / 301
-/demo/* / 301
+/demo /demo/ 301
+/paquetes/ /paquetes 301
+/estilos/ /estilos 301
+/como-funciona/ /como-funciona 301
+/caso-real/ /caso-real 301
+/presupuesto/ /presupuesto 301
+/paquetes /paquetes.html 200
+/estilos /estilos.html 200
+/como-funciona /como-funciona.html 200
+/caso-real /caso-real.html 200
+/presupuesto /presupuesto.html 200
 /setup /404.html 302
 /setup.html /404.html 302
 /pago /pago.html 200

@@ -29,5 +29,6 @@ window.DV_CONFIG = Object.freeze({
   clientAreaEnabled: true,
   onboardingEnabled: true,
   directSubmitEnabled: true,
-  siteVersion: 'v24-commerce-pilot'
+  siteVersion: 'v25-mobile-pricing',
+  catalogVersion: '2026-09-03'
 });

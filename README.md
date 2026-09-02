@@ -1,4 +1,27 @@
-# DespedidaVerse Studio v24 · Commerce verificable + piloto privado
+# DespedidaVerse Studio v25 · Precios por grupo y portada móvil
+
+## Web comercial actual
+
+- Portada de siete bloques; la información extensa vive en `/paquetes`, `/estilos`, `/como-funciona`, `/caso-real` y `/presupuesto`.
+- Demo ficticia pública en `/demo/`, sin redirección a la portada. No se publican los códigos de las experiencias privadas.
+- Esencial **79 €**, Juego **129 €** y Universo **179 €**, por grupo y con IVA incluido. `catalog.js` es la referencia única de importes; páginas y calculadora se alimentan de ella.
+- El reparto por persona es orientativo y redondeado a céntimos. El número de personas no añade recargos ni amplía los límites de identidades/contenido del paquete.
+- Los extras se solicitan para una propuesta separada: la calculadora no añade importes no acordados ni rangos automáticos.
+- La propuesta exploratoria «Universo Total · 199 €» no se convierte en un SKU vendible: falta definir un alcance distinto. No equivale automáticamente a LIVE, que continúa fuera de venta.
+- Estas tarifas públicas nuevas no modifican propuestas ya aceptadas, cobros anteriores ni las comprobaciones de pago del servidor. La activación real de pagos conserva sus requisitos pendientes.
+
+## Edición y comprobaciones
+
+Se mantiene la arquitectura estática y el alojamiento existente. No hay dependencias de compilación nuevas.
+
+1. Editar el contenido de `_content/`, `catalog.js` o el marco común en `scripts/build-commercial.cjs`.
+2. Ejecutar `npm run build` (equivalente: `node scripts/build-commercial.cjs`).
+3. Ejecutar `npm test`. Los tests verifican precios, reparto, formulario, enlaces, accesibilidad estructural, compatibilidad de enlaces antiguos y que las páginas generadas coincidan con el código fuente.
+4. Publicar juntos fuentes y HTML generado. No editar directamente los seis HTML generados.
+
+La solicitud mantiene el transporte y los campos del CRM, añade `catalogVersion` y transmite el precio del paquete como referencia en `estimate`. El servidor sigue siendo la única autoridad para presupuestos aceptados y pagos.
+
+## Historial de la base v24
 
 Esta carpeta es la web pública. Se puede publicar tal cual y seguirá funcionando con correo.
 
@@ -53,8 +76,8 @@ Si `appsScriptUrl` está vacío, los formularios preparan un correo a `fdez.edu0
 
 
 ## v21 · Cierre comercial
-- Precios públicos con IVA incluido: Esencial 149 €, Juego 299 € y Universo 599 €.
-- Calculadora adaptada a precios finales.
+- Primera versión de precios públicos con IVA incluido (sustituida por el catálogo v25).
+- Calculadora inicial (sustituida por el reparto transparente v25).
 - Demo limpia incluida en `/demo/`.
 - Preparación para Cloudflare Pages mediante `_headers`, `_redirects` y `404.html`.
 - Guía `CLOUDFLARE_PAGES.md`.

@@ -1,0 +1,44 @@
+<section class="contact-section" id="contacto">
+      <div class="shell contact-wrap">
+        <div class="contact-copy reveal">
+          <p class="eyebrow"><span></span> Empecemos por la historia</p>
+          <h2>Cuéntanos quién es el protagonista y hasta dónde podemos llegar</h2>
+          <p>No necesitas un documento perfecto. Con una fecha, el tamaño del grupo y una idea general podemos preparar el siguiente paso.</p>
+          <div class="contact-points"><span><b>1</b> Respuesta para confirmar viabilidad</span><span><b>2</b> Alcance y presupuesto por escrito</span><span><b>3</b> Sin cobro al enviar la solicitud</span></div>
+          <div class="direct-contact"><small>CORREO DE CONTACTO</small><a id="contact-email-link" href="mailto:fdez.edu00@gmail.com">fdez.edu00@gmail.com</a><button id="copy-email" type="button">Copiar correo</button></div>
+          <div class="contact-shortcuts"><a href="https://despedidaverse.com/cliente">Consultar un proyecto</a><a href="https://despedidaverse.com/cliente">Acceder para entregar materiales</a><a id="tally-contact-link" href="#" target="_blank" rel="noopener" hidden>Formulario ampliado</a></div>
+        </div>
+
+        <form class="lead-form reveal" id="lead-form" method="post" action="https://script.google.com/macros/s/AKfycbxIqb1g2-7QK3lugDkGcfQWU2o3r2c-qSp-om2cdNa_4s6enhqTS457SIuI1xL_kno0HQ/exec" target="dv-submit-frame" novalidate>
+          <input type="hidden" name="action" value="lead">
+          <input type="hidden" name="source" value="web-comercial">
+          <input type="hidden" name="siteVersion" value="v25-mobile-pricing">
+          <input type="hidden" name="catalogVersion" value="{{catalog-version}}">
+          <input type="hidden" name="privacyVersion" value="2026-08-15">
+          <div class="dv-honeypot" aria-hidden="true">
+            <label>No rellenar este campo
+              <input type="text" name="website" tabindex="-1" autocomplete="off">
+            </label>
+          </div>
+          <div class="form-head"><span>PASO ÚNICO</span><strong>Solicitud de propuesta</strong></div>
+          <div class="form-grid">
+            <label><span>Nombre *</span><input required name="name" autocomplete="name" placeholder="Tu nombre"></label>
+            <label><span>Correo *</span><input required type="email" name="email" autocomplete="email" placeholder="tu@email.com"></label>
+            <label><span>Teléfono</span><input name="phone" autocomplete="tel" placeholder="+34..."></label>
+            <label><span>Fecha aproximada</span><input type="date" name="date"></label>
+            <label><span>Tipo de evento</span><select name="event"><option>Despedida de soltero</option><option>Despedida de soltera</option><option>Despedida mixta</option><option>Cumpleaños</option><option>Viaje de amigos</option><option>Otro evento privado</option></select></label>
+            <label><span>Participantes</span><input name="people" id="lead-people" type="number" min="2" max="300" step="1" inputmode="numeric" placeholder="12"></label>
+            <label><span>Paquete</span><select name="package" id="lead-package"><option value="">Aún no lo sé</option>{{package-options}}</select></label>
+            <label><span>Estilo visual</span><select name="style" id="lead-style"><option value="">Aún no lo sé</option><option>Canalla</option><option>Elegante</option><option>Videojuego</option><option>Mafia</option><option>Reality</option><option>Festival</option><option>Deportivo</option></select></label>
+            <label class="full"><span>Presupuesto aproximado</span><select name="budget"><option>Prefiero recibir orientación</option><option>Hasta 100 €</option><option>100–150 €</option><option>150–200 €</option><option>Más de 200 € con extras</option></select></label>
+            <label class="full"><span>Idea, protagonista y límites del humor *</span><textarea required name="message" rows="4" placeholder="Quién es, qué bromas tiene el grupo, qué funciones os gustan y qué cosas no queréis incluir..."></textarea></label>
+          </div>
+          <div class="privacy-first-layer"><strong>Información básica de privacidad</strong><span>Responsable: Eduardo Fernández · Finalidad: responder y gestionar la solicitud/propuesta · Base: solicitud del interesado y medidas precontractuales · Derechos: acceso, rectificación, supresión y demás derechos indicados en la política.</span></div>
+          <label class="consent"><input type="checkbox" name="privacyAccepted" value="yes" required><span>He leído la <a href="/privacidad" target="_blank" rel="noopener">política de privacidad</a> y acepto el tratamiento de estos datos para gestionar mi solicitud.</span></label>
+          <input type="hidden" name="estimate" id="lead-estimate">
+          <button class="button button-primary form-submit" type="submit"><span class="submit-label">Enviar solicitud</span> <span>→</span></button>
+          <div class="form-tools"><button type="button" id="copy-request">Copiar resumen</button><span id="form-status" aria-live="polite"></span></div>
+        </form>
+        <iframe class="submit-frame" name="dv-submit-frame" id="dv-submit-frame" title="Envío de solicitud"></iframe>
+      </div>
+    </section>

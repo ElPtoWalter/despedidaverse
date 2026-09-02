@@ -22,6 +22,15 @@
 /styles.css
   Cache-Control: public, max-age=0, must-revalidate
 
+/pages.css
+  Cache-Control: public, max-age=0, must-revalidate
+
+/catalog.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+/pricing-ui.js
+  Cache-Control: public, max-age=0, must-revalidate
+
 /sw.js
   Cache-Control: public, max-age=0, must-revalidate
 
