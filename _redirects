@@ -6,11 +6,8 @@
 /como-funciona/ /como-funciona 301
 /caso-real/ /caso-real 301
 /presupuesto/ /presupuesto 301
-/paquetes /paquetes.html 200
-/estilos /estilos.html 200
-/como-funciona /como-funciona.html 200
-/caso-real /caso-real.html 200
-/presupuesto /presupuesto.html 200
+# Workers Static Assets resolves extensionless HTML routes natively.
+# Rewriting /paquetes to /paquetes.html here would loop back to /paquetes.
 /setup /404.html 302
 /setup.html /404.html 302
 /pago /pago.html 200

@@ -125,6 +125,12 @@ test('the demo and its assets no longer redirect to the home page', () => {
   assert(read('demo/index.html').includes('href="/presupuesto"'));
   assert(read('demo/index.html').includes('app.js'));
 });
+test('new clean URLs do not conflict with Workers native HTML canonicalization', () => {
+  const redirects = read('_redirects').split(/\r?\n/).filter(line => line && !line.startsWith('#'));
+  for (const page of pages.filter(page => page.route !== '/')) {
+    assert(!redirects.some(line => line.trim().split(/\s+/)[0] === page.route), page.route + ' must resolve natively');
+  }
+});
 test('new routes are in the sitemap while private routes stay uncached', () => {
   for (const page of pages) assert(read('sitemap.xml').includes('https://despedidaverse.com' + page.route));
   const sw = read('sw.js');
