@@ -1,8 +1,8 @@
-const CACHE = 'despedidaverse-v25-mobile-pricing';
-const VERSION = 'v25-mobile-pricing';
+const CACHE = 'despedidaverse-v26-prepilot-putadas';
+const VERSION = 'v26-prepilot-putadas';
 const ASSETS = [
   '/', '/index.html', '/paquetes', '/estilos', '/como-funciona', '/caso-real', '/presupuesto', '/offline.html',
-  ...['styles.css', 'pages.css', 'script.js', 'config.js', 'catalog.js', 'pricing-ui.js'].map(path => '/' + path + '?' + VERSION),
+  ...['styles.css', 'pages.css', 'script.js', 'preferences.js', 'config.js', 'catalog.js', 'pricing-ui.js'].map(path => '/' + path + '?' + VERSION),
   '/assets/logo-final.webp', '/assets/favicon.png', '/assets/app-icon-192.png', '/assets/app-icon-512.png',
   '/assets/antonverse-dashboard.webp', '/assets/antonverse-camiseta-qr.webp', '/assets/antonverse-grupo-real.webp'
 ];

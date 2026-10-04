@@ -18,7 +18,7 @@
   <link rel="icon" href="assets/favicon.png" type="image/png">
   <link rel="stylesheet" href="styles.css?v=24-commerce-pilot">
   <script defer src="config.js?v=24-commerce-pilot"></script>
-  <script defer src="piloto.js?v=24-commerce-pilot"></script>
+  <script defer src="piloto.js?v=26-pilot-v2"></script>
   <title>Prueba piloto · DespedidaVerse</title>
 </head>
 <body class="portal-page pilot-page">
@@ -47,21 +47,22 @@
 
       <section class="pilot-block">
         <span class="pilot-number">02</span>
-        <div><h2>Recorrido completado</h2><p>Marca cuántos de los seis pasos del guion pudiste terminar.</p></div>
-        <label class="pilot-range"><span><b id="task-output">6</b> de 6 tareas</span><input type="range" name="taskComplete" min="0" max="6" value="6"></label>
-        <label class="pilot-field"><span>Minutos aproximados para preparar y entender el acceso</span><input type="number" name="setupMinutes" min="0" max="180" value="5" inputmode="numeric" required></label>
+        <div><h2>Recorrido completado</h2><p>Usamos seis tareas de producto: abrir el QR, acceder, encontrar la acción principal, interactuar, ver el desenlace y volver al estado guardado. La evaluación no cuenta como tarea.</p></div>
+        <label class="pilot-field"><span>Tareas terminadas sin ayuda (0–6)</span><input type="number" name="taskComplete" min="0" max="6" inputmode="numeric" required></label><label class="pilot-field"><span>Tareas terminadas con ayuda (0–6, sin contar las anteriores)</span><input type="number" name="taskAssisted" min="0" max="6" inputmode="numeric" required></label>
+        <label class="pilot-field"><span>Minutos para entrar y entender el acceso (no incluye preparar el evento)</span><input type="number" name="setupMinutes" min="0" max="180" inputmode="numeric" required></label>
+        <label class="pilot-field" id="organizer-setup" hidden><span>Solo quien organiza: minutos reales para preparar contenido, QR, comité y material</span><input type="number" name="organizerSetupMinutes" min="0" max="1440" inputmode="numeric"></label>
       </section>
 
       <section class="pilot-block">
         <span class="pilot-number">03</span>
         <div><h2>Calidad percibida</h2><p>Valora cada señal del 1 al 5.</p></div>
         <div class="pilot-rating-grid">
-          <label><span>Claridad</span><select name="clarity" required><option value="5">5 · Clarísimo</option><option value="4">4</option><option value="3">3</option><option value="2">2</option><option value="1">1 · Confuso</option></select></label>
-          <label><span>Calidad visual</span><select name="visualQuality" required><option value="5">5 · Excepcional</option><option value="4">4</option><option value="3">3</option><option value="2">2</option><option value="1">1 · Insuficiente</option></select></label>
-          <label><span>Sorpresa / emoción</span><select name="delight" required><option value="5">5 · Muchísima</option><option value="4">4</option><option value="3">3</option><option value="2">2</option><option value="1">1 · Ninguna</option></select></label>
-          <label><span>Fiabilidad</span><select name="reliability" required><option value="5">5 · Sin fallos</option><option value="4">4</option><option value="3">3</option><option value="2">2</option><option value="1">1 · Bloqueante</option></select></label>
+          <label><span>Claridad</span><select name="clarity" required><option value="" selected disabled>Elige una valoración</option><option value="5">5 · Clarísimo</option><option value="4">4</option><option value="3">3</option><option value="2">2</option><option value="1">1 · Confuso</option></select></label>
+          <label><span>Calidad visual</span><select name="visualQuality" required><option value="" selected disabled>Elige una valoración</option><option value="5">5 · Excepcional</option><option value="4">4</option><option value="3">3</option><option value="2">2</option><option value="1">1 · Insuficiente</option></select></label>
+          <label><span>Sorpresa / emoción</span><select name="delight" required><option value="" selected disabled>Elige una valoración</option><option value="5">5 · Muchísima</option><option value="4">4</option><option value="3">3</option><option value="2">2</option><option value="1">1 · Ninguna</option></select></label>
+          <label><span>Fiabilidad</span><select name="reliability" required><option value="" selected disabled>Elige una valoración</option><option value="5">5 · Sin fallos</option><option value="4">4</option><option value="3">3</option><option value="2">2</option><option value="1">1 · Bloqueante</option></select></label>
         </div>
-        <label class="pilot-range recommend-range"><span>¿Lo recomendarías? <b id="recommend-output">9</b>/10</span><input type="range" name="recommend" min="0" max="10" value="9"></label>
+        <label class="pilot-field"><span>¿Lo recomendarías? (0–10)</span><input type="number" name="recommend" min="0" max="10" inputmode="numeric" required></label>
       </section>
 
       <section class="pilot-block">
