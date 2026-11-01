@@ -34,6 +34,8 @@
     input?.addEventListener('input', () => { if (target) target.textContent = input.value; });
   }
 
+  const organizer = document.querySelector('#organizer-setup');
+  form?.addEventListener('change', () => {const organizes=form.querySelector('[name=role]:checked')?.value==='organiza';organizer.hidden=!organizes;organizer.querySelector('input').required=organizes;});
   const apiUrl = String(config.commerceApiUrl || '').replace(/\/$/, '');
   if (!config.pilotEnabled || !/^https:\/\//.test(apiUrl) || !/^[a-f0-9]{64}$/i.test(token)) {
     if (button) button.disabled = true;
@@ -46,6 +48,9 @@
     const data = Object.fromEntries(new FormData(form));
     const payload = {
       token,
+      rubricVersion: 'pilot-v2',
+      taskAssisted: Number(data.taskAssisted),
+      organizerSetupMinutes: data.role==='organiza'?Number(data.organizerSetupMinutes):null,
       role: data.role,
       device: data.device,
       taskComplete: Number(data.taskComplete),
@@ -58,12 +63,16 @@
       blocker: String(data.blocker || '').trim(),
       highlight: String(data.highlight || '').trim()
     };
+    if(payload.taskComplete+payload.taskAssisted>6){setMessage('Las tareas sin ayuda y con ayuda no pueden sumar más de seis.', 'error');return;}
     button.disabled = true;
     form.classList.add('is-sending');
     setMessage('Guardando la evaluación…');
     const controller = new AbortController();
     const timeout = window.setTimeout(() => controller.abort(), 12000);
     try {
+      const capability = await fetch(`${apiUrl}/api/pilot-feedback`, {credentials:'omit',referrerPolicy:'no-referrer',signal:controller.signal});
+      const contract = await capability.json().catch(()=>({}));
+      if (!capability.ok || contract.pilotRubricVersion !== 'pilot-v2') throw new Error('La evaluación actual aún no está disponible. Conserva tu ficha y pide al organizador el formulario actualizado.');
       const response = await fetch(`${apiUrl}/api/pilot-feedback`, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
@@ -73,7 +82,7 @@
         signal: controller.signal
       });
       const result = await response.json().catch(() => ({}));
-      if (!response.ok || result.ok !== true) throw new Error(result.error || 'No se pudo guardar la evaluación.');
+      if (!response.ok || result.ok !== true || result.rubricVersion!=='pilot-v2') throw new Error(result.error || 'No se pudo confirmar la evaluación. Conserva tu ficha para el organizador.');
       sessionStorage.removeItem('dvPilotToken');
       form.reset();
       form.classList.remove('is-sending');
