@@ -23,4 +23,5 @@ jobs:
           name: commercial-prepilot-evidence
           path: .prepilot-evidence/
           retention-days: 7
+          include-hidden-files: true
           if-no-files-found: warn
