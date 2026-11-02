@@ -17,11 +17,14 @@ jobs:
       - run: npm install --no-save --package-lock=false playwright@1.55.1
       - run: npx playwright install --with-deps chromium
       - run: node scripts/prepilot-browser.cjs
+      - run: node scripts/concierge-browser.cjs
       - uses: actions/upload-artifact@v6
         if: always()
         with:
           name: commercial-prepilot-evidence
-          path: .prepilot-evidence/
+          path: |
+            .prepilot-evidence/
+            .v61-evidence/
           retention-days: 7
           include-hidden-files: true
           if-no-files-found: warn
