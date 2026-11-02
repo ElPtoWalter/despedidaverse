@@ -306,6 +306,11 @@
       `Privacidad: ${data.get('privacyAccepted') === 'yes' ? 'aceptada' : 'no registrada'} (${data.get('privacyVersion') || 'sin versión'})`,
       `Estimación web: ${data.get('estimate') || 'No calculada'}`,
       '',
+      'Preferencias:',
+      window.DV_PREFERENCES?.summary(window.DV_PREFERENCES.fromForm(data)) || 'Por acordar',
+      `Espacio: ${data.get('activitySpace')||'Por acordar'}`,
+      `Material: ${data.get('activityMaterials')||'Nada indicado'}`,
+      '',
       'Idea:',
       data.get('message') || 'Sin indicar'
     ].join('\n');
@@ -396,7 +401,8 @@
     transportForm.acceptCharset = 'UTF-8';
     transportForm.style.display = 'none';
 
-    const payload = new FormData(form);
+    const payload = window.DV_PREFERENCES.withMessage(new FormData(form));
+    payload.set('message',payload.get('message')+'\nEspacio: '+(payload.get('activitySpace')||'Por acordar')+'\nMaterial: '+(payload.get('activityMaterials')||'Nada indicado'));
     payload.set('action', 'lead');
     payload.set('source', 'web-comercial');
     payload.set('siteVersion', CONFIG.siteVersion || 'v24-commerce-pilot');
