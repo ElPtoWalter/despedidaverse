@@ -100,3 +100,7 @@ Si `appsScriptUrl` está vacío, los formularios preparan un correo a `fdez.edu0
 - Precios/productos alineados: Esencial, Juego y Universo cerrados; Live marcado como desarrollo/a medida.
 - Juego actualizado a 18 putadas / hasta 12 identidades.
 - Universo actualizado a 36 putadas / hasta 30 identidades.
+
+## v6.1-D · Concierge local
+
+/concierge guía una preparación adaptativa, conserva límites v1 y exporta dv-brief-v6.1. No envía información al CRM ni crea pedidos. Guardar borrador requiere una acción explícita y se puede borrar. El archivo descargado contiene referencias privadas y debe custodiarse. QA: node --test tests/*.test.cjs y node scripts/concierge-browser.cjs. La generación y validación definitivas pertenecen a Factory; este recorrido no certifica materiales ni seguridad mediante un filtro de navegador.
