@@ -1,4 +1,8 @@
-# DespedidaVerse Studio v25 · Precios por grupo y portada móvil
+# DespedidaVerse · candidato integrado del piloto
+
+Integra la PR #1 sobre `a5951f09f99c01390ec46460bd0da81af0023fa4`. Mantiene los precios y Esencial como recuerdo, y conserva preferencias, demo de devoluciones y rúbrica `pilot-v2`. La propuesta principal es «Tu colega se casa. Que no salga gratis.» / «Vosotros ponéis los límites. Nosotros preparamos las putadas.».
+
+QA: `node --test tests/*.test.cjs` y `node scripts/prepilot-browser.cjs` (Playwright; 320, 390, 430, 768 y 1440 px). El navegador de QA bloquea o simula peticiones externas; no crea solicitudes reales ni pagos. El circuito del CRM desplegado necesita certificación independiente. Esta rama es para revisión y no autoriza publicación.
 
 ## Web comercial actual
 

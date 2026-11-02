@@ -4,7 +4,6 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
-const { execFileSync } = require('node:child_process');
 const catalog = require('../catalog.js');
 const { compile, pages, VERSION } = require('../scripts/build-commercial.cjs');
 const root = path.resolve(__dirname, '..');
@@ -141,7 +140,7 @@ test('new routes are in the sitemap while private routes stay uncached', () => {
   assert(!read('sitemap.xml').includes('/cliente'));
 });
 test('all shipped scripts have valid syntax', () => {
-  for (const script of ['catalog.js', 'pricing-ui.js', 'script.js', 'config.js', 'sw.js', 'demo/app.js']) execFileSync(process.execPath, ['--check', path.join(root, script)]);
+  for (const script of ['catalog.js', 'pricing-ui.js', 'preferences.js', 'script.js', 'config.js', 'sw.js', 'demo/app.js', 'piloto.js']) new vm.Script(read(script), {filename:script});
 });
 
 // Small explicit DOM mocks: these tests never open a browser or make a request.
