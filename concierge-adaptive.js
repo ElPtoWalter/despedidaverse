@@ -1,5 +1,5 @@
 (function(){
- 'use strict';const api=DV_RC2_CONCIERGE,esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));let state=api.create();
+ 'use strict';const optionalAi=DV_CONCIERGE_AI.createAiClient();window.DV_CONCIERGE_OPTIONAL_AI=optionalAi;const api=DV_RC2_CONCIERGE,esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));let state=api.create();
  const root=document.getElementById('rc2-conversation');if(!root)return;
  const labels={personality:'Personalidad',competitiveness:'Competitividad',lossReaction:'Qué pasa cuando pierde',embarrassment:'Qué le da vergüenza',humor:'Qué le hace reír',recurringJokes:'Bromas recurrentes',groupHistory:'Historia del grupo',catchphrases:'Frase habitual',songs:'Canciones',nicknames:'Mote autorizado',rivalries:'Rivalidad amistosa',keyFriends:'Amistad relevante',favorites:'Afición o preferencia',comicDislikes:'Manía inocua',partnerPreferences:'Respuesta de la pareja',characters:'Disfraz o personaje',pastExperiences:'Experiencia previa',limits:'Límite o exclusión'};
  const kindLabels={preference:'Preferencia o rasgo aportado',anecdote:'Anécdota',insideJoke:'Broma o frase interna',relationship:'Relación autorizada',song:'Título de canción',partner:'Mensaje exacto de la pareja'};
