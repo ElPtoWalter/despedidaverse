@@ -15,9 +15,14 @@ jobs:
           node-version: '22'
       - run: node --test tests/*.test.cjs
       - run: npm install --no-save --package-lock=false playwright@1.55.1
-      - run: npx playwright install --with-deps chromium
+      - run: npx playwright install --with-deps chromium webkit
       - run: node scripts/prepilot-browser.cjs
       - run: node scripts/concierge-browser.cjs
+      - run: node scripts/concierge-adaptive-browser.cjs
+      - run: node scripts/concierge-adaptive-browser.cjs
+        env:
+          RC2_BROWSER: webkit
+          RC2_WIDTHS: '390'
       - uses: actions/upload-artifact@v6
         if: always()
         with:
@@ -25,6 +30,7 @@ jobs:
           path: |
             .prepilot-evidence/
             .v61-evidence/
+            .rc2-evidence/
           retention-days: 7
           include-hidden-files: true
           if-no-files-found: warn
