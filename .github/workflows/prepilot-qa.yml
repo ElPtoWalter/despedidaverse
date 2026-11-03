@@ -23,6 +23,11 @@ jobs:
         env:
           RC2_BROWSER: webkit
           RC2_WIDTHS: '390'
+      - run: node scripts/story-browser.cjs
+      - run: node scripts/story-browser.cjs
+        env:
+          RC3_BROWSER: webkit
+          RC3_WIDTHS: '390'
       - uses: actions/upload-artifact@v6
         if: always()
         with:
@@ -31,7 +36,7 @@ jobs:
             .prepilot-evidence/
             .v61-evidence/
             .rc2-evidence/
-            .rc22-evidence/
+            .rc3-evidence/
           retention-days: 7
           include-hidden-files: true
           if-no-files-found: warn
