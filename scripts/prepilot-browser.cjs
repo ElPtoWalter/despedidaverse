@@ -1,6 +1,6 @@
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs/promises'),path=require('node:path'),http=require('node:http');
-const {chromium}=require('playwright');
+const {chromium}=require('playwright');const {default:AxeBuilder}=require('@axe-core/playwright');
 (async()=>{
  const root=path.resolve(__dirname,'..'),evidence=path.join(root,'.prepilot-evidence');await fs.mkdir(evidence,{recursive:true});
  const mime={'.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.svg':'image/svg+xml','.webp':'image/webp','.png':'image/png','.mp3':'audio/mpeg'};
@@ -9,7 +9,7 @@ const {chromium}=require('playwright');
  try{
   for(const width of [320,390,430,768,1440]){
    const context=await browser.newContext({viewport:{width,height:844}});await context.route('https://**/*',route=>route.abort());const page=await context.newPage();const errors=[];page.on('pageerror',error=>errors.push(error.message));
-   await page.goto(origin+'/');assert(await page.getByRole('heading',{name:/Tu colega/}).isVisible());await page.screenshot({path:path.join(evidence,`home-${width}.png`),fullPage:false});
+   await page.goto(origin+'/');assert(await page.getByRole('heading',{name:/Tu colega/}).isVisible());const a11y=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();assert.deepEqual(a11y.violations.filter(v=>['serious','critical'].includes(v.impact)).map(v=>v.id),[]);await page.screenshot({path:path.join(evidence,`home-${width}.png`),fullPage:false});
    await page.goto(origin+'/presupuesto');await page.locator('[name=maxIntensity]').selectOption('1');for(const name of ['excludePhotos','excludePhysical','excludeDrinks'])await page.locator(`[name=${name}]`).check();await page.locator('[name=blockedTopics]').fill('trabajo');
    const controls=await page.locator('.activity-preferences').evaluate(fieldset=>({photos:fieldset.querySelector('[name=excludePhotos]').checked,intensity:fieldset.querySelector('[name=maxIntensity]').value}));assert.deepEqual(controls,{photos:true,intensity:'1'});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>document.documentElement.clientWidth+2),false);await page.locator('.activity-preferences').screenshot({path:path.join(evidence,`preferences-${width}.png`)});
    await page.goto(origin+'/demo/');await page.locator('#player-name').fill('Prueba');await page.locator('#gate-form button').click();await page.getByRole('button',{name:'Entendido',exact:true}).click();

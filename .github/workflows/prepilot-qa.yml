@@ -14,7 +14,7 @@ jobs:
         with:
           node-version: '22'
       - run: node --test tests/*.test.cjs
-      - run: npm install --no-save --package-lock=false playwright@1.55.1
+      - run: npm install --no-save --package-lock=false playwright@1.55.1 @axe-core/playwright@4.10.2
       - run: npx playwright install --with-deps chromium webkit
       - run: node scripts/prepilot-browser.cjs
       - run: node scripts/concierge-browser.cjs
