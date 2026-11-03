@@ -1,0 +1,11 @@
+# Concierge RC2.1 — preparación y compatibilidad
+
+Base: Web RC2 `309b266476b5bded5acf6cf592ab7831d3331654`. Los precios, paquetes, formularios comerciales y el funcionamiento local siguen vigentes. Se exporta `dv-brief-v6.1-rc2.1`; `DV_BRIEF_V61` y `dv-preferences-v1` se conservan. Un resumen con menos de tres referencias compartidas avisa de que el hilo personal será limitado, sin inventar información ni exigir nuevas confidencias.
+
+`concierge-ai-client.js` implementa el cliente opcional para un backend del mismo origen. Se inicializa con `enabled:false` y no realiza solicitudes. Para una invocación futura necesita una sesión breve del usuario, consentimiento de envío separado y selección explícita de cada referencia compartida. No admite URL o clave de proveedor. Excluye material reservado y pareja, comprueba citas contra el texto enviado y devuelve modo local ante errores o respuesta no sustentada. No modifica automáticamente el brief ni confirma propuestas.
+
+El backend desacoplado se prepara en la candidata Factory RC2.1, ruta `/api/concierge-ai`, con autenticación, cuotas y libro de presupuesto. El proxy del mismo origen, la emisión de sesiones de una identidad real, los secretos y el proveedor no están configurados ni publicados. Su activación y cualquier uso de datos o créditos externos requieren autorización posterior. La interfaz actual se describe correctamente como conversación por reglas locales.
+
+Revisión local: `node scripts/serve-review.cjs 4184`, después `http://127.0.0.1:4184/concierge`. El servidor bloquea envíos. Elegir intensidad Suave y Vergüenza 1, mantener en cero los ejes excluidos y exportar. Factory RC2.1 podrá componer el cierre suave correspondiente sin ampliar esos límites. La falta de variedad o material puede retener un paquete; no se rellena con duplicados.
+
+QA: 40 pruebas Node, recorridos guiado/adaptativo a cinco anchuras y WebKit a 390 px. La descarga automatizada de Chromium en Windows puede cancelarse; se verifica la copia y se prueba la descarga nativa estrictamente en CI/WebKit. El uso de un proveedor comercial y Safari de un iPhone físico siguen pendientes. No fusionar, desplegar, activar pagos o Live ni ejecutar un piloto humano desde esta candidata.
