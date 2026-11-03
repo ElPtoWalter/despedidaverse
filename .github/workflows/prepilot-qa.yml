@@ -31,7 +31,7 @@ jobs:
             .prepilot-evidence/
             .v61-evidence/
             .rc2-evidence/
-            .rc21-evidence/
+            .rc22-evidence/
           retention-days: 7
           include-hidden-files: true
           if-no-files-found: warn
