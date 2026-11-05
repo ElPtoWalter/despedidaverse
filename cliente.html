@@ -6,13 +6,13 @@
   }
 })();
 </script>
-</head><body class="portal-page"><header class="portal-header"><a href="/"><img src="assets/logo-final.webp" alt="DespedidaVerse Studio"></a><a href="/">← Volver a la web</a></header>
+<link rel="stylesheet" href="/premium.css?v=v61-premium"><script defer src="/premium.js?v=v61-premium"></script></head><body class="portal-page"><header class="portal-header"><a href="/"><img src="assets/logo-final.webp" alt="DespedidaVerse Studio"></a><a href="/">← Volver a la web</a></header>
 <main class="portal-main">
   <section class="portal-hero"><p class="eyebrow" style="justify-content:center"><span></span> Seguimiento privado</p><h1>Área de cliente</h1><p>Introduce el identificador y el código de acceso incluidos en el correo de confirmación para consultar el estado del proyecto.</p></section>
   <section class="portal-card">
     <form class="portal-form" id="status-form">
       <label><span>Identificador</span><input id="status-id" required autocomplete="off" placeholder="DV-2026-0001"></label>
-      <label><span>Código de acceso</span><input id="status-code" required autocomplete="one-time-code" placeholder="AB12CD34"></label>
+      <label><span>Código de acceso</span><input id="status-code" type="password" required autocomplete="one-time-code" placeholder="AB12CD34"></label>
       <button class="button button-primary" type="submit">Consultar estado</button>
     </form>
     <p class="portal-message" id="status-message" aria-live="polite">Acceso protegido. Tus credenciales se conservan únicamente durante esta sesión.</p>
