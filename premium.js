@@ -1,0 +1,2 @@
+/* Focus remains on the current question when changing preparation mode. */
+document.addEventListener('click',event=>{const mode=event.target.closest?.('#rc2-mode-talk,#rc2-mode-guided');if(!mode)return;requestAnimationFrame(()=>{const heading=document.querySelector(mode.id==='rc2-mode-guided'?'#cq-question h2':'#rc2-conversation h2');if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});if(matchMedia('(max-width:780px)').matches)heading.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});}});});

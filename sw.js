@@ -1,9 +1,9 @@
-const CACHE = 'despedidaverse-v27-integration-pilot';
-const VERSION = 'v27-integration-pilot';
+const CACHE = 'despedidaverse-v61-premium-review';
+const VERSION = 'v61-premium-review';
 const ASSETS = [
   '/', '/index.html', '/paquetes', '/estilos', '/como-funciona', '/caso-real', '/presupuesto', '/offline.html',
-  ...['styles.css', 'pages.css', 'script.js', 'preferences.js', 'config.js', 'catalog.js', 'pricing-ui.js'].map(path => '/' + path + '?' + VERSION),
-  '/assets/logo-final.webp', '/assets/favicon.png', '/assets/app-icon-192.png', '/assets/app-icon-512.png',
+  ...['styles.css', 'pages.css', 'script.js', 'preferences.js', 'config.js', 'catalog.js', 'pricing-ui.js', 'premium.css', 'premium.js'].map(path => '/' + path + '?' + VERSION),
+  '/assets/fonts/dv-sans-regular.woff2', '/assets/fonts/dv-sans-bold.woff2', '/assets/fonts/dv-editorial.woff2', '/assets/logo-final.webp', '/assets/favicon.png', '/assets/app-icon-192.png', '/assets/app-icon-512.png',
   '/assets/antonverse-dashboard.webp', '/assets/antonverse-camiseta-qr.webp', '/assets/antonverse-grupo-real.webp'
 ];
 self.addEventListener('install', event => { self.skipWaiting(); event.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS))); });
